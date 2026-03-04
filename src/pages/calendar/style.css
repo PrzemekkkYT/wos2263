@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+.vis-timeline {
+  @apply border-none!;
+}
+
+.vis-label {
+  @apply flex items-center;
+}
+
+.vis-label img,
+.vis-item-content img {
+  @apply w-6! max-h-6! align-middle object-contain inline-block;
+}
+
+.vis-nested-group {
+  @apply md:ml-6 pr-6 border-2 border-gray-500! bg-black/30! text-white! md:font-bold;
+}
+
+.vis-nesting-group {
+  @apply pl-2! pr-2! text-white! font-bold;
+}
+
+.vis-nested-group.vis-nesting-group {
+  @apply bg-black/30!;
+}
+
+.vis-inner {
+  @apply pl-0! pr-0! md:pl-5! md:pr-5! w-full! text-shadow-md text-shadow-black;
+}
+
+.item-wrapper {
+  @apply flex gap-2 justify-between;
+}
+
+.vis-vertical-scroll {
+  @apply overflow-hidden!;
+}
+
+.item-title {
+  @apply flex flex-col gap-1 items-center justify-center md:flex-row;
+}
+
+.item-text {
+  @apply w-24 md:w-48 text-center hidden md:block;
+}
+
+#next-gen-countdown {
+  @apply flex items-center justify-center bg-white/80 p-2 rounded-2xl ml-16 mr-auto;
+}
+
+#next-gen-countdown img {
+  @apply w-16;
+}
+
+.vis-item {
+  @apply rounded-xl! shadow-black! shadow-2xl!;
+}
+
+.vis-text {
+  @apply text-white! font-bold;
+}
+
+.vis-text.vis-today {
+  @apply bg-black/60;
+}
+
+.vis-vertical.vis-today {
+  @apply bg-gray-200/20;
+}
+
+.vis-vertical.vis-monday {
+  @apply border-l-white! border-l-2!;
+}
+
+.vis-left {
+  @apply bg-black/40!;
+}
+
+.control-button {
+  @apply bg-black/30 text-white font-bold p-2 rounded-xl;
+}
+
+.control-button:hover,
+.control-button:active {
+  @apply bg-black/50 border-none;
+}
+
+#time-buttons-container {
+  @apply flex gap-1;
+}

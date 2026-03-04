@@ -1,0 +1,25 @@
+{
+  "name": "wos2263",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "moment": "^2.30.1",
+    "rrule": "^2.8.1",
+    "tailwindcss": "^4.2.1",
+    "vis-data": "^8.0.3",
+    "vis-timeline": "^8.5.0",
+    "zod": "^4.3.6"
+  }
+}
