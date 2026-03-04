@@ -19,8 +19,6 @@ import { addDays, getIconUrl, startOfDay } from "../../utils/utils";
 import { processEvents, processGroups } from "./processor";
 import { findNextOccurrence } from "./utils/utils";
 
-const DAY = 1000 * 60 * 60 * 24;
-
 const options: TimelineOptions = {
   stack: false,
   stackSubgroups: true,
@@ -29,8 +27,8 @@ const options: TimelineOptions = {
   orientation: "both",
   margin: { item: 10, axis: 5 },
   timeAxis: { scale: "day", step: 1 },
-  zoomMin: DAY * 3,
-  zoomMax: DAY * 28,
+  zoomable: false,
+  selectable: false,
   min: new Date(Date.UTC(2024, 11, 25, 0, 0, 0)),
   maxHeight: "70vh",
   verticalScroll: true,
@@ -48,7 +46,6 @@ const options: TimelineOptions = {
     return moment(date).utc(); // Wymusza renderowanie osi czasu w UTC
   },
   align: "center",
-  zoomKey: "ctrlKey",
   template: (item: EventItem) => {
     // Jeśli item.class jest pusty, używamy domyślnej ikony
     const rawClass = item.group?.toString() || "default";

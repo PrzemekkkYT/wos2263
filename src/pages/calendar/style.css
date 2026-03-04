@@ -46,7 +46,7 @@
 }
 
 #next-gen-countdown {
-  @apply flex items-center justify-center bg-white/80 p-2 rounded-2xl ml-16 mr-auto;
+  @apply flex items-center justify-center bg-white/80 p-2 rounded-2xl;
 }
 
 #next-gen-countdown img {
@@ -88,4 +88,8 @@
 
 #time-buttons-container {
   @apply flex gap-1;
+}
+
+.occurrence-jump {
+  @apply text-white font-bold;
 }
