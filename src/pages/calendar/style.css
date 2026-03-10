@@ -91,5 +91,10 @@
 }
 
 .occurrence-jump {
-  @apply text-white font-bold;
+  @apply text-white font-bold p-1 rounded;
+}
+
+.occurrence-jump:hover,
+.occurrence-jump:active {
+  @apply bg-black/40;
 }

@@ -3,7 +3,7 @@ import {
   TimelineEventSchema,
   GroupSchema,
   TimelineEventItemSchema,
-} from "./types";
+} from "./utils/types";
 
 export async function fetchApiData() {
   const query = `

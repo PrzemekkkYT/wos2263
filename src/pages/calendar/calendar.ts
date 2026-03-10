@@ -10,8 +10,7 @@ import { DataSet } from "vis-data";
 // css import
 import "vis-timeline/styles/vis-timeline-graph2d.min.css";
 
-// import { initGroups } from "./groups";
-import { type EventItem } from "./types";
+import { type EventItem } from "./utils/types";
 import { fetchApiData } from "./api";
 // import "./popup";
 // import { openPopup } from "./popup";
@@ -47,10 +46,8 @@ const options: TimelineOptions = {
   },
   align: "center",
   template: (item: EventItem) => {
-    // Jeśli item.class jest pusty, używamy domyślnej ikony
     const rawClass = item.group?.toString() || "default";
     const iconName = rawClass.replaceAll("-", "_");
-    // const iconPath = `./assets/icons/${iconName}.png`;
 
     return `
       <div class="item-wrapper">
@@ -59,18 +56,6 @@ const options: TimelineOptions = {
       </div>
     `;
   },
-  // groupTemplate: (group: DataGroup) => {
-  //   const rawId = group.id.toString() || "default";
-  //   const iconName = rawId.replaceAll("-", "_");
-  //   const iconPath = `./assets/icons/${iconName}.png`;
-
-  //   return `
-  //     <div class="item-wrapper">
-  //       <img src="${iconPath}" alt="" />
-  //       <span class="item-text">${group.content}</span>
-  //     </div>
-  //   `;
-  // },
   groupTemplate: (group: DataGroup) => {
     const rawClass = group.id.toString() || "default";
     const iconName = rawClass.replaceAll("-", "_");
@@ -108,37 +93,10 @@ const options: TimelineOptions = {
   },
 };
 
-// let items = new DataSet<DataItem>([
-//   // {
-//   //   id: "events",
-//   //   start: new Date(Date.UTC(2026, 1, 5, 0, 0, 0)),
-//   //   end: new Date(Date.UTC(2026, 1, 6, 0, 0, 0)),
-//   //   content: "Events",
-//   //   group: "test1",
-//   //   style: `background-color: #ffd966; color: white; border: none; border-radius: 4px;`,
-//   // },
-// ]);
-
-// let groups = parseEventGroupsData(await apiFetchGroups());
-// let items = parseTimelineData(await apiFetchEvents());
-
 let { items, groups, groupOrderSetting } = await fetchApiData();
-
-console.log(items);
-console.log(groups);
-console.log(groupOrderSetting);
 
 let processed_groups = processGroups(groups, items, groupOrderSetting);
 let displayedItems = new DataSet<DataItem>();
-// displayedItems.add({
-//   content: "",
-//   start: new Date(),
-//   id: "focus-element",
-//   group: "state-changes",
-//   type: "point",
-// });
-
-// console.log(processed_groups);
 
 let countdownStarted = false;
 
@@ -148,7 +106,6 @@ function initTimeline() {
     throw new Error('Missing element with id "main-events-timeline"');
   }
 
-  // const timeline = new Timeline(container, items, initGroups(groups), options);
   const timeline = new Timeline(
     container,
     displayedItems,
@@ -170,14 +127,8 @@ function initTimeline() {
     });
   }
 
-  // createButtons();
-
   setTimeout(() => {
     timeline.redraw();
-    // timeline.focus("state-changes", {
-    //   zoom: false,
-    //   animation: false,
-    // });
   }, 200);
   setTimeout(() => {
     timeline.focus("focus-element", {
@@ -191,7 +142,6 @@ function initTimeline() {
 
 function applyHooks(timeline: Timeline) {
   timeline.on("rangechanged", () => {
-    // console.log(timeline.getWindow().start, timeline.getWindow().end);
     let newItems: EventItem[] = [
       {
         content: "",
@@ -212,20 +162,11 @@ function applyHooks(timeline: Timeline) {
     displayedItems.update(newItems);
     startGenCountdown(displayedItems);
   });
-  //   timeline.on("click", (properties) => {
-  //     openPopup(properties, displayedItems);
-  //   });
 }
 
 const timeline = initTimeline();
 
-// console.log(timeline.getWindow().start, timeline.getWindow().end);
-
 document.querySelector("#today-button")?.addEventListener("click", () => {
-  // const now = startOfDay(new Date());
-  // timeline.setWindow(addDays(now, -3), addDays(now, 11), {
-  //   animation: true,
-  // });
   timeline.focus("focus-element", {
     zoom: false,
     animation: true,
@@ -254,22 +195,7 @@ function jumpToNextOccurrence(eventGroupId: string) {
   const nextEvent = findNextOccurrence(displayedItems, eventGroupId);
 
   if (nextEvent) {
-    // 3. Przesuń oś czasu i zaznacz element
-    // timeline.setSelection(nextEvent.id, {
-    //   focus: true,
-    //   animation: {
-    //     animation: {
-    //       duration: 500,
-    //       easingFunction: "easeInOutQuad",
-    //     },
-    //   },
-    // });
-
-    console.log(eventGroupId);
-
-    const startDate = new Date(nextEvent.start);
-
-    timeline.setWindow(addDays(startDate, -1), addDays(startDate, 7));
+    timeline.focus(nextEvent.id, { zoom: false, animation: true });
   } else {
     // Opcjonalnie: Jeśli nie ma nic w przyszłości, skocz do ostatniego dostępnego
     console.log(
@@ -279,7 +205,6 @@ function jumpToNextOccurrence(eventGroupId: string) {
 }
 
 addEventListener("resize", () => {
-  // console.log(`resized: ${window.innerWidth}`);
   timeline.redraw();
   if (window.innerWidth < 768) {
     const now = startOfDay(new Date());
@@ -329,13 +254,6 @@ function startGenCountdown(items: DataSet<DataItem>) {
       }
     }
   }, 1000);
-}
-
-export function jumpTo(date: Date) {
-  const now = startOfDay(date);
-  timeline.setWindow(addDays(now, -3), addDays(now, 11), {
-    animation: true,
-  });
 }
 
 for (let btn of document.getElementById("time-buttons-container")?.children ??

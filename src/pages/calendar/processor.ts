@@ -5,7 +5,7 @@ import {
   type ExtendedDataGroup,
   type Group,
   type TimelineEvent,
-} from "./types";
+} from "./utils/types";
 import { addDays } from "../../utils/utils";
 import { RRule } from "rrule";
 
