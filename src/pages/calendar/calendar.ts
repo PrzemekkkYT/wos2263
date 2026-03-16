@@ -51,8 +51,6 @@ const options: TimelineOptions = {
 
     const iconUrl = getIconUrl(iconName);
 
-    console.log(iconUrl);
-
     return `
       <div class="item-wrapper">
         <img src="${iconUrl}" alt=""/>
