@@ -42,7 +42,8 @@
 }
 
 .item-text {
-  @apply w-24 md:w-48 text-center hidden md:block;
+  /* @apply w-24 md:w-48 text-center hidden md:block; */
+  @apply w-24 md:w-48 text-center max-w-min md:max-w-none text-[0.5rem] md:text-base;
 }
 
 #next-gen-countdown {

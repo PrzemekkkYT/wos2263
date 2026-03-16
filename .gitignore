@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 
+
+*.sh
+icons_x32/
+icons_x64/
+icons_x128/

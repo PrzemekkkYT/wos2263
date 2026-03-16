@@ -84,8 +84,6 @@ export async function fetchApiData() {
       .transform((val) => val.topLevelGroupsOrder),
   });
 
-  console.log(data);
-
   const result = schema.safeParse(data);
 
   if (!result.success) {

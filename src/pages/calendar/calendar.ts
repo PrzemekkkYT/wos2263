@@ -49,10 +49,14 @@ const options: TimelineOptions = {
     const rawClass = item.group?.toString() || "default";
     const iconName = rawClass.replaceAll("-", "_");
 
+    const iconUrl = getIconUrl(iconName);
+
+    console.log(iconUrl);
+
     return `
       <div class="item-wrapper">
-        <img src="${getIconUrl(iconName)}" alt="" />
-        <span class="item-text">${item.content}</span>
+        <img src="${iconUrl}" alt=""/>
+        <span class="item-text ">${item.content}</span>
       </div>
     `;
   },
@@ -60,21 +64,26 @@ const options: TimelineOptions = {
     const rawClass = group.id.toString() || "default";
     const iconName = rawClass.replaceAll("-", "_");
 
+    const iconUrl = getIconUrl(iconName);
+
     const cont = document.createElement("div");
     cont.className = "item-wrapper";
 
     const cont2 = document.createElement("div");
     cont2.className = "item-title";
 
-    const img = document.createElement("img");
-    img.src = getIconUrl(iconName);
-    img.alt = "";
+    if (!iconUrl.includes("undefined")) {
+      const img = document.createElement("img");
+      img.src = iconUrl;
+      img.alt = "";
+
+      cont2.appendChild(img);
+    }
 
     const span = document.createElement("span");
-    span.className = "item-text";
+    span.classList = `item-text ${iconUrl.includes("undefined") ? "" : "hidden"} md:block!`;
     span.innerHTML = group.content.toString();
 
-    cont2.appendChild(img);
     cont2.appendChild(span);
 
     cont.appendChild(cont2);
@@ -159,8 +168,10 @@ function applyHooks(timeline: Timeline) {
         timeline.getWindow().end,
       ),
     );
+    displayedItems.clear();
     displayedItems.update(newItems);
-    startGenCountdown(displayedItems);
+    startGenCountdown();
+    // startGenCountdown(items);
   });
 }
 
@@ -192,13 +203,29 @@ document.querySelector("#data-theme-toggle")?.addEventListener("click", () => {
 });
 
 function jumpToNextOccurrence(eventGroupId: string) {
-  const nextEvent = findNextOccurrence(displayedItems, eventGroupId);
+  // const nextEvent = findNextOccurrence(displayedItems, eventGroupId);
+  const nextEvent = findNextOccurrence(items, eventGroupId);
 
   if (nextEvent) {
-    timeline.focus(nextEvent.id, { zoom: false, animation: true });
+    // timeline.focus(nextEvent.id, { zoom: false, animation: true });
+    const currentWindow = timeline.getWindow();
+    const windowDuration =
+      currentWindow.end.getTime() - currentWindow.start.getTime();
+
+    const eventTime = nextEvent.end
+      ? (nextEvent.start as Date).getTime() +
+        ((nextEvent.end as Date).getTime() -
+          (nextEvent.start as Date).getTime()) /
+          2
+      : (nextEvent.start as Date).getTime();
+
+    const newStart = eventTime - windowDuration / 2;
+    const newEnd = eventTime + windowDuration / 2;
+
+    timeline.setWindow(newStart, newEnd);
   } else {
     // Opcjonalnie: Jeśli nie ma nic w przyszłości, skocz do ostatniego dostępnego
-    console.log(
+    console.warn(
       "Brak przyszłych wydarzeń. Możesz tu dodać skok do ostatniego archiwalnego.",
     );
   }
@@ -214,11 +241,12 @@ addEventListener("resize", () => {
   }
 });
 
-function startGenCountdown(items: DataSet<DataItem>) {
+function startGenCountdown() {
   if (countdownStarted) return;
 
   countdownStarted = true;
 
+  // let nextGenEvent = findNextOccurrence(contentItems, "hero-generation");
   let nextGenEvent = findNextOccurrence(items, "hero-generation");
   const nextGenCountdownContainer =
     document.getElementById("next-gen-countdown");
@@ -258,13 +286,12 @@ function startGenCountdown(items: DataSet<DataItem>) {
 
 for (let btn of document.getElementById("time-buttons-container")?.children ??
   []) {
-  console.log(btn.innerHTML.toString());
   btn.addEventListener("click", () => {
     const now = startOfDay(new Date());
 
     switch (btn.getAttribute("time-window")) {
       case "3d":
-        timeline.setWindow(addDays(now, -1), addDays(now, 1), {
+        timeline.setWindow(addDays(now, -1), addDays(now, 2), {
           animation: true,
         });
         break;

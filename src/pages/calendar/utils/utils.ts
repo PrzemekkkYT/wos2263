@@ -1,43 +1,58 @@
-import type { DataSet } from "vis-data";
-import type { DataItem } from "vis-timeline";
+import type { EventItem, TimelineEvent } from "./types";
+import { RRule } from "rrule";
+import { addDays } from "../../../utils/utils";
 
 export function findNextOccurrence(
-  items: DataSet<DataItem>,
+  items: TimelineEvent[],
   eventGroupId: string,
 ) {
-  console.log(items.get());
+  let timelineEvent = items.find((e) => e.eventId === eventGroupId);
+
+  if (timelineEvent === undefined) return;
+
+  let rules =
+    timelineEvent?.recurrenceRules?.map(
+      (req) =>
+        new RRule({
+          freq: req.frequency,
+          interval: req.interval,
+          byweekday: req.days,
+          dtstart: req.startDate,
+          wkst: RRule.MO,
+          until: req.untilDate,
+        }),
+    ) || [];
 
   const now = new Date();
 
-  // 1. Pobierz wszystkie wystąpienia dla danego ID bazowego (event.eventId)
-  // W Twoim kodzie processEvents, pole 'group' w itemie to event.eventId
-  const occurrences = items.get({
-    filter: (item) => item.group === eventGroupId,
-  });
+  let candidates = rules
+    .map((rule) => ({
+      rule: rule,
+      nextDate: rule.after(now),
+    }))
+    .filter((c): c is { rule: RRule; nextDate: Date } => c.nextDate !== null);
 
-  if (occurrences.length === 0) {
-    console.warn("Brak wystąpień dla grupy:", eventGroupId);
-    return;
-  }
+  candidates.sort((a, b) => a.nextDate.getTime() - b.nextDate.getTime());
 
-  // 2. Znajdź najbliższe wydarzenie w przyszłości
-  const nextEvent = occurrences
-    .filter((item) => {
-      const start =
-        item.start instanceof Date ? item.start : new Date(item.start);
-      return start > now;
-    })
-    .sort((a, b) => {
-      const dateA =
-        a.start instanceof Date
-          ? a.start.getTime()
-          : new Date(a.start).getTime();
-      const dateB =
-        b.start instanceof Date
-          ? b.start.getTime()
-          : new Date(b.start).getTime();
-      return dateA - dateB;
-    })[0]; // Bierzemy pierwsze po posortowaniu (najwcześniejsze z przyszłych)
+  const winner = candidates[0];
 
-  return nextEvent;
+  const n = winner.rule.between(
+    winner.rule.options.dtstart,
+    winner.nextDate,
+    true,
+  ).length;
+
+  let newEvent: EventItem = {
+    id: `${eventGroupId}-${winner.nextDate.getTime()}`,
+    content: timelineEvent.itemTitle
+      ? timelineEvent.itemTitle.replaceAll("{n}", `${n}`)
+      : timelineEvent.title,
+    start: winner.nextDate,
+    end: addDays(winner.nextDate, timelineEvent.durationDays),
+    style: `background-color: ${timelineEvent.color}`,
+    group: timelineEvent.eventId,
+    description: timelineEvent.description,
+  };
+
+  return newEvent;
 }
