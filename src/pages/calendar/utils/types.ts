@@ -63,19 +63,36 @@ export const TimelineEventSchema = z.object({
     .transform((val) => val.replace(/^C_/, "#"))
     .nullable()
     .optional(),
+  itemType: z
+    .string()
+    .nullable()
+    .transform((val) => val ?? "range"),
   recurrenceRules: z.array(RecurrenceSchema).nullable().optional(),
   occurrences: z.array(z.string()).nullable().optional(),
 });
 
 export const TimelineEventItemSchema = z.object({
   title: z.string(),
-  durationDays: z.number(),
+  startDate: z.string().transform((str) => {
+    // Dodajemy 'T00:00:00Z', aby wymusić interpretację jako UTC
+    const date = new Date(`${str}T00:00:00Z`);
+
+    if (isNaN(date.getTime())) {
+      throw new Error("Invalid date format");
+    }
+    return date;
+  }),
+  durationDays: z.number().optional().default(1),
   description: z.string().nullable().optional(),
   color: z
     .string()
     .transform((val) => val.replace(/^C_/, "#"))
     .nullable()
     .optional(),
+  itemType: z
+    .string()
+    .nullable()
+    .transform((val) => val ?? "range"),
   parentEvent: z
     .object({ eventId: z.string() })
     .transform((val) => val.eventId),

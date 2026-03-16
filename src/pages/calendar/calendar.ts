@@ -16,7 +16,7 @@ import { fetchApiData } from "./api";
 // import "./popup";
 // import { openPopup } from "./popup";
 import { addDays, getIconUrl, startOfDay } from "../../utils/utils";
-import { processEvents, processGroups } from "./processor";
+import { processEventItems, processEvents, processGroups } from "./processor";
 import { findNextOccurrence } from "./utils/utils";
 
 const options: TimelineOptions = {
@@ -54,7 +54,7 @@ const options: TimelineOptions = {
 
     return `
       <div class="item-wrapper">
-        <img src="${iconUrl}" alt=""/>
+        ${!iconUrl.includes("undefined") ? "<img src=" + iconUrl + ' alt=""/>' : ""}
         <span class="item-text ">${item.content}</span>
       </div>
     `;
@@ -101,7 +101,7 @@ const options: TimelineOptions = {
   },
 };
 
-let { items, groups, groupOrderSetting } = await fetchApiData();
+let { items, eventItems, groups, groupOrderSetting } = await fetchApiData();
 
 let processed_groups = processGroups(groups, items, groupOrderSetting);
 let displayedItems = new DataSet<DataItem>();
@@ -163,6 +163,13 @@ function applyHooks(timeline: Timeline) {
     newItems.push(
       ...processEvents(
         items,
+        timeline.getWindow().start,
+        timeline.getWindow().end,
+      ),
+    );
+    newItems.push(
+      ...processEventItems(
+        eventItems,
         timeline.getWindow().start,
         timeline.getWindow().end,
       ),

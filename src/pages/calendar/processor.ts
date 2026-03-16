@@ -5,8 +5,9 @@ import {
   type ExtendedDataGroup,
   type Group,
   type TimelineEvent,
+  type TimelineEventItem,
 } from "./utils/types";
-import { addDays } from "../../utils/utils";
+import { addDays, isDateBetween } from "../../utils/utils";
 import { RRule } from "rrule";
 
 export function processGroups(
@@ -146,12 +147,50 @@ export function processEvents(
             style: `background-color: ${event.color}`,
             group: event.eventId,
             description: event.description,
+            type: event.itemType,
           };
 
           newItems.push(newItem);
         }
       });
     }
+  });
+
+  return newItems;
+}
+
+export function processEventItems(
+  events: TimelineEventItem[],
+  rangeStart: Date,
+  rangeEnd: Date,
+): EventItem[] {
+  let newItems: EventItem[] = [];
+
+  const margin = 28;
+
+  events.forEach((event) => {
+    if (
+      !isDateBetween(
+        event.startDate,
+        addDays(rangeStart, -margin),
+        addDays(rangeEnd, margin),
+      )
+    ) {
+      return;
+    }
+
+    const newItem: EventItem = {
+      id: `${event.parentEvent}-${event.startDate.getTime()}`,
+      content: event.title,
+      start: event.startDate,
+      end: addDays(event.startDate, event.durationDays),
+      style: `background-color: ${event.color}`,
+      group: event.parentEvent,
+      description: event.description,
+      type: event.itemType,
+    };
+
+    newItems.push(newItem);
   });
 
   return newItems;

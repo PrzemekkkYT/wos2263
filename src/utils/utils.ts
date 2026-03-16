@@ -14,6 +14,10 @@ export function startOfDay(d: Date) {
   return x;
 }
 
+export function isDateBetween(d: Date, start: Date, end: Date) {
+  return d.getTime() > start.getTime() && d.getTime() < end.getTime();
+}
+
 export function getIconUrl(iconName: string) {
   return new URL(`../assets/icons/${iconName}.png`, import.meta.url).href;
 }

@@ -47,28 +47,40 @@
           class="bg-blue-300/40 p-2 md:p-8 rounded-2xl shadow-2xl max-w-11/12 w-full"
         >
           <div class="flex justify-between">
-            <button id="today-button" class="control-button">Today</button>
-            <div id="time-buttons-container">
-              <button class="control-button" time-window="3d">3 Days</button>
-              <button class="control-button" time-window="1w">Week</button>
-              <button
-                class="control-button hidden md:inline-block!"
-                time-window="2w"
+            <div
+              class="flex flex-col gap-1 md:flex-row md:gap-4 justify-center items-center"
+            >
+              <span class="text-white text-[0.5rem] md:text-base">Jump to</span>
+              <button id="today-button" class="control-button">Today</button>
+            </div>
+            <div
+              class="flex flex-col gap-1 md:flex-row md:gap-4 justify-center items-center"
+            >
+              <span class="text-white text-[0.5rem] md:text-base"
+                >change view</span
               >
-                2 Weeks
-              </button>
-              <button
-                class="control-button hidden md:inline-block!"
-                time-window="1m"
-              >
-                Month
-              </button>
+              <div id="time-buttons-container">
+                <button class="control-button" time-window="3d">3 Days</button>
+                <button class="control-button" time-window="1w">Week</button>
+                <button
+                  class="control-button hidden md:inline-block!"
+                  time-window="2w"
+                >
+                  2 Weeks
+                </button>
+                <button
+                  class="control-button hidden md:inline-block!"
+                  time-window="1m"
+                >
+                  Month
+                </button>
+              </div>
             </div>
           </div>
           <div id="main-events-timeline"></div>
         </div>
-        <p class="absolute bottom-2 right-2 text-white text-right m-2">
-          © 2026 [ONE]Przemekkk ᴼᴺᴱ | Version: 1.2
+        <p class="text-white text-right m-2">
+          © 2026 [ONE]Przemekkk ᴼᴺᴱ | Version: 1.23
         </p>
       </main>
 

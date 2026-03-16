@@ -15,6 +15,7 @@ export async function fetchApiData() {
             itemTitle
             description
             color
+            itemType
             recurrenceRules {
               ... on RecurrenceRule {
                   startDate
@@ -29,9 +30,11 @@ export async function fetchApiData() {
 
       eventItems(first: 100) {
         title
+        startDate
         durationDays
         description
         color
+        itemType
         parentEvent {
           eventId
         }
@@ -90,7 +93,6 @@ export async function fetchApiData() {
     console.error("Błąd walidacji danych z CMS:", z.treeifyError(result.error));
     throw new Error("Invalid CMS data structure");
   }
-
   // return [
   //   result.data.timelineEvents as TimelineEvent[],
   //   result.data.eventGroups as Group[],
@@ -98,6 +100,7 @@ export async function fetchApiData() {
   // ];
   return {
     items: result.data.timelineEvents,
+    eventItems: result.data.eventItems,
     groups: result.data.eventGroups,
     groupOrderSetting: result.data.setting,
   };

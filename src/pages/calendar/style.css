@@ -54,8 +54,16 @@
   @apply w-16;
 }
 
-.vis-item {
+.vis-item.vis-range {
   @apply rounded-xl! shadow-black! shadow-2xl!;
+}
+
+.vis-item.vis-point {
+  @apply bg-transparent! border-none!;
+}
+
+.vis-item.vis-point > .vis-item-content {
+  @apply bg-yellow-200/80! rounded-l-4xl rounded-r-xl;
 }
 
 .vis-text {
