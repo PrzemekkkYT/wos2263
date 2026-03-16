@@ -13,8 +13,7 @@ import "vis-timeline/styles/vis-timeline-graph2d.min.css";
 
 import { type EventItem } from "./utils/types";
 import { fetchApiData } from "./api";
-// import "./popup";
-// import { openPopup } from "./popup";
+
 import { addDays, getIconUrl, startOfDay } from "../../utils/utils";
 import { processEventItems, processEvents, processGroups } from "./processor";
 import { findNextOccurrence } from "./utils/utils";
@@ -32,7 +31,7 @@ const options: TimelineOptions = {
   min: new Date(Date.UTC(2024, 11, 25, 0, 0, 0)),
   maxHeight: "70vh",
   verticalScroll: true,
-  autoResize: false,
+  autoResize: true,
   type: "range",
   format: {
     minorLabels: {
@@ -177,17 +176,12 @@ function applyHooks(timeline: Timeline) {
     displayedItems.clear();
     displayedItems.update(newItems);
     startGenCountdown();
-    // startGenCountdown(items);
   });
 }
 
 const timeline = initTimeline();
 
 document.querySelector("#today-button")?.addEventListener("click", () => {
-  // timeline.focus("focus-element", {
-  //   zoom: false,
-  //   animation: true,
-  // });
   focusOnDate(new Date());
 });
 
@@ -230,16 +224,6 @@ function jumpToNextOccurrence(eventGroupId: string) {
     );
   }
 }
-
-addEventListener("resize", () => {
-  timeline.redraw();
-  if (window.innerWidth < 768) {
-    const now = startOfDay(new Date());
-    timeline.setWindow(addDays(now, -3), addDays(now, 4), {
-      animation: false,
-    });
-  }
-});
 
 function focusOnDate(date: DateType) {
   const currentWindow = timeline.getWindow();

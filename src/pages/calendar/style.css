@@ -59,11 +59,7 @@
 }
 
 .vis-item.vis-point {
-  @apply bg-transparent! border-none!;
-}
-
-.vis-item.vis-point > .vis-item-content {
-  @apply bg-yellow-200/80! rounded-l-4xl rounded-r-xl;
+  @apply border-none! rounded-l-4xl rounded-r-xl;
 }
 
 .vis-text {
