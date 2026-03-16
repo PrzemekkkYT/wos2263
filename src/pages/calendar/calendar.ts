@@ -2,6 +2,7 @@ import moment from "moment";
 import {
   type DataGroup,
   type DataItem,
+  type DateType,
   Timeline,
   type TimelineOptions,
 } from "vis-timeline";
@@ -176,10 +177,11 @@ function applyHooks(timeline: Timeline) {
 const timeline = initTimeline();
 
 document.querySelector("#today-button")?.addEventListener("click", () => {
-  timeline.focus("focus-element", {
-    zoom: false,
-    animation: true,
-  });
+  // timeline.focus("focus-element", {
+  //   zoom: false,
+  //   animation: true,
+  // });
+  focusOnDate(new Date());
 });
 
 document.querySelector("#beginning-button")?.addEventListener("click", () => {
@@ -206,21 +208,14 @@ function jumpToNextOccurrence(eventGroupId: string) {
 
   if (nextEvent) {
     // timeline.focus(nextEvent.id, { zoom: false, animation: true });
-    const currentWindow = timeline.getWindow();
-    const windowDuration =
-      currentWindow.end.getTime() - currentWindow.start.getTime();
 
-    const eventTime = nextEvent.end
-      ? (nextEvent.start as Date).getTime() +
-        ((nextEvent.end as Date).getTime() -
-          (nextEvent.start as Date).getTime()) /
-          2
-      : (nextEvent.start as Date).getTime();
+    const eventStart = new Date(nextEvent.start);
+    const eventEnd = new Date(nextEvent.end || nextEvent.start);
 
-    const newStart = eventTime - windowDuration / 2;
-    const newEnd = eventTime + windowDuration / 2;
+    const eventTime =
+      eventStart.getTime() + (eventEnd.getTime() - eventStart.getTime()) / 2;
 
-    timeline.setWindow(newStart, newEnd);
+    focusOnDate(eventTime);
   } else {
     // Opcjonalnie: Jeśli nie ma nic w przyszłości, skocz do ostatniego dostępnego
     console.warn(
@@ -238,6 +233,19 @@ addEventListener("resize", () => {
     });
   }
 });
+
+function focusOnDate(date: DateType) {
+  const currentWindow = timeline.getWindow();
+  const windowDuration =
+    currentWindow.end.getTime() - currentWindow.start.getTime();
+
+  const fixedDate = new Date(date);
+
+  const newStart = fixedDate.getTime() - windowDuration / 2;
+  const newEnd = fixedDate.getTime() + windowDuration / 2;
+
+  timeline.setWindow(newStart, newEnd);
+}
 
 function startGenCountdown() {
   if (countdownStarted) return;
@@ -285,26 +293,31 @@ function startGenCountdown() {
 for (let btn of document.getElementById("time-buttons-container")?.children ??
   []) {
   btn.addEventListener("click", () => {
-    const now = startOfDay(new Date());
+    // const now = startOfDay(new Date());
+    const currentWindow = timeline.getWindow();
+    const centerDay = new Date(
+      currentWindow.start.getTime() +
+        (currentWindow.end.getTime() - currentWindow.start.getTime()) / 2,
+    );
 
     switch (btn.getAttribute("time-window")) {
       case "3d":
-        timeline.setWindow(addDays(now, -1), addDays(now, 2), {
+        timeline.setWindow(addDays(centerDay, -1), addDays(centerDay, 2), {
           animation: true,
         });
         break;
       case "1w":
-        timeline.setWindow(addDays(now, -3), addDays(now, 4), {
+        timeline.setWindow(addDays(centerDay, -3), addDays(centerDay, 4), {
           animation: true,
         });
         break;
       case "2w":
-        timeline.setWindow(addDays(now, -7), addDays(now, 7), {
+        timeline.setWindow(addDays(centerDay, -7), addDays(centerDay, 7), {
           animation: true,
         });
         break;
       case "1m":
-        timeline.setWindow(addDays(now, -14), addDays(now, 14), {
+        timeline.setWindow(addDays(centerDay, -14), addDays(centerDay, 14), {
           animation: true,
         });
         break;
