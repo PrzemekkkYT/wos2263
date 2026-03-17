@@ -9,15 +9,18 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2263 Timeline</title>
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="og:site_name" content="WOS 2263"></meta>
     <meta property="og:title" content="2263 Calendar" />
     <meta
       property="og:description"
       content="To know when the event was or will be"
     />
-    <meta property="og:url" content="https://wos2263.przemekkk.pl/calendar/" />
+    <meta property="og:url" content="https://wos2263.com/calendar/" />
     <meta
       property="og:image"
-      content="https://wos2263.przemekkk.pl/calendar-og-image.png"
+      content="https://wos2263.com/calendar-og-image.png"
     />
     <meta property="og:type" content="website" />
 
@@ -26,16 +29,14 @@
     <link rel="stylesheet" href="../src/pages/calendar/style.css" />
   </head>
   <body>
-    <div class="relative min-h-screen w-full overflow-hidden bg-gray-900">
+    <div
+      class="relative min-h-screen w-full overflow-hidden bg-gray-900 flex flex-col justify-between"
+    >
       <div
         class="absolute inset-0 z-0 bg-[url('/src/assets/background.jpg')] bg-cover bg-center blur-md scale-110 opacity-60"
       ></div>
-      <!-- <header
-        class="h-16 w-full z-50 bg-blue-600/40 fixed top-0 p-2.5"
-      ></header> -->
-
       <main
-        class="relative z-10 flex flex-col mt-16 items-center min-h-[calc(100vh-64px)] gap-2"
+        class="relative z-10 flex flex-col mt-16 items-center max-h-10/12 gap-2"
       >
         <div id="next-gen-countdown">
           <img
@@ -79,12 +80,13 @@
           </div>
           <div id="main-events-timeline"></div>
         </div>
-        <p class="text-white text-right m-2">
-          © 2026 [ONE]Przemekkk ᴼᴺᴱ | Version: 1.23
-        </p>
       </main>
 
-      <footer></footer>
+      <footer class="z-10">
+        <p class="text-white text-right m-2">
+          © 2026 [ONE]Przemekkk ᴼᴺᴱ | Version: 1.24
+        </p>
+      </footer>
     </div>
     <script type="module" src="../src/pages/calendar/calendar.ts"></script>
   </body>
