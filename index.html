@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2263</title>
 
-    <link rel="stylesheet" href="src/styles/shared.css" />
+    <!-- <link rel="stylesheet" href="src/styles/shared.css" /> -->
     <meta name="og:site_name" content="WOS 2263" />
     <meta property="og:title" content="State 2263" />
     <meta
@@ -20,7 +20,7 @@
     <meta property="og:url" content="https://wos2263.com/" />
     <meta property="og:type" content="website" />
   </head>
-  <body>
+  <body class="text-white">
     <div
       class="relative min-h-screen w-full overflow-hidden bg-gray-900 flex flex-col justify-between"
     >
@@ -31,58 +31,210 @@
         class="relative z-10 flex flex-col mt-16 items-center max-h-8/12 gap-2"
       >
         <div
-          class="bg-blue-300/40 p-4 md:p-8 rounded-2xl shadow-2xl max-w-10/12 w-full flex flex-col md:flex-row justify-evenly items-center gap-4"
+          class="bg-blue-300/40 p-2 md:p-8 rounded-2xl shadow-2xl max-w-11/12 md:max-w-10/12 w-full flex flex-col justify-evenly items-center gap-4"
         >
+          <h1 class="text-6xl md:text-8xl font-bold">State 2263</h1>
           <div
-            class="flex flex-col justify-center items-center gap-6 text-center text-white"
+            class="flex flex-col md:flex-row gap-4 justify-evenly items-center md:items-start p-2 md:p-8 w-full"
           >
-            <h1 class="text-6xl md:text-8xl font-bold">State 2263</h1>
-            <p class="text-3xl md:text-4xl">Website in building.</p>
-            <svg
-              class="w-8/12"
-              viewBox="0 0 16 16"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="#ffffff"
-              class="bi bi-cone-striped"
+            <div
+              class="flex flex-col justify-center items-start max-w-10/12 md:max-w-6/12 2xl:max-w-4/12 w-full"
             >
-              <path
-                d="m9.97 4.88.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"
-              />
-            </svg>
+              <h1 class="text-2xl md:text-4xl font-bold mb-2">
+                Top Alliances
+                <span class="text-xs text-white/80">As for 2026-03-18</span>
+              </h1>
+
+              <table
+                class="alliance-table w-full text-sm text-left rtl:text-right text-body"
+              >
+                <thead
+                  class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default"
+                >
+                  <tr>
+                    <th class="font-bold md:text-2xl p-2">banner</th>
+                    <th class="font-bold md:text-2xl p-2">name</th>
+                    <th class="font-bold md:text-2xl p-2">power</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-neutral-primary border-b border-default">
+                    <td>
+                      <img src="src/assets/banners/dol.png" alt="DOL" />
+                    </td>
+                    <td>[DOL]우린우스에돌았어</td>
+                    <td>32.5B</td>
+                  </tr>
+                  <tr class="bg-neutral-primary border-b border-default">
+                    <td>
+                      <img src="src/assets/banners/how.png" alt="DOL" />
+                    </td>
+                    <td>[HOW]HouseOfWolves</td>
+                    <td>29B</td>
+                  </tr>
+                  <tr class="bg-neutral-primary border-b border-default">
+                    <td>
+                      <img src="src/assets/banners/one.png" alt="DOL" />
+                    </td>
+                    <td>[ONE]Great⬩Empire</td>
+                    <td>27.2B</td>
+                  </tr>
+                  <tr class="bg-neutral-primary border-b border-default">
+                    <td>
+                      <img src="src/assets/banners/toy.png" alt="DOL" />
+                    </td>
+                    <td>[ToY]뚜비</td>
+                    <td>18.3B</td>
+                  </tr>
+                  <tr class="bg-neutral-primary border-b border-default">
+                    <td>
+                      <img src="src/assets/banners/pro.png" alt="DOL" />
+                    </td>
+                    <td>[PRO]TheProtectors</td>
+                    <td>9.5B</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex flex-col gap-4 not-md:mt-4">
+              <h2 class="text-xl md:text-3xl font-bold mb-2">Tools and info</h2>
+              <a
+                href="/calendar/"
+                class="flex flex-row gap-2 justify-center items-center bg-gray-200/10 hover:bg-gray-300/20 rounded-2xl p-3"
+              >
+                <svg
+                  width="75px"
+                  height="75px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3 10H21M7 3V5M17 3V5M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <p>
+                  You can visit our calendar,<br />
+                  so you don't leave empty-handed
+                </p>
+              </a>
+              <a
+                href="/wiki/"
+                class="flex flex-row gap-2 justify-center items-center bg-gray-200/10 hover:bg-gray-300/20 rounded-2xl p-3"
+              >
+                <svg
+                  width="75px"
+                  height="75px"
+                  viewBox="0 0 16 16"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  class="bi bi-book"
+                >
+                  <path
+                    d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"
+                  />
+                </svg>
+                <p>
+                  View our wiki to learn about<br />different events and
+                  strategies!
+                </p>
+              </a>
+              <div>
+                <h2 class="text-xl md:text-3xl font-bold mb-2">SvS record</h2>
+                <table
+                  class="w-full text-sm text-center rtl:text-right text-body"
+                >
+                  <thead
+                    class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default"
+                  >
+                    <tr>
+                      <th>Prep</th>
+                      <th>Battle</th>
+                      <th>Battle Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Lose</td>
+                      <td>Lose</td>
+                      <td>2025-03-29</td>
+                    </tr>
+                    <tr>
+                      <td>Lose</td>
+                      <td>Lose</td>
+                      <td>2025-04-27</td>
+                    </tr>
+                    <tr>
+                      <td>Win</td>
+                      <td>Win</td>
+                      <td>2025-05-24</td>
+                    </tr>
+                    <tr>
+                      <td>Win</td>
+                      <td>Lose</td>
+                      <td>2025-06-21</td>
+                    </tr>
+                    <tr>
+                      <td>Lose</td>
+                      <td>Win</td>
+                      <td>2025-07-20</td>
+                    </tr>
+                    <tr>
+                      <td>Win</td>
+                      <td>Lose</td>
+                      <td>2025-08-16</td>
+                    </tr>
+                    <tr>
+                      <td>Win</td>
+                      <td>Lose</td>
+                      <td>2025-09-13</td>
+                    </tr>
+                    <tr>
+                      <td>Lose</td>
+                      <td>Lose</td>
+                      <td>2025-10-11</td>
+                    </tr>
+                    <tr>
+                      <td>Win</td>
+                      <td>Win</td>
+                      <td>2025-11-08</td>
+                    </tr>
+                    <tr>
+                      <td>Win</td>
+                      <td>Win</td>
+                      <td>2025-12-06</td>
+                    </tr>
+                    <tr>
+                      <td>Lose</td>
+                      <td>Win</td>
+                      <td>2026-01-03</td>
+                    </tr>
+                    <tr>
+                      <td>Lose</td>
+                      <td>Win</td>
+                      <td>2026-01-31</td>
+                    </tr>
+                    <tr>
+                      <td>Lose</td>
+                      <td>Win</td>
+                      <td>2026-02-28</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
-          <a
-            href="/calendar/"
-            class="flex flex-row gap-2 justify-center items-center text-white bg-gray-200/10 hover:bg-gray-300/20 rounded-2xl p-3"
-          >
-            <svg
-              width="75px"
-              height="75px"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M3 10H21M7 3V5M17 3V5M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
-                stroke="#ffffff"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <p>
-              You can visit our calendar,<br />
-              so you don't leave empty-handed
-            </p>
-          </a>
         </div>
       </main>
 
       <footer class="z-10">
-        <p class="text-white! text-right m-2">
-          © 2026 [ONE]Przemekkk ᴼᴺᴱ | Version: 0.1
-        </p>
+        <p class="! text-right m-2">© 2026 [ONE]Przemekkk ᴼᴺᴱ | Version: 0.1</p>
       </footer>
     </div>
-    <script type="module" src="./src/pages/main.ts"></script>
+    <script type="module" src="./src/pages/main/main.ts"></script>
   </body>
 </html>

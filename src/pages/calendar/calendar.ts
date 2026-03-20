@@ -1,3 +1,8 @@
+// css import
+import "vis-timeline/styles/vis-timeline-graph2d.min.css";
+import "../../styles/shared.css";
+import "./style.css";
+
 import moment from "moment";
 import {
   type DataGroup,
@@ -7,9 +12,6 @@ import {
   type TimelineOptions,
 } from "vis-timeline";
 import { DataSet } from "vis-data";
-
-// css import
-import "vis-timeline/styles/vis-timeline-graph2d.min.css";
 
 import { type EventItem } from "./utils/types";
 import { fetchApiData } from "./api";
@@ -192,6 +194,15 @@ document.querySelector("#beginning-button")?.addEventListener("click", () => {
   });
 
   timeline.focus;
+});
+
+document.querySelector("#jump-to-date")?.addEventListener("change", (e) => {
+  const target = e.target as HTMLInputElement | null;
+  if (!target) return;
+
+  const date = new Date(`${target.value}T00:00:00Z`);
+  // console.log(date);
+  focusOnDate(date);
 });
 
 document.querySelector("#data-theme-toggle")?.addEventListener("click", () => {

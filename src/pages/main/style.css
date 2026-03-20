@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.alliance-table tr {
+  @apply p-4;
+}
+
+.alliance-table td {
+  @apply md:text-xl font-bold;
+}
+
+.alliance-table td img {
+  @apply w-16 md:w-24;
+}

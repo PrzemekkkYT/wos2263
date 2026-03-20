@@ -1,4 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
+import {} from "@tailwindcss/typography";
 import { defineConfig } from "vite";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -16,6 +17,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         calendar: resolve(__dirname, "calendar/index.html"),
+        wiki: resolve(__dirname, "wiki/index.html"),
       },
     },
   },
