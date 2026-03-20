@@ -17,7 +17,6 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         calendar: resolve(__dirname, "calendar/index.html"),
-        wiki: resolve(__dirname, "wiki/index.html"),
       },
     },
   },
