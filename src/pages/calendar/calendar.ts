@@ -16,7 +16,7 @@ import { DataSet } from "vis-data";
 import { type EventItem } from "./utils/types";
 import { fetchApiData } from "./api";
 
-import { addDays, getIconUrl, startOfDay } from "../../utils/utils";
+import { addDays, getEventIconUrl, startOfDay } from "../../utils/utils";
 import { processEventItems, processEvents, processGroups } from "./processor";
 import { findNextOccurrence } from "./utils/utils";
 
@@ -51,7 +51,7 @@ const options: TimelineOptions = {
     const rawClass = item.group?.toString() || "default";
     const iconName = rawClass.replaceAll("-", "_");
 
-    const iconUrl = getIconUrl(iconName);
+    const iconUrl = getEventIconUrl(iconName);
 
     return `
       <div class="item-wrapper">
@@ -64,7 +64,7 @@ const options: TimelineOptions = {
     const rawClass = group.id.toString() || "default";
     const iconName = rawClass.replaceAll("-", "_");
 
-    const iconUrl = getIconUrl(iconName);
+    const iconUrl = getEventIconUrl(iconName);
 
     const cont = document.createElement("div");
     cont.className = "item-wrapper";
@@ -259,7 +259,7 @@ function startGenCountdown() {
   const nextGenCountdownContainer =
     document.getElementById("next-gen-countdown");
 
-  let newGenIconUrl = getIconUrl("hero_generation");
+  let newGenIconUrl = getEventIconUrl("hero_generation");
 
   const countdownInterval = setInterval(() => {
     if (nextGenEvent) {

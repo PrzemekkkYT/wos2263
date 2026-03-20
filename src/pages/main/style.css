@@ -1,13 +1,45 @@
 @import "tailwindcss";
 
-.alliance-table tr {
-  @apply p-4;
+@theme {
+  /* Definiujemy nową klasę narzędziową: animate-fade-down */
+  --animate-fade-down: fade-down 0.6s ease-out both;
+
+  @keyframes fade-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
-.alliance-table td {
-  @apply md:text-xl font-bold;
+.ref-button {
+  @apply px-2 py-2 mx-4 transition-colors text-gray-400;
 }
 
-.alliance-table td img {
-  @apply w-16 md:w-24;
+.ref-button:hover {
+  @apply text-white;
+}
+
+.ref-button.selected {
+  @apply border-b-2 border-sky-400 text-sky-400;
+}
+
+main > section {
+  @apply relative min-h-[50vh] py-12 px-4 md:px-24 flex flex-col items-center justify-center overflow-hidden;
+}
+
+#svs-table thead tr th {
+  @apply pb-6 text-[0.7rem] uppercase tracking-widest text-gray-400 px-4;
+}
+
+#svs-table tbody tr {
+  @apply hover:bg-slate-800 transition-colors;
+}
+
+#svs-table tbody tr td {
+  @apply py-4 px-6 text-xs;
 }

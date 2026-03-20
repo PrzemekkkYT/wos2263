@@ -18,8 +18,8 @@ export function isDateBetween(d: Date, start: Date, end: Date) {
   return d.getTime() > start.getTime() && d.getTime() < end.getTime();
 }
 
-export function getIconUrl(iconName: string) {
-  return new URL(`../assets/icons/${iconName}.png`, import.meta.url).href;
+export function getEventIconUrl(iconName: string) {
+  return new URL(`../assets/event_icons/${iconName}.png`, import.meta.url).href;
 }
 
 export function getImageUrl(iconName: string) {

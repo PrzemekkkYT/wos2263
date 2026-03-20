@@ -26,6 +26,6 @@ dist-ssr
 # 
 
 *.sh
-icons_x32/
-icons_x64/
-icons_x128/
+event_icons_x32/
+event_icons_x64/
+event_icons_x128/
