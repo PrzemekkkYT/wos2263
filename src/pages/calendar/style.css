@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+#main-events-timeline {
+  @apply h-[70vh];
+}
+
 .vis-timeline {
   @apply border-none!;
 }
@@ -47,7 +51,7 @@
 }
 
 #next-gen-countdown {
-  @apply flex items-center justify-center bg-white/80 p-2 rounded-2xl;
+  @apply flex items-center justify-center bg-slate-700/80 p-2 rounded-2xl;
 }
 
 #next-gen-countdown img {
