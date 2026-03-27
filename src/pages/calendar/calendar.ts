@@ -18,7 +18,7 @@ import { fetchApiData } from "./api";
 
 import { addDays, getEventIconUrl, startOfDay } from "../../utils/utils";
 import { processEventItems, processEvents, processGroups } from "./processor";
-import { findNextOccurrence } from "./utils/utils";
+import { findNextOccurrence, startCountdown } from "./utils/utils";
 
 const options: TimelineOptions = {
   stack: false,
@@ -107,7 +107,8 @@ let { items, eventItems, groups, groupOrderSetting } = await fetchApiData();
 let processed_groups = processGroups(groups, items, groupOrderSetting);
 let displayedItems = new DataSet<DataItem>();
 
-let countdownStarted = false;
+let genCountdownStarted = false;
+let otherCountdownStarted = false;
 
 function initTimeline() {
   const container = document.getElementById("main-events-timeline");
@@ -178,6 +179,7 @@ function applyHooks(timeline: Timeline) {
     displayedItems.clear();
     displayedItems.update(newItems);
     startGenCountdown();
+    startOtherStateEventCountdown();
   });
 }
 
@@ -216,7 +218,7 @@ document.querySelector("#data-theme-toggle")?.addEventListener("click", () => {
 
 function jumpToNextOccurrence(eventGroupId: string) {
   // const nextEvent = findNextOccurrence(displayedItems, eventGroupId);
-  const nextEvent = findNextOccurrence(items, eventGroupId);
+  const nextEvent = findNextOccurrence(items, eventGroupId, eventItems);
 
   if (nextEvent) {
     // timeline.focus(nextEvent.id, { zoom: false, animation: true });
@@ -250,46 +252,66 @@ function focusOnDate(date: DateType) {
 }
 
 function startGenCountdown() {
-  if (countdownStarted) return;
+  if (genCountdownStarted) return;
 
-  countdownStarted = true;
+  genCountdownStarted = true;
 
   // let nextGenEvent = findNextOccurrence(contentItems, "hero-generation");
   let nextGenEvent = findNextOccurrence(items, "hero-generation");
   const nextGenCountdownContainer =
     document.getElementById("next-gen-countdown");
+  const nextGenCountdownTitle = document.getElementById(
+    "next-gen-countdown-title",
+  );
+  const nextGenCountdown = document.getElementById("next-gen-countdown-timer");
 
-  let newGenIconUrl = getEventIconUrl("hero_generation");
+  if (nextGenEvent === null) {
+    nextGenCountdownContainer?.remove();
+    return;
+  }
 
-  const countdownInterval = setInterval(() => {
-    if (nextGenEvent) {
-      const nextGenDate = nextGenEvent.start;
-      const now = new Date();
-      const timeLeft = (nextGenDate as Date).getTime() - now.getTime();
+  startCountdown(
+    nextGenEvent,
+    nextGenCountdownContainer!,
+    nextGenCountdownTitle!,
+    nextGenCountdown!,
+    (title) => `Time until ${title}:`,
+    (d, h, m, s) => `${d}d ${h}h ${m}m ${s}s`,
+  );
+}
 
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24))
-        .toString()
-        .padStart(2, "0");
-      const hours = Math.floor(
-        (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-      )
-        .toString()
-        .padStart(2, "0");
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))
-        .toString()
-        .padStart(2, "0");
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000)
-        .toString()
-        .padStart(2, "0");
+function startOtherStateEventCountdown() {
+  if (otherCountdownStarted) return;
 
-      nextGenCountdownContainer!.innerHTML = `<img src="${newGenIconUrl}" alt="NewGenIcon">Time until ${nextGenEvent.content}:<br>${days}d ${hours}h ${minutes}m ${seconds}s`;
+  otherCountdownStarted = true;
 
-      if (timeLeft < 0) {
-        clearInterval(countdownInterval);
-        nextGenCountdownContainer!.innerHTML = "The event has started!";
-      }
-    }
-  }, 1000);
+  let nextOtherEvent = findNextOccurrence(
+    items,
+    "other-state-changes",
+    eventItems,
+  );
+  const OtherEventCountdownContainer = document.getElementById(
+    "next-other-state-event-countdown",
+  );
+  const OtherEventCountdownTitle = document.getElementById(
+    "next-other-state-event-countdown-title",
+  );
+  const OtherEventCountdown = document.getElementById(
+    "next-other-state-event-countdown-timer",
+  );
+  if (nextOtherEvent === null) {
+    OtherEventCountdownContainer?.remove();
+    return;
+  }
+
+  startCountdown(
+    nextOtherEvent,
+    OtherEventCountdownContainer!,
+    OtherEventCountdownTitle!,
+    OtherEventCountdown!,
+    (title) => `Time until ${title}:`,
+    (d, h, m, s) => `${d}d ${h}h ${m}m ${s}s`,
+  );
 }
 
 for (let btn of document.getElementById("time-buttons-container")?.children ??

@@ -50,8 +50,9 @@
   @apply w-24 md:w-48 text-center max-w-min md:max-w-none text-[0.5rem] md:text-base;
 }
 
-#next-gen-countdown {
-  @apply flex items-center justify-center bg-slate-700/80 p-2 rounded-2xl;
+#next-gen-countdown,
+#next-other-state-event-countdown {
+  @apply min-w-60 flex items-center justify-center bg-slate-700/80 p-2 rounded-2xl;
 }
 
 #next-gen-countdown img {

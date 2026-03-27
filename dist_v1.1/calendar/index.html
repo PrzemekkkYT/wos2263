@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link
       rel="icon"
-      href="../src/assets/event_icons/state_changes.png"
+      href="/assets/state_changes-BbMrewll.png"
       type="image/png"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,6 +25,10 @@
     <meta property="og:type" content="website" />
 
     <meta name="theme-color" content="#6d9eeb" />
+    <script type="module" crossorigin src="/assets/calendar-Bj3I5PnN.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/shared-Bz6_shqJ.js">
+    <link rel="stylesheet" crossorigin href="/assets/shared-BldRwDet.css">
+    <link rel="stylesheet" crossorigin href="/assets/calendar-0gF12_LV.css">
   </head>
   <body>
     <nav class="fixed top-0 w-full z-50 bg-slate-950/50">
@@ -38,7 +42,7 @@
     </nav>
     <div class="absolute inset-0 z-0 max-h-[60vh]">
       <img
-        src="/src/assets/background.jpg"
+        src="/assets/background-CdUXE-GH.jpg"
         alt=""
         class="w-full h-full object-cover opacity-60"
       />
@@ -52,32 +56,11 @@
     <main
       class="relative z-10 flex flex-col my-28 items-center max-h-10/12 gap-2"
     >
-      <div class="flex flex-row gap-4">
-        <div id="next-gen-countdown">
-          <img
-            src="../src/assets/event_icons/hero_generation.png"
-            alt="NewGenIcon"
-          />
-          <div class="flex flex-col">
-            <span id="next-gen-countdown-title">Time until Gen 0 start:</span>
-            <span id="next-gen-countdown-timer">00d 00h 00m 00s</span>
-          </div>
-        </div>
-        <div id="next-other-state-event-countdown">
-          <img
-            src="../src/assets/event_icons/state_changes.png"
-            alt="NewGenIcon"
-            class="w-12 mr-3"
-          />
-          <div class="flex flex-col">
-            <span id="next-other-state-event-countdown-title"
-              >Time until xyz:</span
-            >
-            <span id="next-other-state-event-countdown-timer"
-              >00d 00h 00m 00s</span
-            >
-          </div>
-        </div>
+      <div id="next-gen-countdown">
+        <img
+          src="../src/assets/icons/hero_generation.png"
+          alt="NewGenIcon"
+        />Time until Gen 0 start:<br />00d 00h 00m 00s
       </div>
       <div
         class="bg-blue-200/20 p-2 md:p-8 rounded-2xl shadow-2xl max-w-11/12 w-full"
@@ -142,7 +125,7 @@
             target="_blank"
           >
             <img
-              src="../src/assets/logos/googleplay.svg"
+              src="/assets/googleplay-DSKn-J0G.svg"
               alt="play whiteout survival"
               class="h-8 p-2 md:h-12 md:p-3 box-content"
             />
@@ -153,7 +136,7 @@
             target="_blank"
           >
             <img
-              src="../src/assets/logos/appstore.svg"
+              src="/assets/appstore-CVyK0T4N.svg"
               alt="play whiteout survival"
               class="h-8 p-2 md:h-12 md:p-3 box-content"
             />
@@ -167,6 +150,5 @@
         >© 2026 [ONE]Przemekkk ᴼᴺᴱ<br />Version: 1.3</span
       >
     </footer>
-    <script type="module" src="../src/pages/calendar/calendar.ts"></script>
   </body>
 </html>
