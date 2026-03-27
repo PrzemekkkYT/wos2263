@@ -29,3 +29,4 @@ dist-ssr
 event_icons_x32/
 event_icons_x64/
 event_icons_x128/
+dist*
