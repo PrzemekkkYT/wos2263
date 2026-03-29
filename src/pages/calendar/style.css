@@ -18,7 +18,7 @@
 }
 
 .vis-nested-group {
-  @apply md:ml-6 pr-6 border-2 border-gray-500! bg-black/30! text-white! md:font-bold;
+  @apply md:ml-6 pr-6 border-2 border-gray-500! bg-black/30! text-white! sm:font-semibold md:font-bold;
 }
 
 .vis-nesting-group {
@@ -34,7 +34,7 @@
 }
 
 .item-wrapper {
-  @apply flex gap-2 justify-between;
+  @apply flex justify-between;
 }
 
 .vis-vertical-scroll {
@@ -42,21 +42,16 @@
 }
 
 .item-title {
-  @apply flex flex-col gap-1 items-center justify-center md:flex-row;
+  @apply flex flex-col gap-1 items-center justify-center sm:flex-row;
 }
 
 .item-text {
-  /* @apply w-24 md:w-48 text-center hidden md:block; */
-  @apply w-24 md:w-48 text-center max-w-min md:max-w-none text-[0.5rem] md:text-base;
+  @apply w-24 sm:w-30 md:w-36 xl:w-48 text-center max-w-min sm:max-w-none text-[0.5rem] sm:text-base;
 }
 
 #next-gen-countdown,
 #next-other-state-event-countdown {
-  @apply min-w-60 flex items-center justify-center bg-slate-700/80 p-2 rounded-2xl;
-}
-
-#next-gen-countdown img {
-  @apply w-16;
+  @apply flex items-center justify-center bg-slate-700/80 p-2 rounded-2xl text-[0.9rem];
 }
 
 .vis-item.vis-range {
@@ -88,7 +83,7 @@
 }
 
 .control-button {
-  @apply bg-black/30 text-white font-bold p-2 rounded-xl;
+  @apply bg-black/30 text-white font-bold p-2 rounded-xl text-[0.8rem] md:text-[0.9rem] xl:text-base m-0.5;
 }
 
 .control-button:hover,

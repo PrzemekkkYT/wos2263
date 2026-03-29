@@ -81,7 +81,7 @@ const options: TimelineOptions = {
     }
 
     const span = document.createElement("span");
-    span.classList = `item-text ${iconUrl.includes("undefined") ? "" : "hidden"} md:block!`;
+    span.classList = `item-text ${iconUrl.includes("undefined") ? "" : "hidden"} sm:block!`;
     span.innerHTML = group.content.toString();
 
     cont2.appendChild(span);

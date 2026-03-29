@@ -52,11 +52,12 @@
     <main
       class="relative z-10 flex flex-col my-28 items-center max-h-10/12 gap-2"
     >
-      <div class="flex flex-row gap-4">
+      <div class="flex flex-row gap-2 md:gap-4 max-w-screen">
         <div id="next-gen-countdown">
           <img
             src="../src/assets/event_icons/hero_generation.png"
             alt="NewGenIcon"
+            class="md:mr-3 w-12! md:w-16!"
           />
           <div class="flex flex-col">
             <span id="next-gen-countdown-title">Time until Gen 0 start:</span>
@@ -67,7 +68,7 @@
           <img
             src="../src/assets/event_icons/state_changes.png"
             alt="NewGenIcon"
-            class="w-12 mr-3"
+            class="md:mr-3 p-2 w-12 md:w-16"
           />
           <div class="flex flex-col">
             <span id="next-other-state-event-countdown-title"
@@ -80,27 +81,31 @@
         </div>
       </div>
       <div
-        class="bg-blue-200/20 p-2 md:p-8 rounded-2xl shadow-2xl max-w-11/12 w-full"
+        class="bg-blue-200/20 p-2 md:p-8 rounded-2xl shadow-2xl max-w-[96%] w-full"
       >
-        <div class="flex justify-between">
+        <div class="flex justify-between gap-2">
           <div
-            class="flex flex-col gap-1 md:flex-row md:gap-4 justify-center items-center"
+            class="flex flex-col md:flex-row md:gap-2 xl:gap-4 justify-center items-center"
           >
-            <span class="text-white text-[0.5rem] md:text-base">Jump to</span>
-            <button id="today-button" class="control-button">Today</button>
-            <input
-              type="date"
-              name="jump-to-date"
-              id="jump-to-date"
-              class="control-button"
-              min="2024-12-25"
-              max="2030-12-31"
-            />
+            <span class="text-white text-[0.6rem] md:text-[0.8rem] xl:text-base"
+              >Jump to</span
+            >
+            <div>
+              <button id="today-button" class="control-button">Today</button>
+              <input
+                type="date"
+                name="jump-to-date"
+                id="jump-to-date"
+                class="control-button"
+                min="2024-12-25"
+                max="2030-12-31"
+              />
+            </div>
           </div>
           <div
-            class="flex flex-col gap-1 md:flex-row md:gap-4 justify-center items-center"
+            class="flex flex-col md:flex-row md:gap-2 xl:gap-4 justify-center items-center"
           >
-            <span class="text-white text-[0.5rem] md:text-base"
+            <span class="text-white text-[0.6rem] md:text-[0.8rem] xl:text-base"
               >change view</span
             >
             <div id="time-buttons-container">
