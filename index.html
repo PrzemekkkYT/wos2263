@@ -69,7 +69,7 @@
         <div class="mb-10 flex flex-col self-start">
           <h2 class="text-3xl md:text-5xl font-bold">Top 5 alliances</h2>
           <span class="text-gray-400 mt-2 text-xs md:text-base"
-            >Last Updated: Mar 20, 2026, 14:00</span
+            >Last Updated: Mar 30, 2026, 15:00</span
           >
         </div>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4 w-full">
@@ -95,7 +95,7 @@
                 [DOL] 우린우스에돌았어
               </h3>
               <p class="text-sky-400 font-headline text-xl font-medium mb-6">
-                32.6B Power
+                32.3B Power
               </p>
               <div
                 class="flex items-center gap-4 py-4 border-t border-slate-500"
@@ -110,49 +110,30 @@
           <!-- Rank 2-5 Grid -->
           <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <!-- #02 -->
-            <div
-              class="bg-slate-800/50 p-6 md:p-4 rounded-xl border border-slate-500/30 transition-colors"
-            >
-              <div class="flex justify-between items-start mb-4">
-                <span class="font-headline text-sky-400 font-bold">#02</span>
-                <img src="src/assets/banners/how.png" alt="HOW" class="w-12" />
-              </div>
-              <h4 class="font-headline font-bold">[HOW] HouseOfWolves</h4>
-              <p class="text-gray-400 font-headline text-sm">30.7B Power</p>
-            </div>
-            <!-- #03 -->
-            <div
-              class="bg-slate-800/50 p-6 md:p-4 rounded-xl border border-slate-500/30 transition-colors"
-            >
-              <div class="flex justify-between items-start mb-4">
-                <span class="font-headline text-sky-400 font-bold">#03</span>
-                <img src="src/assets/banners/one.png" alt="ONE" class="w-12" />
-              </div>
-              <h4 class="font-headline font-bold">[ONE] Great⬩Empire</h4>
-              <p class="text-gray-400 font-headline text-sm">29.2B Power</p>
-            </div>
-            <!-- #04 -->
-            <div
-              class="bg-slate-800/50 p-6 md:p-4 rounded-xl border border-slate-500/30 transition-colors"
-            >
-              <div class="flex justify-between items-start mb-4">
-                <span class="font-headline text-sky-400 font-bold">#04</span>
-                <img src="src/assets/banners/toy.png" alt="ToY" class="w-12" />
-              </div>
-              <h4 class="font-headline font-bold">[ToY] 뚜비</h4>
-              <p class="text-gray-400 font-headline text-sm">18B Power</p>
-            </div>
-            <!-- #05 -->
-            <div
-              class="bg-slate-800/50 p-6 md:p-4 rounded-xl border border-slate-500/30 transition-colors"
-            >
-              <div class="flex justify-between items-start mb-4">
-                <span class="font-headline text-sky-400 font-bold">#05</span>
-                <img src="src/assets/banners/pro.png" alt="PRO" class="w-12" />
-              </div>
-              <h4 class="font-headline font-bold">[PRO] TheProtectors</h4>
-              <p class="text-gray-400 font-headline text-sm">10.2B Power</p>
-            </div>
+            <alliance-card
+              pos="#02"
+              tag="ONE"
+              name="[ONE] Great⬩Empire"
+              power="29.1B"
+            ></alliance-card>
+            <alliance-card
+              pos="#03"
+              tag="HOW"
+              name="[HOW] HouseOfWolves"
+              power="28.0B"
+            ></alliance-card>
+            <alliance-card
+              pos="#04"
+              tag="ToY"
+              name="[ToY] 뚜비"
+              power="17.3B"
+            ></alliance-card>
+            <alliance-card
+              pos="#05"
+              tag="PRO"
+              name="[PRO] TheProtectors"
+              power="12.1B"
+            ></alliance-card>
           </div>
         </div>
       </section>

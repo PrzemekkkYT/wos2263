@@ -7,6 +7,11 @@ import { fileURLToPath } from "node:url";
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@": resolve("./src"),
+    },
+  },
   plugins: [tailwindcss()],
   server: {
     host: "0.0.0.0",
