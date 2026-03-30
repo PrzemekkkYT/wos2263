@@ -27,5 +27,8 @@ export function getImageUrl(iconName: string) {
 }
 
 export function getBannerUrl(allianceTag: string) {
-  return new URL(`../assets/banners/${allianceTag}.png`, import.meta.url).href;
+  return new URL(
+    `../assets/banners/${allianceTag.toLowerCase()}.png`,
+    import.meta.url,
+  ).href;
 }
