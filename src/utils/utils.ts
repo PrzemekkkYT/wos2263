@@ -25,3 +25,7 @@ export function getEventIconUrl(iconName: string) {
 export function getImageUrl(iconName: string) {
   return new URL(`../assets/images/${iconName}.png`, import.meta.url).href;
 }
+
+export function getBannerUrl(allianceTag: string) {
+  return new URL(`../assets/banners/${allianceTag}.png`, import.meta.url).href;
+}
