@@ -47,6 +47,16 @@ export function findNextOccurrence(
     })),
   );
 
+  candidates.push(
+    ...(timelineEvent.occurrences ?? [])
+      .map((e) => new Date(e))
+      .filter((d) => d.getTime() >= now.getTime())
+      .map((d) => ({
+        rule: null,
+        nextDate: d,
+      })),
+  );
+
   candidates.sort((a, b) => a.nextDate.getTime() - b.nextDate.getTime());
 
   const winner = candidates[0];
