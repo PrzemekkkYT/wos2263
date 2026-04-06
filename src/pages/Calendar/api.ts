@@ -1,9 +1,5 @@
 import z from "zod";
-import {
-  TimelineEventSchema,
-  GroupSchema,
-  TimelineEventItemSchema,
-} from "./utils/types";
+import { ApiFetchSchema } from "./utils/types";
 
 export async function fetchApiData() {
   const query = `
@@ -72,22 +68,7 @@ export async function fetchApiData() {
   );
   const { data } = await response.json();
 
-  const schema = z.object({
-    timelineEvents: z.array(TimelineEventSchema),
-    eventItems: z.array(TimelineEventItemSchema),
-    eventGroups: z.array(GroupSchema),
-    setting: z
-      .object({
-        topLevelGroupsOrder: z
-          .array(
-            z.object({ groupId: z.string() }).transform((val) => val.groupId),
-          )
-          .default([]),
-      })
-      .transform((val) => val.topLevelGroupsOrder),
-  });
-
-  const result = schema.safeParse(data);
+  const result = ApiFetchSchema.safeParse(data);
 
   if (!result.success) {
     console.error("Błąd walidacji danych z CMS:", z.treeifyError(result.error));
@@ -99,9 +80,9 @@ export async function fetchApiData() {
   //   result.data.setting,
   // ];
   return {
-    items: result.data.timelineEvents,
+    timelineEvents: result.data.timelineEvents,
     eventItems: result.data.eventItems,
-    groups: result.data.eventGroups,
-    groupOrderSetting: result.data.setting,
+    eventGroups: result.data.eventGroups,
+    setting: result.data.setting,
   };
 }
