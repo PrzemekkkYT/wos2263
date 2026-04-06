@@ -1,8 +1,10 @@
+import background from "@/assets/background.jpg";
+
 export function Background() {
   return (
     <div class="absolute inset-0 z-0 max-h-[60vh]">
       <img
-        src="src/assets/background.jpg"
+        src={background}
         alt="background"
         class="w-full h-full object-cover opacity-60"
       />

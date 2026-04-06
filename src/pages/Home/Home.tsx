@@ -3,6 +3,8 @@ import "@/styles/shared.css";
 import { AllianceBigCard, AllianceSmallCard } from "@/components/allianceCard";
 import type { Alliance, SvSRecord } from "@/utils/types";
 
+import discordLogo from "@/assets/logos/discord.svg";
+
 const alliances: Alliance[] = [
   {
     tag: "DOL",
@@ -146,11 +148,7 @@ export function HomePage() {
           target="_blank"
           class="z-10 bg-slate-800/80 p-4 box-content rounded-2xl hover:bg-slate-900 border border-slate-500/30"
         >
-          <img
-            src="src/assets/logos/discord.svg"
-            alt="discord"
-            class="w-full h-6 xl:h-8"
-          />
+          <img src={discordLogo} alt="discord" class="w-full h-6 xl:h-8" />
         </a>
       </section>
       <section id="alliance-rank">

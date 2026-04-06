@@ -1,3 +1,6 @@
+import googlePlay from "@/assets/logos/googleplay.svg";
+import appStore from "@/assets/logos/appstore.svg";
+
 export function Footer() {
   return (
     <footer class="bg-slate-950/50 flex flex-col md:flex-row justify-between items-center px-12 py-4 text-center">
@@ -10,7 +13,7 @@ export function Footer() {
             target="_blank"
           >
             <img
-              src="src/assets/logos/googleplay.svg"
+              src={googlePlay}
               alt="play whiteout survival"
               class="h-8 p-2 md:h-12 md:p-3 box-content"
             />
@@ -21,7 +24,7 @@ export function Footer() {
             target="_blank"
           >
             <img
-              src="src/assets/logos/appstore.svg"
+              src={appStore}
               alt="play whiteout survival"
               class="h-8 p-2 md:h-12 md:p-3 box-content"
             />
