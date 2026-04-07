@@ -2,7 +2,7 @@ import background from "@/assets/background.jpg";
 
 export function Background() {
   return (
-    <div class="absolute inset-0 z-0 max-h-[60vh]">
+    <div class="absolute inset-0 -z-10 max-h-[60vh]">
       <img
         src={background}
         alt="background"

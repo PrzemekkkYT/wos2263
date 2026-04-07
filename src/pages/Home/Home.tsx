@@ -1,38 +1,11 @@
-import "./style.css";
-import "@/styles/shared.css";
 import { AllianceBigCard, AllianceSmallCard } from "@/components/allianceCard";
-import type { Alliance, SvSRecord } from "@/utils/types";
+import type { SvSRecord } from "@/utils/types";
+import { alliances } from "@/data/alliances";
 
-import discordLogo from "@/assets/logos/discord.svg";
+import discordLogo from "@/assets/logos/discord_big.svg";
 
-const alliances: Alliance[] = [
-  {
-    tag: "DOL",
-    name: "우린우스에돌았어",
-    power: 34.2e9,
-    glory: 7,
-  },
-  {
-    tag: "ONE",
-    name: "Great⬩Empire",
-    power: 30.6e9,
-  },
-  {
-    tag: "HOW",
-    name: "House⬩Of⬩Wolves",
-    power: 27.8e9,
-  },
-  {
-    tag: "Toy",
-    name: "뚜비",
-    power: 18.7e9,
-  },
-  {
-    tag: "PRO",
-    name: "TheProtectors",
-    power: 12.1e9,
-  },
-];
+import "@/styles/shared.css";
+import "./style.css";
 
 const svsRecords: SvSRecord[] = [
   {

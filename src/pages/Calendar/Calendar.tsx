@@ -42,31 +42,43 @@ export function CalendarPage() {
     const now = startOfDay(new Date());
 
     const range =
-      window.innerWidth < 768 ? { start: -2, end: 2 } : { start: -3, end: 11 };
+      window.innerWidth < 768 ? { start: -1, end: 2 } : { start: -3, end: 11 };
     timeline.setWindow(addDays(now, range.start), addDays(now, range.end), {
       animation: false,
     });
 
-    const focusTimer = setTimeout(() => {
-      if (timelineInstanceRef.current) {
-        const vs = timelineContainerRef.current?.querySelector(
-          ".vis-vertical-scroll",
-        );
-        if (vs) {
-          vs.scrollTop = -100;
-        }
-      }
-    }, 200);
+    // const focusTimer = setTimeout(() => {
+    //   if (timelineInstanceRef.current) {
+    //     const vs = timelineContainerRef.current?.querySelector(
+    //       ".vis-vertical-scroll",
+    //     );
+    //     if (vs) {
+    //       vs.scrollTop = -100;
+    //     }
+    //   }
+    // }, 200);
 
     timeline.on("rangechanged", () => {
       const window = timeline.getWindow();
       const newItems = [
+        {
+          content: "",
+          start: new Date(),
+          id: "focus-element",
+          group: "state-changes",
+          type: "point",
+          className: "super-hidden",
+        },
         ...processEvents(timelineEvents, window.start, window.end),
         ...processEventItems(eventItems, window.start, window.end),
       ];
       displayedItems.current.clear();
       displayedItems.current.update(newItems);
     });
+
+    const focusTimer = setTimeout(() => {
+      timeline.focus("focus-element", { zoom: false, animation: false });
+    }, 200);
 
     const jumpToNextOccurrence = (eventGroupId: string) => {
       if (!timelineInstanceRef.current || !displayedItems.current) return;
