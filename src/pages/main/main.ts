@@ -4,10 +4,10 @@ import "./style.css";
 import { type AllianceCardData, renderCard } from "@/components/allianceCard";
 
 const alliances: AllianceCardData[] = [
-  { ranking: 2, tag: "ONE", name: "Great⬩Empire", power: "29.1B" },
-  { ranking: 3, tag: "HOW", name: "HouseOfWolves", power: "28.0B" },
-  { ranking: 4, tag: "ToY", name: "뚜비", power: "17.3B" },
-  { ranking: 5, tag: "PRO", name: "TheProtectors", power: "12.1B" },
+  { ranking: 2, tag: "ONE", name: "Great⬩Empire", power: "32.7B" },
+  { ranking: 3, tag: "HOW", name: "HouseOfWolves", power: "29.8B" },
+  { ranking: 4, tag: "ToY", name: "뚜비", power: "19.2B" },
+  { ranking: 5, tag: "PRO", name: "TheProtectors", power: "11.8B" },
 ];
 
 alliances.forEach((alliance) => {
