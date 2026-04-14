@@ -9,8 +9,8 @@ export function RecruitmentPage() {
           Alliances
         </h1>
       </section>
-      <section class="px-0!">
-        <div class="flex flex-col gap-8 w-11/12">
+      <section>
+        <div class="flex flex-col gap-8 w-full">
           {alliances.map(
             (al) => al.recruitment && <AllianceView alliance={al} />,
           )}
