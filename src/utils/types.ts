@@ -5,10 +5,16 @@ export interface Recruiter {
 }
 
 export interface RecruitmentData {
-  requirements: string[];
+  requirements: Map<string, string>;
   language: string;
   recruiters?: Recruiter[];
-  events?: Map<string, string>;
+  events?: {
+    bearTrap?: string;
+    foundry?: string;
+    canyon?: string;
+    crazyJoe?: string;
+    mercenary?: string;
+  };
   // timings
 }
 
@@ -16,6 +22,7 @@ export interface Alliance {
   tag: string;
   name: string;
   power: number;
+  playerCount: number;
   glory?: number;
   recruitment?: RecruitmentData;
 }

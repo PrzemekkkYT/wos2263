@@ -1,136 +1,108 @@
 import type { Alliance } from "@/utils/types";
-
-import discord from "@/assets/logos/discord.svg";
-
-import dhoom from "@/assets/avatars/dhoom.png";
-import przemekkk from "@/assets/avatars/przemekkk.png";
-import ahmose from "@/assets/avatars/ahmose.png";
-import greatLord from "@/assets/avatars/great_lord.jpg";
+import { ONERecruiters, HOWRecruiters } from "./recruiters";
 
 export const alliances: Alliance[] = [
   {
     tag: "DOL",
     name: "우린우스에돌았어",
-    power: 34.2e9,
+    power: 34.6e9,
+    playerCount: 81,
     glory: 7,
     recruitment: {
-      requirements: ["FC7+", "300M+"],
-      language: "한국어",
-      events: new Map<string, string>([
-        ["Bear Trap", "13:00, 14:20"],
-        ["Foundry", "12:00, 14:00"],
-        ["Canyon", "12:00, 14:00"],
-        // ["Crazy Joe", "15:00"],
-        // ["Mercenary", "16:00"],
+      requirements: new Map<string, string>([
+        ["FC Level", "FC7+"],
+        ["Minimum Power", "300M+"],
       ]),
+      language: "한국어",
+      events: {
+        bearTrap: "13:00, 14:20",
+        foundry: "12:00, 14:00",
+        canyon: "12:00, 14:00",
+        // crazyJoe: "15:00",
+        // mercenary: "16:00",
+      },
     },
   },
   {
     tag: "ONE",
     name: "Great⬩Empire",
-    power: 30.6e9,
+    power: 32.7e9,
+    playerCount: 96,
     recruitment: {
-      requirements: ["FC6+", "200M+"],
-      language: "All languages",
-      recruiters: [
-        {
-          name: "Dhoom",
-          contact: [
-            {
-              mediaIcon: discord,
-              url: "https://discord.com/users/734834012396454039",
-            },
-          ],
-          image: dhoom,
-        },
-        {
-          name: "Przemekkk",
-          contact: [
-            {
-              mediaIcon: discord,
-              url: "https://discord.com/users/183242057882664961",
-            },
-          ],
-          image: przemekkk,
-        },
-      ],
-      events: new Map<string, string>([
-        ["Bear Trap", "15:00, 19:00"],
-        ["Foundry", "14:00, 19:00"],
-        ["Canyon", "14:00, 19:00"],
-        ["Crazy Joe", "15:00"],
-        ["Mercenary", "16:00"],
+      requirements: new Map<string, string>([
+        ["FC Level", "FC6+"],
+        ["Minimum Power", "200M+"],
       ]),
+      language: "All languages",
+      recruiters: ONERecruiters,
+      events: {
+        bearTrap: "15:00, 19:00",
+        foundry: "14:00, 19:00",
+        canyon: "14:00, 19:00",
+        crazyJoe: "15:00",
+        mercenary: "16:00",
+      },
     },
   },
   {
     tag: "HOW",
     name: "House⬩Of⬩Wolves",
-    power: 27.8e9,
+    power: 29.8e9,
+    playerCount: 93,
     recruitment: {
-      requirements: ["FC6+", "250M+"],
-      language: "English",
-      events: new Map<string, string>([
-        ["Bear Trap", "12:00, 19:00"],
-        ["Foundry", "14:00, 19:00"],
-        ["Canyon", "14:00, 19:00"],
-        // ["Crazy Joe", "15:00"],
-        // ["Mercenary", "16:00"],
+      requirements: new Map<string, string>([
+        ["FC Level", "FC6+"],
+        ["Minimum Power", "250M+"],
       ]),
-      recruiters: [
-        {
-          name: "Great Lord",
-          contact: [
-            {
-              mediaIcon: discord,
-              url: "https://discord.com/users/1418430271375540254",
-            },
-          ],
-          image: greatLord,
-        },
-        {
-          name: "Beurnz",
-          contact: [
-            {
-              mediaIcon: discord,
-              url: "https://discord.com/users/1334060623428059216",
-            },
-          ],
-          image: ahmose,
-        },
-      ],
+      language: "English",
+      events: {
+        bearTrap: "12:00, 19:00",
+        foundry: "14:00, 19:00",
+        canyon: "14:00, 19:00",
+        // crazyJoe: "15:00",
+        // mercenary: "16:00",
+      },
+      recruiters: HOWRecruiters,
     },
   },
   {
     tag: "Toy",
     name: "뚜비",
-    power: 18.7e9,
+    power: 19.2e9,
+    playerCount: 92,
     recruitment: {
-      requirements: ["FC6+", "250M+"],
-      language: "English",
-      events: new Map<string, string>([
-        ["Bear Trap", "12:00, 19:00"],
-        ["Foundry", "14:00, 19:00"],
-        ["Canyon", "14:00, 19:00"],
-        // ["Crazy Joe", "15:00"],
-        // ["Mercenary", "16:00"],
+      requirements: new Map<string, string>([
+        ["FC Level", "FC6+"],
+        ["Minimum Power", "250M+"],
       ]),
+      language: "English",
+      events: {
+        bearTrap: "12:00, 19:00",
+        foundry: "14:00, 19:00",
+        canyon: "14:00, 19:00",
+        // crazyJoe: "15:00",
+        // mercenary: "16:00",
+      },
     },
   },
   {
     tag: "PRO",
     name: "TheProtectors",
-    power: 12.1e9,
+    power: 11.8e9,
+    playerCount: 63,
     recruitment: {
-      requirements: ["FC6+", "250M+"],
-      language: "English",
-      events: new Map<string, string>([
-        ["Bear Trap", "12:00, 19:00"],
-        ["Foundry", "14:00, 19:00"],
-        ["Canyon", "14:00, 19:00"],
-        // ["Crazy Joe", "15:00"],
-        // ["Mercenary", "16:00"],
+      requirements: new Map<string, string>([
+        ["FC Level", "FC6+"],
+        ["Minimum Power", "250M+"],
       ]),
+      language: "English",
+      events: {
+        bearTrap: "12:00, 19:00",
+        foundry: "14:00, 19:00",
+        canyon: "14:00, 19:00",
+        // crazyJoe: "15:00",
+        // mercenary: "16:00",
+      },
     },
   },
 ];

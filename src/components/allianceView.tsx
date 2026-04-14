@@ -3,23 +3,26 @@ import type { Alliance } from "@/utils/types";
 import { getBannerUrl } from "@/utils/utils";
 
 export function AllianceView({ alliance }: { alliance: Alliance }) {
-  console.log(alliance);
   return (
-    <div class="flex flex-row  bg-slate-800 rounded-2xl border border-slate-200/10">
-      <div class="flex justify-center items-center bg-slate-900 rounded-l-2xl w-1/4 p-12">
-        <img src={getBannerUrl(alliance.tag)} class="size-48" />
-      </div>
-      <div class="flex flex-row justify-between w-3/4 px-6 py-8 gap-10">
-        <div class="flex flex-col w-1/3 justify-between">
-          {/* name */}
-          <div class="flex flex-col mb-4 justify-center min-w-fit">
-            <span class="text-3xl">
-              <span class="font-bold">[{alliance.tag}]</span> {alliance.name}
-            </span>
-            <span class="text-2xl">{formatPower(alliance.power)} Power</span>
+    <div class="flex flex-col bg-slate-800 px-2 py-6 xl:p-10 rounded-lg">
+      <div class="mb-10">
+        <div class="flex items-center gap-6">
+          <img src={getBannerUrl(alliance.tag)} class="size-32" />
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-1">
+              [{alliance.tag}] {alliance.name}
+            </h2>
+            <div class="flex flex-row items-center justify-between min gap-10">
+              <h3 class="md:text-xl font-bold text-sky-400">
+                {formatPower(alliance.power)} Power
+              </h3>
+              <h4 class="text-gray-400 md:text-xl">
+                {alliance.playerCount}/100 Players
+              </h4>
+            </div>
             {alliance.glory && (
               <div
-                class="flex items-center gap-4 mt-2"
+                class="flex items-center gap-2 mt-2"
                 title={`Glory Path of the alliance | ${alliance.glory} SvS battles won`}
               >
                 {getGloryIcons(alliance.glory).map((iconPath, index) => (
@@ -27,78 +30,93 @@ export function AllianceView({ alliance }: { alliance: Alliance }) {
                     key={index}
                     src={iconPath}
                     alt="Glory Icon"
-                    class="size-8"
+                    class="size-6"
                   />
                 ))}
               </div>
             )}
           </div>
-          {/* requirements */}
-          <div class="flex flex-row justify-between">
-            <div class="flex flex-row gap-12 size-full">
-              <div class="flex flex-col">
-                <span class="font-bold">Requirements</span>
-                {alliance.recruitment?.requirements.map((req) => (
-                  <span>{req}</span>
-                ))}
-              </div>
-              <div class="flex flex-col">
-                <span class="font-bold">Language</span>
-                {alliance.recruitment?.language}
-              </div>
-            </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 mb-10 xl:gap-40">
+        <div class="p-4">
+          <h3 class="mb-6 text-sky-500 font-bold tracking-widest">
+            Requirements
+          </h3>
+          <ul class="space-y-4">
+            {Array.from(
+              alliance.recruitment?.requirements?.entries() ?? [],
+            ).map(([key, value]) => (
+              <li key={key} class="flex items-center justify-between text-sm">
+                <span class="text-gray-300">{key}</span>
+                <span>{value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="p-4">
+          <h3 class="mb-6 text-sky-500 font-bold tracking-widest">
+            Event Timings (UTC)
+          </h3>
+          <div class="grid grid-cols-2 gap-y-4 gap-x-6">
+            {(() => {
+              const events = alliance.recruitment?.events;
+              if (!events) return null;
+
+              const items: Array<[label: string, time?: string]> = [
+                ["Bear Trap", events.bearTrap],
+                ["Foundry", events.foundry],
+                ["Canyon", events.canyon],
+                ["Crazy Joe", events.crazyJoe],
+                ["Mercenary Bosses", events.mercenary],
+              ];
+
+              return items
+                .filter(([, time]) => Boolean(time))
+                .map(([label, time]) => (
+                  <div key={label} class="flex flex-col">
+                    <span class="uppercase tracking-tighter text-gray-400">
+                      {label}
+                    </span>
+                    <span>{time}</span>
+                  </div>
+                ));
+            })()}
           </div>
         </div>
-        {/* recruiters */}
+      </div>
+      <div class="pt-2 pl-4 border-t border-slate-400/10 flex flex-col">
         {alliance.recruitment?.recruiters && (
-          <div class="flex flex-col w-1/3">
-            <span class="font-bold">Recruiters</span>
-            <div class="flex flex-col items-left">
-              {alliance.recruitment?.recruiters.map((recruiter) => (
-                <div class="flex flex-row gap-3 border-slate-500/30 rounded p-2 justify-between w-full">
-                  <div class="flex flex-row items-center gap-3 w-1/2">
+          <>
+            <span class="py-4 text-sky-500 font-bold tracking-widest">
+              Contact
+            </span>
+            <div class="flex flex-wrap gap-8 items-center">
+              <div class="flex flex-wrap gap-12 items-start">
+                {alliance.recruitment?.recruiters?.map((recruiter) => (
+                  <div class="flex flex-row gap-3">
                     <img
                       src={recruiter.image}
                       alt={recruiter.name}
-                      class="size-12 rounded"
+                      class="size-14 rounded-lg object-cover"
                     />
-                    <span class="min-w-fit">{recruiter.name}</span>
+                    <div class="flex flex-col">
+                      <h3 class="font-bold">{recruiter.name}</h3>
+                      <div class="flex flex-row">
+                        {recruiter.contact.map(({ mediaIcon, url }) => (
+                          <a href={url} target="_blank">
+                            <img src={mediaIcon} alt="" class="size-8" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <div class="flex flex-row justify-end 2xl:justify-center items-center gap-3 w-1/2">
-                    {recruiter.contact.map((contact) => (
-                      <a
-                        href={contact.url}
-                        target="_blank"
-                        class="bg-slate-900/50 hover:bg-slate-950/70 rounded cursor-pointer"
-                      >
-                        <img
-                          src={contact.mediaIcon}
-                          alt=""
-                          class="size-12 p-1"
-                        />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+            {/* eventuall more info button */}
+          </>
         )}
-        {/* event timings */}
-        <div class="w-1/3 flex flex-col items-end">
-          <span class="font-bold">Event timings (UTC)</span>
-          <div class="mt-2 grid grid-cols-2 grid-rows-3 bg-slate-900/50 rounded p-3 w-full">
-            {alliance.recruitment?.events &&
-              Array.from(alliance.recruitment.events.entries()).map(
-                ([event, time]) => (
-                  <div class="flex flex-col p-1" key={event}>
-                    <span class="text-sm text-gray-400">{event}</span>
-                    <span class="font-bold">{time}</span>
-                  </div>
-                ),
-              )}
-          </div>
-        </div>
       </div>
     </div>
   );
