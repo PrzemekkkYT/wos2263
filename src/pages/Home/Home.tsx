@@ -1,104 +1,11 @@
 import { AllianceBigCard, AllianceSmallCard } from "@/components/allianceCard";
-import type { SvSRecord } from "@/utils/types";
 import { alliances } from "@/data/alliances";
+import { svsRecords } from "@/data/svs";
 
 import discordLogo from "@/assets/logos/discord_big.svg";
 
 import "@/styles/shared.css";
 import "./style.css";
-
-const svsRecords: SvSRecord[] = [
-  {
-    battleDate: new Date("2026-03-28"),
-    prepWin: true,
-    battleWin: false,
-    president: "[ONE]༒༒ᴼᴺᴱAJAᴼᴺᴱ༒༒",
-  },
-  {
-    battleDate: new Date("2026-02-28"),
-    prepWin: false,
-    battleWin: true,
-    president: "[DOL]돌모찌ᴰᴼᴸ",
-  },
-  {
-    battleDate: new Date("2026-01-31"),
-    prepWin: false,
-    battleWin: true,
-    president: "[DOL]এPokerFace｡·͜·｡",
-  },
-  {
-    battleDate: new Date("2026-01-03"),
-    prepWin: false,
-    battleWin: true,
-    president: "[DOL]광부 stone farmer",
-  },
-  {
-    battleDate: new Date("2025-12-06"),
-    prepWin: true,
-    battleWin: true,
-    president: "[DOL]야이돌모찌",
-    supreme: true,
-  },
-  {
-    battleDate: new Date("2025-11-08"),
-    prepWin: true,
-    battleWin: true,
-    president: "[ABS]어부 Oner chef",
-    supreme: true,
-  },
-  {
-    battleDate: new Date("2025-10-11"),
-    prepWin: false,
-    battleWin: false,
-    president: "#2280 [UNO]Wanna Play",
-    supreme: false,
-  },
-  {
-    battleDate: new Date("2025-09-13"),
-    prepWin: true,
-    battleWin: false,
-    president: "[ABS]희야링 Onion_ring",
-  },
-  {
-    battleDate: new Date("2025-08-16"),
-    prepWin: true,
-    battleWin: false,
-    president: "[ABS]희야링 Onion_ring",
-  },
-  {
-    battleDate: new Date("2025-07-19"),
-    prepWin: false,
-    battleWin: true,
-    president: "[ABS]기모찌 Ssick Bbang",
-  },
-  {
-    battleDate: new Date("2025-06-21"),
-    prepWin: true,
-    battleWin: false,
-    president: "[ABS]기모찌",
-  },
-  {
-    battleDate: new Date("2025-05-24"),
-    prepWin: true,
-    battleWin: true,
-    president: "[ABS]기모찌",
-    supreme: true,
-  },
-  {
-    battleDate: new Date("2025-04-26"),
-    prepWin: false,
-    battleWin: false,
-    president: "#2282 [ACE]takapan",
-    supreme: false,
-  },
-  {
-    battleDate: new Date("2025-03-29"),
-    prepWin: false,
-    battleWin: false,
-    president: "#2301 [RIP]Sef",
-    supreme: false,
-  },
-];
 
 export function HomePage() {
   const sortedAl = [...alliances].sort((a, b) => b.power - a.power);
@@ -112,7 +19,7 @@ export function HomePage() {
   return (
     <main>
       <section id="hero" class="h-[60vh]! mt-24 max-w-full!">
-        <h1 class="relative z-10 max-w-7xl mx-auto px-6 w-full text-center text-8xl xl:text-[10rem] font-bold animate-fade-down">
+        <h1 class="relative z-10 max-w-7xl mx-auto px-6 w-full tracking-tight text-center text-8xl xl:text-[10rem] font-bold animate-fade-down">
           State 2263
         </h1>
         <span class="text-xl xl:text-2xl z-10 mt-8 mb-2">Join our Discord</span>
@@ -126,9 +33,11 @@ export function HomePage() {
       </section>
       <section id="alliance-rank">
         <div class="mb-10 flex flex-col self-start">
-          <h2 class="text-3xl md:text-5xl font-bold">Top 5 alliances</h2>
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight">
+            Top 5 alliances
+          </h2>
           <span class="text-gray-400 mt-2 text-xs md:text-base">
-            Last Updated: Mar 30, 2026, 15:00
+            Last Updated: Apr 15, 2026, 22:00 UTC
           </span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4 w-full">
@@ -146,7 +55,9 @@ export function HomePage() {
       </section>
       <section id="svs-record">
         <div class="mb-10 flex flex-col self-start">
-          <h2 class="text-3xl md:text-5xl font-bold">SvS Record</h2>
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight">
+            SvS Record
+          </h2>
           <span class="text-gray-400 mt-2 text-xs md:text-base">
             Historical data from previous battle cycles.
           </span>

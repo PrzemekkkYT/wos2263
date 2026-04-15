@@ -1,12 +1,12 @@
 import type { Alliance } from "@/utils/types";
-import { ONERecruiters, HOWRecruiters } from "./recruiters";
+import { ONERecruiters, HOWRecruiters, PRORecruiters } from "./recruiters";
 
 export const alliances: Alliance[] = [
   {
     tag: "DOL",
     name: "우린우스에돌았어",
     power: 34.6e9,
-    playerCount: 81,
+    playerCount: 80,
     glory: 7,
     recruitment: {
       requirements: new Map<string, string>([
@@ -26,15 +26,15 @@ export const alliances: Alliance[] = [
   {
     tag: "ONE",
     name: "Great⬩Empire",
-    power: 32.7e9,
-    playerCount: 96,
+    power: 34.9e9,
+    playerCount: 100,
     recruitment: {
+      recruiters: ONERecruiters,
       requirements: new Map<string, string>([
         ["FC Level", "FC6+"],
         ["Minimum Power", "200M+"],
       ]),
       language: "All languages",
-      recruiters: ONERecruiters,
       events: {
         bearTrap: "15:00, 19:00",
         foundry: "14:00, 19:00",
@@ -47,9 +47,10 @@ export const alliances: Alliance[] = [
   {
     tag: "HOW",
     name: "House⬩Of⬩Wolves",
-    power: 29.8e9,
-    playerCount: 93,
+    power: 28.8e9,
+    playerCount: 90,
     recruitment: {
+      recruiters: HOWRecruiters,
       requirements: new Map<string, string>([
         ["FC Level", "FC6+"],
         ["Minimum Power", "250M+"],
@@ -62,24 +63,23 @@ export const alliances: Alliance[] = [
         // crazyJoe: "15:00",
         // mercenary: "16:00",
       },
-      recruiters: HOWRecruiters,
     },
   },
   {
     tag: "Toy",
     name: "뚜비",
-    power: 19.2e9,
-    playerCount: 92,
+    power: 19.4e9,
+    playerCount: 91,
     recruitment: {
       requirements: new Map<string, string>([
         ["FC Level", "FC6+"],
         ["Minimum Power", "250M+"],
       ]),
-      language: "English",
+      language: "한국어",
       events: {
-        bearTrap: "12:00, 19:00",
-        foundry: "14:00, 19:00",
-        canyon: "14:00, 19:00",
+        bearTrap: "12:00, 16:00",
+        foundry: "12:00",
+        canyon: "12:00",
         // crazyJoe: "15:00",
         // mercenary: "16:00",
       },
@@ -88,18 +88,19 @@ export const alliances: Alliance[] = [
   {
     tag: "PRO",
     name: "TheProtectors",
-    power: 11.8e9,
-    playerCount: 63,
+    power: 12.3e9,
+    playerCount: 64,
     recruitment: {
+      recruiters: PRORecruiters,
       requirements: new Map<string, string>([
         ["FC Level", "FC6+"],
         ["Minimum Power", "250M+"],
       ]),
       language: "English",
       events: {
-        bearTrap: "12:00, 19:00",
-        foundry: "14:00, 19:00",
-        canyon: "14:00, 19:00",
+        bearTrap: "02:00, 21:00",
+        foundry: "19:00, 21:00",
+        canyon: "19:00, 21:00",
         // crazyJoe: "15:00",
         // mercenary: "16:00",
       },

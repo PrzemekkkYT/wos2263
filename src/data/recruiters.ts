@@ -1,31 +1,41 @@
-import discord from "@/assets/logos/discord.svg";
+import type { Recruiter } from "@/utils/types";
 
-import dhoom from "@/assets/avatars/dhoom.png";
-import przemekkk from "@/assets/avatars/przemekkk.png";
+import discord from "@/assets/logos/discord.svg";
 
 ////////////
 //  ONE   //
 ////////////
-export const ONERecruiters = [
+import dhoom from "@/assets/avatars/dhoom.png";
+import przemekkk from "@/assets/avatars/przemekkk.png";
+
+export const ONERecruiters: Recruiter[] = [
   {
     name: "Dhoom",
+    image: dhoom,
+    position: {
+      x: 730,
+      y: 673,
+    },
     contact: [
       {
         mediaIcon: discord,
         url: "https://discord.com/users/734834012396454039",
       },
     ],
-    image: dhoom,
   },
   {
     name: "Przemekkk",
+    image: przemekkk,
+    position: {
+      x: 723,
+      y: 678,
+    },
     contact: [
       {
         mediaIcon: discord,
         url: "https://discord.com/users/183242057882664961",
       },
     ],
-    image: przemekkk,
   },
 ];
 
@@ -35,25 +45,30 @@ export const ONERecruiters = [
 import ahmose from "@/assets/avatars/ahmose.png";
 import greatLord from "@/assets/avatars/great_lord.jpg";
 
-export const HOWRecruiters = [
+export const HOWRecruiters: Recruiter[] = [
   {
     name: "Great Lord",
-    contact: [
-      {
-        mediaIcon: discord,
-        url: "https://discord.com/users/1418430271375540254",
-      },
-    ],
     image: greatLord,
   },
   {
     name: "Beurnz",
-    contact: [
-      {
-        mediaIcon: discord,
-        url: "https://discord.com/users/1334060623428059216",
-      },
-    ],
     image: ahmose,
+    position: {
+      x: 735,
+      y: 568,
+    },
+  },
+];
+
+////////////
+//  PRO   //
+////////////
+export const PRORecruiters: Recruiter[] = [
+  {
+    name: "༺꧁༒ᴾᴿᴼFreyja༒꧂༻",
+    position: {
+      x: 758,
+      y: 473,
+    },
   },
 ];

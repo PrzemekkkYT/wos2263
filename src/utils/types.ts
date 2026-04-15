@@ -1,7 +1,8 @@
 export interface Recruiter {
   name: string;
-  image: string;
-  contact: { mediaIcon: string; url: string }[];
+  image?: string;
+  position?: { x: number; y: number };
+  contact?: { mediaIcon: string; url: string }[];
 }
 
 export interface RecruitmentData {

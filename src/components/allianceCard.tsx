@@ -2,8 +2,6 @@ import { formatPower, getGloryIcons } from "@/utils/alliance";
 import { getBannerUrl } from "@/utils/utils";
 import type { Alliance } from "@/utils/types";
 
-import G1 from "@/assets/icons/glory1.png";
-
 export function AllianceBigCard({
   data,
   rank,
@@ -30,16 +28,14 @@ export function AllianceBigCard({
         <p class="text-sky-400 text-xl font-medium mb-6">
           {formatPower(data.power)} Power
         </p>
-        {data.glory && (
-          <div
-            class="flex items-center gap-4 py-4 border-t border-slate-500"
-            title={`Glory Path of the alliance | ${data.glory} SvS battles won`}
-          >
-            {getGloryIcons(data.glory).map((iconPath, index) => (
-              <img key={index} src={iconPath} alt="Glory Icon" class="size-8" />
-            ))}
-          </div>
-        )}
+        <div
+          class="flex items-center gap-4 py-4 border-t border-slate-500"
+          title={`Glory Path of the alliance | ${data.glory} SvS battles won`}
+        >
+          {getGloryIcons(data.glory ?? 0).map((iconPath, index) => (
+            <img key={index} src={iconPath} alt="Glory Icon" class="size-8" />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -72,7 +68,10 @@ export function AllianceSmallCard({
             class="flex flex-row items-end"
             title={`${data.glory} SvS battles won`}
           >
-            <img src={G1} alt="Glory" class="size-6" />x{data.glory}
+            {/* <img src={G1} alt="Glory" class="size-6" />x{data.glory} */}
+            {getGloryIcons(data.glory).map((iconPath, index) => (
+              <img key={index} src={iconPath} alt="Glory Icon" class="size-6" />
+            ))}
           </div>
         )}
       </div>

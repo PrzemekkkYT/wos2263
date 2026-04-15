@@ -2,6 +2,8 @@ import { formatPower, getGloryIcons } from "@/utils/alliance";
 import type { Alliance } from "@/utils/types";
 import { getBannerUrl } from "@/utils/utils";
 
+import blankUser from "@/assets/avatars/blank.svg";
+
 export function AllianceView({ alliance }: { alliance: Alliance }) {
   return (
     <div class="flex flex-col bg-slate-800 px-2 py-6 xl:p-10 rounded-lg">
@@ -96,18 +98,25 @@ export function AllianceView({ alliance }: { alliance: Alliance }) {
                 {alliance.recruitment?.recruiters?.map((recruiter) => (
                   <div class="flex flex-row gap-3">
                     <img
-                      src={recruiter.image}
-                      alt={recruiter.name}
-                      class="size-14 rounded-lg object-cover"
+                      src={recruiter.image ?? blankUser}
+                      alt=""
+                      class="size-14 rounded-lg object-cover bg-gray-900"
                     />
                     <div class="flex flex-col">
                       <h3 class="font-bold">{recruiter.name}</h3>
-                      <div class="flex flex-row">
-                        {recruiter.contact.map(({ mediaIcon, url }) => (
-                          <a href={url} target="_blank">
-                            <img src={mediaIcon} alt="" class="size-8" />
-                          </a>
-                        ))}
+                      <div class="flex flex-row gap-2">
+                        {recruiter.position && (
+                          <div class="flex flex-col text-xs text-gray-400">
+                            <span>X: {recruiter.position.x}</span>
+                            <span>Y: {recruiter.position.y}</span>
+                          </div>
+                        )}
+                        {recruiter.contact &&
+                          recruiter.contact.map(({ mediaIcon, url }) => (
+                            <a href={url} target="_blank">
+                              <img src={mediaIcon} alt="" class="size-8" />
+                            </a>
+                          ))}
                       </div>
                     </div>
                   </div>
