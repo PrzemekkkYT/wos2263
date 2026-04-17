@@ -5,7 +5,7 @@ export const alliances: Alliance[] = [
   {
     tag: "DOL",
     name: "우린우스에돌았어",
-    power: 34.6e9,
+    power: 34.8e9,
     playerCount: 80,
     glory: 7,
     recruitment: {
@@ -26,7 +26,7 @@ export const alliances: Alliance[] = [
   {
     tag: "ONE",
     name: "Great⬩Empire",
-    power: 34.9e9,
+    power: 36.2e9,
     playerCount: 100,
     recruitment: {
       recruiters: ONERecruiters,
@@ -47,7 +47,7 @@ export const alliances: Alliance[] = [
   {
     tag: "HOW",
     name: "House⬩Of⬩Wolves",
-    power: 28.8e9,
+    power: 30.0e9,
     playerCount: 90,
     recruitment: {
       recruiters: HOWRecruiters,
@@ -88,7 +88,7 @@ export const alliances: Alliance[] = [
   {
     tag: "PRO",
     name: "TheProtectors",
-    power: 12.3e9,
+    power: 13.0e9,
     playerCount: 64,
     recruitment: {
       recruiters: PRORecruiters,

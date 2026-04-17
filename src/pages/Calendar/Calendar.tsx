@@ -18,6 +18,8 @@ export function CalendarPage() {
 
   const [apiData, setApiData] = useState<ApiFetch | null>(null);
 
+  const [rtl, setRtl] = useState<boolean>(false);
+
   useEffect(() => {
     fetchApiData().then((data) => {
       console.log(data);
@@ -28,6 +30,10 @@ export function CalendarPage() {
   useEffect(() => {
     if (!timelineContainerRef.current || !apiData) return;
 
+    const now = startOfDay(new Date());
+    const range =
+      window.innerWidth < 768 ? { start: -1, end: 2 } : { start: -3, end: 11 };
+
     const { timelineEvents, eventItems, eventGroups, setting } = apiData;
     const processedGroups = processGroups(eventGroups, timelineEvents, setting);
 
@@ -35,14 +41,10 @@ export function CalendarPage() {
       timelineContainerRef.current,
       displayedItems.current,
       processedGroups,
-      options,
+      { ...options, rtl: rtl },
     );
     timelineInstanceRef.current = timeline;
 
-    const now = startOfDay(new Date());
-
-    const range =
-      window.innerWidth < 768 ? { start: -1, end: 2 } : { start: -3, end: 11 };
     timeline.setWindow(addDays(now, range.start), addDays(now, range.end), {
       animation: false,
     });
@@ -77,6 +79,9 @@ export function CalendarPage() {
     });
 
     const focusTimer = setTimeout(() => {
+      timeline.setWindow(addDays(now, range.start), addDays(now, range.end), {
+        animation: false,
+      });
       timeline.focus("focus-element", { zoom: false, animation: false });
     }, 200);
 
@@ -107,12 +112,13 @@ export function CalendarPage() {
     return () => {
       window.removeEventListener("timeline:jump", handleJumpSignal);
       clearTimeout(focusTimer);
+      // clearTimeout(rangeTimer);
       if (timelineInstanceRef.current) {
         timelineInstanceRef.current.destroy();
         timelineInstanceRef.current = null;
       }
     };
-  }, [apiData]);
+  }, [apiData, rtl]);
 
   const handleJumpToDate = (e: any) => {
     const date = new Date(`${e.target.value}T00:00:00Z`);
@@ -164,19 +170,21 @@ export function CalendarPage() {
       </div>
       <div class="bg-blue-200/20 p-2 md:p-8 rounded-2xl shadow-2xl max-w-[96%] w-full">
         <div class="flex justify-between gap-2">
-          <button
-            onClick={() => focusOnDate(new Date())}
-            class="control-button"
-          >
-            Today
-          </button>
-          <input
-            type="date"
-            onChange={handleJumpToDate}
-            class="control-button"
-          />
+          <div class="flex gap-2">
+            <button
+              onClick={() => focusOnDate(new Date())}
+              class="control-button"
+            >
+              Today
+            </button>
+            <input
+              type="date"
+              onChange={handleJumpToDate}
+              class="control-button"
+            />
+          </div>
 
-          <div class="ml-auto flex gap-2">
+          <div class="flex gap-2">
             <button class="control-button" onClick={() => setTimeWindow(-1, 2)}>
               3D
             </button>
@@ -191,8 +199,23 @@ export function CalendarPage() {
             </button>
           </div>
         </div>
-
-        <div ref={timelineContainerRef} id="main-events-timeline"></div>
+        <div class="flex gap-2 items-center cursor-pointer p-2">
+          <label htmlFor="arabic-checkbox">Right to Left</label>
+          <input
+            type="checkbox"
+            name="arabic-checkbox"
+            id="arabic-checkbox"
+            checked={rtl}
+            onChange={(e) =>
+              setRtl((e.currentTarget as HTMLInputElement).checked)
+            }
+          />
+        </div>
+        <div
+          ref={timelineContainerRef}
+          key={rtl}
+          id="main-events-timeline"
+        ></div>
       </div>
     </main>
   );

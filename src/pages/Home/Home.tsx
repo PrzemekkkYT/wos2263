@@ -37,7 +37,7 @@ export function HomePage() {
             Top 5 alliances
           </h2>
           <span class="text-gray-400 mt-2 text-xs md:text-base">
-            Last Updated: Apr 15, 2026, 22:00 UTC
+            Last Updated: Apr 17, 2026, 15:00 UTC
           </span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4 w-full">

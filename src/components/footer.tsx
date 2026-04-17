@@ -37,7 +37,7 @@ export function Footer() {
       <span class="mt-4 text-xs md:text-base text-gray-400">
         © 2026 [ONE]Przemekkk ᴼᴺᴱ
         <br />
-        Version: 1.1
+        Version: 2.0
       </span>
     </footer>
   );
