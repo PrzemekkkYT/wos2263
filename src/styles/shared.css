@@ -2,12 +2,12 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-.hidden {
-  display: none !important;
-}
-
 body {
   @apply text-white bg-slate-900 font-[Inter] overflow-x-hidden;
+}
+
+main > section {
+  @apply relative min-h-[50vh] 2xl:max-w-3/4 mx-auto py-12 px-4 md:px-24 flex flex-col items-center justify-center overflow-hidden;
 }
 
 .ref-button {
@@ -20,4 +20,8 @@ body {
 
 .ref-button.selected {
   @apply border-b-2 border-sky-400 text-sky-400;
+}
+
+.super-hidden {
+  display: none !important;
 }

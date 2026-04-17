@@ -1,6 +1,6 @@
 import type { EventItem, TimelineEvent, TimelineEventItem } from "./types";
 import { RRule } from "rrule";
-import { addDays } from "../../../utils/utils";
+import { addDays } from "@/utils/utils";
 
 export function findNextOccurrence(
   items: TimelineEvent[],

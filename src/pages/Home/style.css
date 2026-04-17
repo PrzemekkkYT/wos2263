@@ -16,10 +16,6 @@
   }
 }
 
-main > section {
-  @apply relative min-h-[50vh] 2xl:max-w-3/4 mx-auto py-12 px-4 md:px-24 flex flex-col items-center justify-center overflow-hidden;
-}
-
 #svs-table thead tr th {
   @apply pb-6 text-[0.7rem] uppercase tracking-widest text-gray-400 px-4;
 }

@@ -120,7 +120,23 @@ export const GroupSchema = z.object({
     .default([]),
 });
 
+export const ApiFetchSchema = z.object({
+  timelineEvents: z.array(TimelineEventSchema),
+  eventItems: z.array(TimelineEventItemSchema),
+  eventGroups: z.array(GroupSchema),
+  setting: z
+    .object({
+      topLevelGroupsOrder: z
+        .array(
+          z.object({ groupId: z.string() }).transform((val) => val.groupId),
+        )
+        .default([]),
+    })
+    .transform((val) => val.topLevelGroupsOrder),
+});
+
 export type Group = z.infer<typeof GroupSchema>;
 export type Recurrence = z.infer<typeof RecurrenceSchema>;
 export type TimelineEvent = z.infer<typeof TimelineEventSchema>;
 export type TimelineEventItem = z.infer<typeof TimelineEventItemSchema>;
+export type ApiFetch = z.infer<typeof ApiFetchSchema>;
