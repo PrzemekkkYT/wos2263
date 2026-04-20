@@ -24,7 +24,7 @@ export function HomePage() {
         </h1>
         <span class="text-xl xl:text-2xl z-10 mt-8 mb-2">Join our Discord</span>
         <a
-          href="https://discord.gg/SYSj4pjY9P"
+          href="https://discord.wos2263.com/"
           target="_blank"
           class="z-10 bg-slate-800/80 p-4 box-content rounded-2xl hover:bg-slate-900 border border-slate-500/30"
         >
