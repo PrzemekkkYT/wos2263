@@ -1,6 +1,8 @@
 import googlePlay from "@/assets/logos/googleplay.svg";
 import appStore from "@/assets/logos/appstore.svg";
 
+import { appData } from "@/data/app";
+
 export function Footer() {
   return (
     <footer class="bg-slate-950/50 flex flex-col md:flex-row justify-between items-center px-12 py-4 text-center">
@@ -35,9 +37,9 @@ export function Footer() {
         Website not affiliated with Century Games PTE. LTD.
       </span>
       <span class="mt-4 text-xs md:text-base text-gray-400">
-        © 2026 [ONE]Przemekkk ᴼᴺᴱ
+        © {new Date().getFullYear()} {appData.author}
         <br />
-        Version: 2.0
+        Version: {appData.version}
       </span>
     </footer>
   );

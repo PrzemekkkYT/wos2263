@@ -3,6 +3,22 @@ import type { Recruiter } from "@/utils/types";
 import discord from "@/assets/logos/discord.svg";
 
 ////////////
+//  DOL   //
+////////////
+import stoneFarmer from "@/assets/avatars/stone_farmer.png";
+
+export const DOLRecruiters: Recruiter[] = [
+  {
+    name: "광 부 stone farmer",
+    image: stoneFarmer,
+    position: {
+      x: 480,
+      y: 594,
+    },
+  },
+];
+
+////////////
 //  ONE   //
 ////////////
 import dhoom from "@/assets/avatars/dhoom.png";

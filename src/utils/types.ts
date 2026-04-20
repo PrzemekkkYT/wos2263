@@ -29,9 +29,10 @@ export interface Alliance {
 }
 
 export interface SvSRecord {
+  opponent: string;
+  prepWin?: boolean;
+  battleWin?: boolean;
   battleDate: Date;
-  prepWin: boolean;
-  battleWin: boolean;
-  president: string;
+  president?: string;
   supreme?: boolean;
 }

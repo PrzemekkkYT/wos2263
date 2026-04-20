@@ -66,15 +66,39 @@ export function HomePage() {
           <table class="w-full" id="svs-table">
             <thead>
               <tr>
-                <th>Battle Date</th>
+                <th>Opponent</th>
                 <th>Prep Phase</th>
                 <th>Battle Phase</th>
+                <th>Battle Date</th>
                 <th>President</th>
               </tr>
             </thead>
             <tbody>
               {sortedSvS.map((record) => (
                 <tr>
+                  <td>{record.opponent}</td>
+                  <td>
+                    {record.prepWin !== undefined ? (
+                      record.prepWin ? (
+                        <span class="text-sky-400 font-extrabold">Win</span>
+                      ) : (
+                        <span class="text-red-500 font-light">Lose</span>
+                      )
+                    ) : (
+                      <span class="text-green-500">Ongoing</span>
+                    )}
+                  </td>
+                  <td>
+                    {record.battleWin !== undefined ? (
+                      record.battleWin ? (
+                        <span class="text-sky-400 font-extrabold">Win</span>
+                      ) : (
+                        <span class="text-red-500 font-light">Lose</span>
+                      )
+                    ) : (
+                      <span class="text-green-500">Ongoing</span>
+                    )}
+                  </td>
                   <td>
                     {record.battleDate.toLocaleDateString("en-US", {
                       month: "short",
@@ -83,21 +107,11 @@ export function HomePage() {
                     })}
                   </td>
                   <td>
-                    {record.prepWin ? (
-                      <span class="text-sky-400 font-extrabold">Win</span>
+                    {record.president !== undefined ? (
+                      record.president
                     ) : (
-                      <span class="text-red-500 font-light">Lose</span>
+                      <span class="text-green-500">Not yet appointed</span>
                     )}
-                  </td>
-                  <td>
-                    {record.battleWin ? (
-                      <span class="text-sky-400 font-extrabold">Win</span>
-                    ) : (
-                      <span class="text-red-500 font-light">Lose</span>
-                    )}
-                  </td>
-                  <td>
-                    {record.president}
                     {record.supreme !== undefined && (
                       <>
                         <br />

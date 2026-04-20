@@ -1,14 +1,20 @@
 import type { Alliance } from "@/utils/types";
-import { ONERecruiters, HOWRecruiters, PRORecruiters } from "./recruiters";
+import {
+  ONERecruiters,
+  HOWRecruiters,
+  PRORecruiters,
+  DOLRecruiters,
+} from "./recruiters";
 
 export const alliances: Alliance[] = [
   {
     tag: "DOL",
     name: "우린우스에돌았어",
-    power: 34.8e9,
-    playerCount: 80,
+    power: 35.7e9,
+    playerCount: 83,
     glory: 7,
     recruitment: {
+      recruiters: DOLRecruiters,
       requirements: new Map<string, string>([
         ["FC Level", "FC7+"],
         ["Minimum Power", "300M+"],
@@ -26,7 +32,7 @@ export const alliances: Alliance[] = [
   {
     tag: "ONE",
     name: "Great⬩Empire",
-    power: 36.2e9,
+    power: 36.8e9,
     playerCount: 100,
     recruitment: {
       recruiters: ONERecruiters,
@@ -47,8 +53,8 @@ export const alliances: Alliance[] = [
   {
     tag: "HOW",
     name: "House⬩Of⬩Wolves",
-    power: 30.0e9,
-    playerCount: 90,
+    power: 32.3e9,
+    playerCount: 99,
     recruitment: {
       recruiters: HOWRecruiters,
       requirements: new Map<string, string>([
@@ -68,7 +74,7 @@ export const alliances: Alliance[] = [
   {
     tag: "Toy",
     name: "뚜비",
-    power: 19.4e9,
+    power: 19.6e9,
     playerCount: 91,
     recruitment: {
       requirements: new Map<string, string>([
@@ -88,8 +94,8 @@ export const alliances: Alliance[] = [
   {
     tag: "PRO",
     name: "TheProtectors",
-    power: 13.0e9,
-    playerCount: 64,
+    power: 12.9e9,
+    playerCount: 73,
     recruitment: {
       recruiters: PRORecruiters,
       requirements: new Map<string, string>([
