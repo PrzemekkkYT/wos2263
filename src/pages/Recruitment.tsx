@@ -7,7 +7,7 @@ export function RecruitmentPage() {
   return (
     <main>
       <section class="mt-24 min-h-[40vh]! items-start!">
-        <h1 class="relative z-10 max-w-7xl mx-auto px-6 w-full tracking-tight text-left text-6xl md:text-8xl xl:text-[10rem] font-bold animate-fade-down">
+        <h1 class="relative z-10 max-w-7xl w-full tracking-tight text-left text-6xl md:text-8xl xl:text-[10rem] font-bold animate-fade-down">
           Recruitment
         </h1>
         <h5 class="relative z-10 max-w-7/8 px-6 mt-4 text-sm md:text-lg">
