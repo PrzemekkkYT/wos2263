@@ -3,7 +3,10 @@ import type { SvSRecord } from "@/utils/types";
 export const svsRecords: SvSRecord[] = [
   {
     opponent: "#2362",
+    prepWin: true,
+    battleWin: false,
     battleDate: new Date("2026-04-25"),
+    president: "[DOL]광부 stone farmer",
   },
   {
     opponent: "#2347",
