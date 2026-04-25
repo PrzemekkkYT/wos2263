@@ -12,11 +12,13 @@ function ActiveLink(props: { href: string; children: any }) {
 
 export function NavBar() {
   return (
-    <nav class="fixed top-0 w-full z-50 bg-slate-900/99">
-      <div class="flex flex-row items-center justify-center px-6 py-4 max-w-7xl mx-auto">
-        <ActiveLink href="/">Home</ActiveLink>
-        <ActiveLink href="/recruitment">Recruitment</ActiveLink>
-        <ActiveLink href="/calendar">Calendar</ActiveLink>
+    <nav class="fixed top-0 w-full z-50 bg-slate-900">
+      <div class="size-full bg-slate-950/50">
+        <div class="flex flex-row items-center justify-center px-6 py-4 max-w-7xl mx-auto">
+          <ActiveLink href="/">Home</ActiveLink>
+          <ActiveLink href="/recruitment">Recruitment</ActiveLink>
+          <ActiveLink href="/calendar">Calendar</ActiveLink>
+        </div>
       </div>
     </nav>
   );
