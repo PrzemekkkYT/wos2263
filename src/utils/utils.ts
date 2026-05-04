@@ -32,3 +32,12 @@ export function getBannerUrl(allianceTag: string) {
     import.meta.url,
   ).href;
 }
+
+export function getAvatarUrl(avatarName: string) {
+  return new URL(`../assets/avatars/${avatarName}.png`, import.meta.url).href;
+}
+
+export function getSocialMediaLogoUrl(socialMedia: string) {
+  return new URL(`../assets/socialMedia/${socialMedia}.svg`, import.meta.url)
+    .href;
+}

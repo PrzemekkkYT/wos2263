@@ -14,8 +14,11 @@ import { CalendarPage } from "@/pages/Calendar/Calendar";
 
 // styles
 import "@/styles/shared.css";
+import { fetchStateData } from "./utils/stateApi";
 
 function App() {
+  fetchStateData();
+
   return (
     <>
       <NavBar />
@@ -25,7 +28,13 @@ function App() {
         <Route path="/recruitment" component={RecruitmentPage} />
         <Route path="/calendar" component={CalendarPage} />
         <Route>
-          <div style={{ textAlign: "center" }}>404 - Page not found</div>
+          <main>
+            <section>
+              <div class="text-center text-8xl font-bold">
+                404 - Page not found
+              </div>
+            </section>
+          </main>
         </Route>
       </Switch>
       <Footer />

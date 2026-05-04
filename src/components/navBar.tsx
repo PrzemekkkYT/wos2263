@@ -12,7 +12,7 @@ function ActiveLink(props: { href: string; children: any }) {
 
 export function NavBar() {
   return (
-    <nav class="fixed top-0 w-full z-50 bg-slate-900">
+    <nav class="fixed top-0 w-full z-50 bg-slate-900/90">
       <div class="size-full bg-slate-950/50">
         <div class="flex flex-row items-center justify-center px-6 py-4 max-w-7xl mx-auto">
           <ActiveLink href="/">Home</ActiveLink>

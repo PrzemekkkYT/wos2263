@@ -1,9 +1,16 @@
 import { AllianceView } from "@/components/allianceView";
-import { alliances } from "@/data/alliances";
+// import { useStateApi } from "@/utils/hooks";
+// import { alliances } from "@/data/alliances";
 
-const sortedAl = [...alliances].sort((a, b) => b.power - a.power);
+// const sortedAl = [...alliances].sort((a, b) => b.power - a.power);
+
+import { apiData } from "@/utils/stateApi";
+import type { StateApiFetch } from "@/utils/types";
 
 export function RecruitmentPage() {
+  // const apiData = useStateApi();
+  const data: StateApiFetch | null = apiData.value;
+
   return (
     <main>
       <section class="mt-24 min-h-[40vh]! items-start!">
@@ -17,9 +24,9 @@ export function RecruitmentPage() {
       </section>
       <section>
         <div class="flex flex-col gap-8 w-full">
-          {sortedAl.map(
-            (al) => al.recruitment && <AllianceView alliance={al} />,
-          )}
+          {(data?.alliances ?? Array.from({ length: 5 })).map((al) => (
+            <AllianceView alliance={al} />
+          ))}
         </div>
       </section>
     </main>

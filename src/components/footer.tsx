@@ -3,7 +3,11 @@ import appStore from "@/assets/logos/appstore.svg";
 
 import { appData } from "@/data/app";
 
+import { apiData } from "@/utils/stateApi";
+
 export function Footer() {
+  const data = apiData.value;
+
   return (
     <footer class="bg-slate-900 text-center">
       <div class="bg-slate-950/50 size-full px-12 py-4 flex flex-col md:flex-row justify-between items-center">
@@ -38,9 +42,10 @@ export function Footer() {
           Website not affiliated with Century Games PTE. LTD.
         </span>
         <span class="mt-4 text-xs md:text-base text-gray-400">
-          © {new Date().getFullYear()} {appData.author}
+          © {new Date().getFullYear()}{" "}
+          {data?.setting.authorName ?? appData.author}
           <br />
-          Version: {appData.version}
+          Version: {data?.setting.version ?? -1}
         </span>
       </div>
     </footer>

@@ -191,6 +191,9 @@ export function CalendarPage() {
             <button class="control-button" onClick={() => setTimeWindow(-3, 4)}>
               1W
             </button>
+            <button class="control-button" onClick={() => setTimeWindow(-7, 7)}>
+              2W
+            </button>
             <button
               class="control-button"
               onClick={() => setTimeWindow(-14, 14)}

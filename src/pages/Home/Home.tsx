@@ -1,20 +1,16 @@
 import { AllianceBigCard, AllianceSmallCard } from "@/components/allianceCard";
-import { alliances } from "@/data/alliances";
-import { svsRecords } from "@/data/svs";
+// import { alliances } from "@/data/alliances";
 
 import discordLogo from "@/assets/logos/discord_big.svg";
 
 import "@/styles/shared.css";
 import "./style.css";
 
-export function HomePage() {
-  const sortedAl = [...alliances].sort((a, b) => b.power - a.power);
-  const leader = sortedAl[0];
-  const topRemaining = sortedAl.slice(1, 5);
+import { apiData } from "@/utils/stateApi";
+import type { StateApiFetch } from "@/utils/types";
 
-  const sortedSvS = [...svsRecords].sort(
-    (a, b) => b.battleDate.getTime() - a.battleDate.getTime(),
-  );
+export function HomePage() {
+  const data: StateApiFetch | null = apiData.value;
 
   return (
     <main>
@@ -36,20 +32,45 @@ export function HomePage() {
           <h2 class="text-3xl md:text-5xl font-bold tracking-tight">
             Top 5 alliances
           </h2>
-          <span class="text-gray-400 mt-2 text-xs md:text-base">
-            Last Updated: Apr 17, 2026, 15:00 UTC
-          </span>
+          {data?.setting?.latestDataUpdate ? (
+            <span class="text-gray-400 mt-2 text-xs md:text-base">
+              {"Last Updated: " +
+                new Date(data.setting.latestDataUpdate).toLocaleString(
+                  "en-US",
+                  {
+                    month: "short",
+                    day: "2-digit",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: false,
+                    timeZone: "UTC",
+                    timeZoneName: "short",
+                  },
+                )}
+            </span>
+          ) : (
+            <span class="text-gray-400 mt-2 text-xs md:text-base flex items-center gap-2">
+              <span>Last Updated:</span>
+              <span
+                aria-hidden="true"
+                class="inline-block h-[1em] w-48 md:w-56 rounded bg-gray-600/60 animate-pulse"
+              />
+            </span>
+          )}
         </div>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4 w-full">
-          <AllianceBigCard data={leader} rank={1} />
+          <AllianceBigCard data={data?.alliances?.[0] ?? null} rank={1} />
           <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {topRemaining.map((alliance, index) => (
-              <AllianceSmallCard
-                key={alliance.tag}
-                data={alliance}
-                rank={index + 2}
-              />
-            ))}
+            {(data?.alliances?.slice(1, 5) ?? Array.from({ length: 4 })).map(
+              (alliance, index) => (
+                <AllianceSmallCard
+                  key={alliance?.tag ?? `alliance-small-${index}`}
+                  data={alliance ?? null}
+                  rank={index + 2}
+                />
+              ),
+            )}
           </div>
         </div>
       </section>
@@ -74,57 +95,110 @@ export function HomePage() {
               </tr>
             </thead>
             <tbody>
-              {sortedSvS.map((record) => (
-                <tr>
-                  <td>{record.opponent}</td>
-                  <td>
-                    {record.prepWin !== undefined ? (
-                      record.prepWin ? (
-                        <span class="text-sky-400 font-extrabold">Win</span>
-                      ) : (
-                        <span class="text-red-500 font-light">Lose</span>
-                      )
-                    ) : (
-                      <span class="text-green-500">Ongoing</span>
-                    )}
-                  </td>
-                  <td>
-                    {record.battleWin !== undefined ? (
-                      record.battleWin ? (
-                        <span class="text-sky-400 font-extrabold">Win</span>
-                      ) : (
-                        <span class="text-red-500 font-light">Lose</span>
-                      )
-                    ) : (
-                      <span class="text-green-500">Ongoing</span>
-                    )}
-                  </td>
-                  <td>
-                    {record.battleDate.toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                  </td>
-                  <td>
-                    {record.president !== undefined ? (
-                      record.president
-                    ) : (
-                      <span class="text-green-500">Not yet appointed</span>
-                    )}
-                    {record.supreme !== undefined && (
-                      <>
-                        <br />
-                        {record.supreme ? (
-                          <span class="text-sky-400">Supreme President</span>
+              {(data?.svSRecords ?? Array.from({ length: 10 })).map(
+                (record, index) => {
+                  const isLoading = !data || !record;
+
+                  return (
+                    <tr key={isLoading ? `svs-shimmer-${index}` : index}>
+                      <td>
+                        {isLoading ? (
+                          <span
+                            aria-hidden="true"
+                            class="inline-block h-[1em] w-28 rounded bg-gray-600/60 animate-pulse"
+                          />
+                        ) : record.opponent ? (
+                          `#${record.opponent}`
                         ) : (
-                          <span class="text-red-500">Invader</span>
+                          "Unknown"
                         )}
-                      </>
-                    )}
-                  </td>
-                </tr>
-              ))}
+                      </td>
+
+                      <td>
+                        {isLoading ? (
+                          <span
+                            aria-hidden="true"
+                            class="inline-block h-[1em] w-16 rounded bg-gray-600/60 animate-pulse"
+                          />
+                        ) : record.prepWin !== undefined ? (
+                          record.prepWin ? (
+                            <span class="text-sky-400 font-extrabold">Win</span>
+                          ) : (
+                            <span class="text-red-500 font-light">Lose</span>
+                          )
+                        ) : (
+                          <span class="text-green-500">Ongoing</span>
+                        )}
+                      </td>
+
+                      <td>
+                        {isLoading ? (
+                          <span
+                            aria-hidden="true"
+                            class="inline-block h-[1em] w-16 rounded bg-gray-600/60 animate-pulse"
+                          />
+                        ) : record.battleWin !== undefined ? (
+                          record.battleWin ? (
+                            <span class="text-sky-400 font-extrabold">Win</span>
+                          ) : (
+                            <span class="text-red-500 font-light">Lose</span>
+                          )
+                        ) : (
+                          <span class="text-green-500">Ongoing</span>
+                        )}
+                      </td>
+
+                      <td>
+                        {isLoading ? (
+                          <span
+                            aria-hidden="true"
+                            class="inline-block h-[1em] w-32 rounded bg-gray-600/60 animate-pulse"
+                          />
+                        ) : (
+                          record.battleDate.toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                          })
+                        )}
+                      </td>
+
+                      <td>
+                        {isLoading ? (
+                          <span
+                            aria-hidden="true"
+                            class="inline-block h-[1em] w-44 rounded bg-gray-600/60 animate-pulse"
+                          />
+                        ) : (
+                          <>
+                            {record.president !== undefined ? (
+                              record.president
+                            ) : (
+                              <span class="text-green-500">
+                                Not yet appointed
+                              </span>
+                            )}
+                            {record.prepWin !== undefined &&
+                              record.battleWin !== undefined &&
+                              record.prepWin == record.battleWin && (
+                                <>
+                                  <br />
+                                  {record.prepWin ? (
+                                    <span class="text-sky-400">
+                                      Supreme President
+                                    </span>
+                                  ) : (
+                                    <span class="text-red-500">Invader</span>
+                                  )}
+                                </>
+                              )}
+                          </>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                },
+              )}
             </tbody>
           </table>
         </div>

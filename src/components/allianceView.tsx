@@ -1,10 +1,91 @@
 import { formatPower, getGloryIcons } from "@/utils/alliance";
 import type { Alliance } from "@/utils/types";
-import { getBannerUrl } from "@/utils/utils";
+import {
+  getAvatarUrl,
+  getBannerUrl,
+  getSocialMediaLogoUrl,
+} from "@/utils/utils";
 
 import blankUser from "@/assets/avatars/blank.svg";
 
-export function AllianceView({ alliance }: { alliance: Alliance }) {
+const requirementsNames = new Map<string, string>([
+  ["fcLevel", "FC level"],
+  ["minimumPower", "Minimum Power"],
+]);
+
+function AllianceViewShimmer() {
+  return (
+    <div class="flex flex-col bg-slate-800 px-2 py-6 xl:p-10 rounded-lg">
+      <div class="mb-10 animate-pulse">
+        <div class="flex items-center gap-6">
+          <div class="size-32 rounded bg-slate-700/60" />
+          <div class="flex-1">
+            <div class="h-8 w-72 max-w-full rounded bg-slate-700/60 mb-2" />
+            <div class="flex flex-row items-center justify-between gap-10 max-w-1/2 lg:max-w-1/3">
+              <div class="h-6 w-40 rounded bg-slate-700/60" />
+              <div class="h-6 w-32 rounded bg-slate-700/60" />
+            </div>
+            <div class="flex items-center gap-2 mt-3">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div key={i} class="size-6 rounded bg-slate-700/60" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 mb-10 xl:gap-40 animate-pulse">
+        <div class="p-4">
+          <div class="h-5 w-40 rounded bg-slate-700/60 mb-6" />
+          <ul class="space-y-4">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <li key={i} class="flex items-center justify-between text-sm">
+                <div class="h-4 w-36 rounded bg-slate-700/60" />
+                <div class="h-4 w-16 rounded bg-slate-700/60" />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="p-4 animate-pulse">
+          <div class="h-5 w-56 rounded bg-slate-700/60 mb-6" />
+          <div class="grid grid-cols-2 gap-y-4 gap-x-6">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} class="flex flex-col gap-2">
+                <div class="h-3 w-20 rounded bg-slate-700/60" />
+                <div class="h-4 w-24 rounded bg-slate-700/60" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-2 pl-4 border-t border-slate-400/10 flex flex-col">
+        <div class="h-5 w-24 rounded bg-slate-700/60 my-4" />
+        <div class="flex flex-wrap gap-12 items-start pb-2 animate-pulse">
+          {Array.from({ length: 2 }).map((_, i) => (
+            <div key={i} class="flex flex-row gap-3 items-start">
+              <div class="size-14 rounded-lg bg-slate-700/60" />
+              <div class="flex flex-col gap-2">
+                <div class="h-4 w-28 rounded bg-slate-700/60" />
+                <div class="flex flex-row gap-2">
+                  {Array.from({ length: 2 }).map((__, j) => (
+                    <div key={j} class="size-8 rounded bg-slate-700/60" />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function AllianceView({ alliance }: { alliance: Alliance | null }) {
+  // alliance = null;
+  if (!alliance) return <AllianceViewShimmer />;
+
   return (
     <div class="flex flex-col bg-slate-800 px-2 py-6 xl:p-10 rounded-lg">
       <div class="mb-10">
@@ -46,14 +127,19 @@ export function AllianceView({ alliance }: { alliance: Alliance }) {
             Requirements
           </h3>
           <ul class="space-y-4">
-            {Array.from(
-              alliance.recruitment?.requirements?.entries() ?? [],
-            ).map(([key, value]) => (
-              <li key={key} class="flex items-center justify-between text-sm">
-                <span class="text-gray-300">{key}</span>
-                <span>{value}</span>
-              </li>
-            ))}
+            {Array.from(alliance.recruitment?.requirements ?? []).map(
+              ({ requirement, value }) => (
+                <li
+                  key={requirement}
+                  class="flex items-center justify-between text-sm"
+                >
+                  <span class="text-gray-300">
+                    {requirementsNames.get(requirement) ?? requirement}
+                  </span>
+                  <span>{value}</span>
+                </li>
+              ),
+            )}
           </ul>
         </div>
         <div class="p-4">
@@ -62,15 +148,15 @@ export function AllianceView({ alliance }: { alliance: Alliance }) {
           </h3>
           <div class="grid grid-cols-2 gap-y-4 gap-x-6">
             {(() => {
-              const events = alliance.recruitment?.events;
+              const events = alliance.recruitment?.eventTimes;
               if (!events) return null;
 
-              const items: Array<[label: string, time?: string]> = [
+              const items: Array<[label: string, time?: string | null]> = [
                 ["Bear Trap", events.bearTrap],
                 ["Foundry", events.foundry],
                 ["Canyon", events.canyon],
                 ["Crazy Joe", events.crazyJoe],
-                ["Mercenary Bosses", events.mercenary],
+                ["Mercenary Bosses", events.mercenaryBosses],
               ];
 
               return items
@@ -98,7 +184,11 @@ export function AllianceView({ alliance }: { alliance: Alliance }) {
                 {alliance.recruitment?.recruiters?.map((recruiter) => (
                   <div class="flex flex-row gap-3">
                     <img
-                      src={recruiter.image ?? blankUser}
+                      src={
+                        recruiter.imageUrl
+                          ? getAvatarUrl(recruiter.imageUrl!)
+                          : blankUser
+                      }
                       alt=""
                       class="size-14 rounded-lg object-cover bg-gray-900"
                     />
@@ -112,9 +202,13 @@ export function AllianceView({ alliance }: { alliance: Alliance }) {
                           </div>
                         )}
                         {recruiter.contact &&
-                          recruiter.contact.map(({ mediaIcon, url }) => (
+                          recruiter.contact.map(({ socialMedia, url }) => (
                             <a href={url} target="_blank">
-                              <img src={mediaIcon} alt="" class="size-8" />
+                              <img
+                                src={getSocialMediaLogoUrl(socialMedia)}
+                                alt=""
+                                class="size-8"
+                              />
                             </a>
                           ))}
                       </div>

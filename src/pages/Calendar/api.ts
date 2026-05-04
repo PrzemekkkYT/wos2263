@@ -71,14 +71,10 @@ export async function fetchApiData() {
   const result = ApiFetchSchema.safeParse(data);
 
   if (!result.success) {
-    console.error("Błąd walidacji danych z CMS:", z.treeifyError(result.error));
+    console.error("CMS data validation error:", z.treeifyError(result.error));
     throw new Error("Invalid CMS data structure");
   }
-  // return [
-  //   result.data.timelineEvents as TimelineEvent[],
-  //   result.data.eventGroups as Group[],
-  //   result.data.setting,
-  // ];
+
   return {
     timelineEvents: result.data.timelineEvents,
     eventItems: result.data.eventItems,
