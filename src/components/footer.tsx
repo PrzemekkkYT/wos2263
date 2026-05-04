@@ -1,8 +1,6 @@
 import googlePlay from "@/assets/logos/googleplay.svg";
 import appStore from "@/assets/logos/appstore.svg";
 
-import { appData } from "@/data/app";
-
 import { apiData } from "@/utils/stateApi";
 
 export function Footer() {
@@ -43,7 +41,7 @@ export function Footer() {
         </span>
         <span class="mt-4 text-xs md:text-base text-gray-400">
           © {new Date().getFullYear()}{" "}
-          {data?.setting.authorName ?? appData.author}
+          {data?.setting.authorName ?? "[ONE]Przemekkk"}
           <br />
           Version: {data?.setting.version ?? -1}
         </span>
