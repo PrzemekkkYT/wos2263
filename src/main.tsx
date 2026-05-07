@@ -11,6 +11,7 @@ import { Background } from "@/components/background";
 import { HomePage } from "@/pages/Home/Home";
 import { RecruitmentPage } from "@/pages/Recruitment";
 import { CalendarPage } from "@/pages/Calendar/Calendar";
+import { DreamscapeMemoryPage } from "@/pages/Tools/DreamscapeMemory/DreamscapeMemory";
 
 // styles
 import "@/styles/shared.css";
@@ -27,6 +28,10 @@ function App() {
         <Route path="/" component={HomePage} />
         <Route path="/recruitment" component={RecruitmentPage} />
         <Route path="/calendar" component={CalendarPage} />
+        <Route
+          path="/tools/dreamscapememory"
+          component={DreamscapeMemoryPage}
+        />
         <Route>
           <main>
             <section>

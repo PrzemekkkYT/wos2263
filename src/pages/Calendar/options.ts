@@ -41,7 +41,7 @@ export const options: TimelineOptions = {
 
     return `
       <div class="item-wrapper">
-        ${!iconUrl.includes("undefined") ? "<img src=" + iconUrl + ' alt=""/>' : ""}
+        ${!iconUrl.includes("undefined") ? "<img src=" + iconUrl + ' alt="" loading="lazy"/>' : ""}
         <span class="item-text ">${item.content}</span>
       </div>
     `;
@@ -66,6 +66,7 @@ export const options: TimelineOptions = {
       const img = document.createElement("img");
       img.src = iconUrl;
       img.alt = "";
+      img.loading = "lazy";
 
       cont2.appendChild(img);
     }
