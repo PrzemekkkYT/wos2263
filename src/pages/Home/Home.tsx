@@ -122,9 +122,11 @@ export function HomePage() {
                           />
                         ) : record.prepWin !== undefined ? (
                           record.prepWin ? (
-                            <span class="text-sky-400 font-extrabold">Win</span>
+                            <span class="text-sky-400 font-extrabold">
+                              Victory
+                            </span>
                           ) : (
-                            <span class="text-red-500 font-light">Lose</span>
+                            <span class="text-red-500 font-light">Defeat</span>
                           )
                         ) : (
                           <span class="text-green-500">Ongoing</span>
@@ -139,9 +141,11 @@ export function HomePage() {
                           />
                         ) : record.battleWin !== undefined ? (
                           record.battleWin ? (
-                            <span class="text-sky-400 font-extrabold">Win</span>
+                            <span class="text-sky-400 font-extrabold">
+                              Victory
+                            </span>
                           ) : (
-                            <span class="text-red-500 font-light">Lose</span>
+                            <span class="text-red-500 font-light">Defeat</span>
                           )
                         ) : (
                           <span class="text-green-500">Ongoing</span>
