@@ -107,7 +107,11 @@ export function AllianceSmallCard({
         <span class="text-sky-400 font-bold">
           #{rank.toString().padStart(2, "0")}
         </span>
-        <img src={getBannerUrl(data.tag)} alt={data.tag} class="size-12" />
+        <img
+          src={getBannerUrl(data.bannerName)}
+          alt={data.tag}
+          class="size-12"
+        />
       </div>
 
       <div class="flex flex-row justify-between">
