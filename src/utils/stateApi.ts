@@ -23,7 +23,7 @@ export async function runStateApiFetch() {
           president
       }
 
-      alliances {
+      alliances(orderBy: power_DESC) {
         tag
         name
         power
