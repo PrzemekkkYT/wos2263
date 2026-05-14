@@ -31,7 +31,7 @@ export function AllianceBigCard({
       <div class="relative z-10">
         <div class="flex flex-row items-end mb-6">
           <div class="p-2 w-24 h-24 bg-slate-900 rounded-lg flex items-center justify-center">
-            <img src={getBannerUrl(data.tag)} alt={data.tag} />
+            <img src={getBannerUrl(data.bannerName)} alt={data.tag} />
           </div>
         </div>
 
