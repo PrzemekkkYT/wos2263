@@ -120,7 +120,7 @@ export function HomePage() {
                             aria-hidden="true"
                             class="inline-block h-[1em] w-16 rounded bg-gray-600/60 animate-pulse"
                           />
-                        ) : record.prepWin !== undefined ? (
+                        ) : record.prepWin !== null ? (
                           record.prepWin ? (
                             <span class="text-sky-400 font-extrabold">
                               Victory
@@ -139,7 +139,7 @@ export function HomePage() {
                             aria-hidden="true"
                             class="inline-block h-[1em] w-16 rounded bg-gray-600/60 animate-pulse"
                           />
-                        ) : record.battleWin !== undefined ? (
+                        ) : record.battleWin !== null ? (
                           record.battleWin ? (
                             <span class="text-sky-400 font-extrabold">
                               Victory
@@ -175,15 +175,15 @@ export function HomePage() {
                           />
                         ) : (
                           <>
-                            {record.president !== undefined ? (
+                            {record.president !== null ? (
                               record.president
                             ) : (
                               <span class="text-green-500">
                                 Not yet appointed
                               </span>
                             )}
-                            {record.prepWin !== undefined &&
-                              record.battleWin !== undefined &&
+                            {record.prepWin !== null &&
+                              record.battleWin !== null &&
                               record.prepWin == record.battleWin && (
                                 <>
                                   <br />
