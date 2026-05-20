@@ -2,7 +2,7 @@ import { DataSet } from "vis-data";
 import { type IdType } from "vis-timeline";
 import {
   type EventItem,
-  type ExtendedDataGroup,
+  type EventGroup,
   type Group,
   type TimelineEvent,
   type TimelineEventItem,
@@ -15,7 +15,7 @@ export function processGroups(
   fetchedEvents: TimelineEvent[],
   topLevelOrder: string[],
 ) {
-  const groupMap = new Map<string, ExtendedDataGroup>();
+  const groupMap = new Map<string, EventGroup>();
   const processedIds = new Set<string>();
   let currentOrder = 0;
 
@@ -27,14 +27,25 @@ export function processGroups(
       (indexA === -1 ? Infinity : indexA) - (indexB === -1 ? Infinity : indexB)
     );
   })) {
+    const nestedGroupIds = new Set<string>();
+
+    for (const childId of fetchedGroup.children) {
+      if (fetchedGroups.some((g) => g.groupId === childId)) {
+        nestedGroupIds.add(childId);
+      } else if (fetchedEvents.some((e) => e.eventId === childId)) {
+        nestedGroupIds.add(childId);
+      }
+    }
+
     groupMap.set(fetchedGroup.groupId, {
       id: fetchedGroup.groupId,
       content: fetchedGroup.name,
-      nestedGroups: fetchedGroup.children as IdType[],
+      nestedGroups: [...nestedGroupIds] as IdType[],
       showNested: true,
       style: fetchedGroup.color
         ? `background-color: ${fetchedGroup.color} !important`
         : undefined,
+      iconPath: fetchedGroup.icon,
     });
   }
 
@@ -42,6 +53,7 @@ export function processGroups(
     groupMap.set(fetchedEvent.eventId, {
       id: fetchedEvent.eventId,
       content: fetchedEvent.title,
+      iconPath: fetchedEvent.icon,
     });
   }
 
@@ -80,7 +92,7 @@ export function processGroups(
     }
   }
 
-  return new DataSet<ExtendedDataGroup>([...groupMap.values()]);
+  return new DataSet<EventGroup>([...groupMap.values()]);
 }
 
 export function processEvents(
@@ -124,6 +136,7 @@ export function processEvents(
             style: `background-color: ${event.color}`,
             group: event.eventId,
             description: event.description,
+            iconPath: event.icon,
           };
 
           newItems.push(newItem);
@@ -148,6 +161,7 @@ export function processEvents(
             group: event.eventId,
             description: event.description,
             type: event.itemType,
+            iconPath: event.icon,
           };
 
           newItems.push(newItem);
@@ -188,6 +202,7 @@ export function processEventItems(
       group: event.parentEvent,
       description: event.description,
       type: event.itemType,
+      iconPath: event.icon,
     };
 
     newItems.push(newItem);

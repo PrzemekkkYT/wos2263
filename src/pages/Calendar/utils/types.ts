@@ -8,7 +8,8 @@ export interface EventItem extends DataItem {
   description?: string | null;
 }
 
-export interface ExtendedDataGroup extends DataGroup {
+export interface EventGroup extends DataGroup {
+  iconPath?: string | null;
   order?: number;
 }
 
@@ -23,7 +24,6 @@ const WeekdayStrSchema = z.enum(["MO", "TU", "WE", "TH", "FR", "SA", "SU"]);
 
 export const RecurrenceSchema = z.object({
   startDate: z.string().transform((str) => {
-    // Dodajemy 'T00:00:00Z', aby wymusić interpretację jako UTC
     const date = new Date(`${str}T00:00:00Z`);
 
     if (isNaN(date.getTime())) {
@@ -40,7 +40,6 @@ export const RecurrenceSchema = z.object({
   untilDate: z
     .string()
     .transform((str) => {
-      // Dodajemy 'T00:00:00Z', aby wymusić interpretację jako UTC
       const date = new Date(`${str}T00:00:00Z`);
 
       if (isNaN(date.getTime())) {
@@ -56,8 +55,8 @@ export const TimelineEventSchema = z.object({
   title: z.string(),
   eventId: z.string(),
   durationDays: z.number(),
-  itemTitle: z.string().nullable().optional(),
-  description: z.string().nullable().optional(),
+  itemTitle: z.string().nullish(),
+  description: z.string().nullish(),
   color: z
     .string()
     .transform((val) => val.replace(/^C_/, "#"))
@@ -67,14 +66,19 @@ export const TimelineEventSchema = z.object({
     .string()
     .nullable()
     .transform((val) => val ?? "range"),
-  recurrenceRules: z.array(RecurrenceSchema).nullable().optional(),
-  occurrences: z.array(z.string()).nullable().optional(),
+  recurrenceRules: z.array(RecurrenceSchema).nullish(),
+  occurrences: z.array(z.string()).nullish(),
+  icon: z
+    .object({
+      url: z.string(),
+    })
+    .transform((val) => val.url)
+    .nullish(),
 });
 
 export const TimelineEventItemSchema = z.object({
   title: z.string(),
   startDate: z.string().transform((str) => {
-    // Dodajemy 'T00:00:00Z', aby wymusić interpretację jako UTC
     const date = new Date(`${str}T00:00:00Z`);
 
     if (isNaN(date.getTime())) {
@@ -83,7 +87,7 @@ export const TimelineEventItemSchema = z.object({
     return date;
   }),
   durationDays: z.number().optional().default(1),
-  description: z.string().nullable().optional(),
+  description: z.string().nullish(),
   color: z
     .string()
     .transform((val) => val.replace(/^C_/, "#"))
@@ -96,6 +100,12 @@ export const TimelineEventItemSchema = z.object({
   parentEvent: z
     .object({ eventId: z.string() })
     .transform((val) => val.eventId),
+  icon: z
+    .object({
+      url: z.string(),
+    })
+    .transform((val) => val.url)
+    .nullish(),
 });
 
 const ChildItemSchema = z
@@ -114,10 +124,13 @@ export const GroupSchema = z.object({
     .transform((val) => val.replace(/^C_/, "#"))
     .nullable()
     .optional(),
-  children: z
-    .array(ChildItemSchema)
-    // .transform((val) => val)
-    .default([]),
+  children: z.array(ChildItemSchema).default([]),
+  icon: z
+    .object({
+      url: z.string(),
+    })
+    .transform((val) => val.url)
+    .nullish(),
 });
 
 export const ApiFetchSchema = z.object({

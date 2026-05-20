@@ -1,12 +1,11 @@
 import { formatPower, getGloryIcons } from "@/utils/alliance";
 import type { Alliance } from "@/utils/types";
-import {
-  getAvatarUrl,
-  getBannerUrl,
-  getSocialMediaLogoUrl,
-} from "@/utils/utils";
+import { getAvatarUrl, getBannerUrl } from "@/utils/utils";
 
 import blankUser from "@/assets/avatars/blank.svg";
+import discordLogo from "@/assets/logos/discord.svg";
+
+const socialMediaLogos = new Map<string, string>([["discord", discordLogo]]);
 
 const requirementsNames = new Map<string, string>([
   ["fcLevel", "FC level"],
@@ -83,7 +82,6 @@ function AllianceViewShimmer() {
 }
 
 export function AllianceView({ alliance }: { alliance: Alliance | null }) {
-  // alliance = null;
   if (!alliance) return <AllianceViewShimmer />;
 
   return (
@@ -205,7 +203,7 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
                           recruiter.contact.map(({ socialMedia, url }) => (
                             <a href={url} target="_blank">
                               <img
-                                src={getSocialMediaLogoUrl(socialMedia)}
+                                src={socialMediaLogos.get(socialMedia) ?? ""}
                                 alt=""
                                 class="size-8"
                               />

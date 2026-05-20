@@ -1,5 +1,4 @@
 import { AllianceBigCard, AllianceSmallCard } from "@/components/allianceCard";
-// import { alliances } from "@/data/alliances";
 
 import discordLogo from "@/assets/logos/discord_big.svg";
 

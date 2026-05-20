@@ -1,5 +1,4 @@
 import tailwindcss from "@tailwindcss/vite";
-// import {} from "@tailwindcss/typography";
 import { defineConfig } from "vite";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";

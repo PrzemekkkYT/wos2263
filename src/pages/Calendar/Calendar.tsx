@@ -4,12 +4,15 @@ import { Timeline, type DateType } from "vis-timeline/standalone";
 import { fetchApiData } from "./api";
 import { processEventItems, processEvents, processGroups } from "./processor";
 import { options } from "./options";
-import { addDays, getEventIconUrl, startOfDay } from "@/utils/utils";
+import { addDays, startOfDay } from "@/utils/utils";
 
 import "./style.css";
 import { CountdownSection } from "./components/countdownSection";
 import type { ApiFetch } from "./utils/types";
 import { findNextOccurrence } from "./utils/utils";
+
+import heroGenIcon from "@/assets/icons/hero_gen.png";
+import whiteoutLogo from "@/assets/icons/whiteout_logo.png";
 
 export function CalendarPage() {
   const timelineContainerRef = useRef<HTMLDivElement>(null);
@@ -157,13 +160,13 @@ export function CalendarPage() {
             <CountdownSection
               type="hero-generation"
               items={apiData.timelineEvents}
-              image={getEventIconUrl("hero_generation")}
+              image={heroGenIcon}
             />
             <CountdownSection
               type="other-state-changes"
               items={apiData.timelineEvents}
               eventItems={apiData.eventItems}
-              image={getEventIconUrl("state_changes")}
+              image={whiteoutLogo}
             />
           </>
         )}

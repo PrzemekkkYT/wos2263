@@ -1,14 +1,9 @@
 import { AllianceView } from "@/components/allianceView";
-// import { useStateApi } from "@/utils/hooks";
-// import { alliances } from "@/data/alliances";
-
-// const sortedAl = [...alliances].sort((a, b) => b.power - a.power);
 
 import { apiData } from "@/utils/stateApi";
 import type { StateApiFetch } from "@/utils/types";
 
 export function RecruitmentPage() {
-  // const apiData = useStateApi();
   const data: StateApiFetch | null = apiData.value;
 
   return (

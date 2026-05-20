@@ -1,10 +1,9 @@
 // default import
 import moment from "moment";
-import type { DataGroup, TimelineOptions } from "vis-timeline";
+import type { TimelineOptions } from "vis-timeline";
 
 // local import
-import { getEventIconUrl } from "@/utils/utils";
-import type { EventItem } from "./utils/types";
+import type { EventGroup, EventItem } from "./utils/types";
 
 export const options: TimelineOptions = {
   stack: false,
@@ -30,31 +29,21 @@ export const options: TimelineOptions = {
     },
   },
   moment: (date: moment.MomentInput) => {
-    return moment(date).utc(); // Wymusza renderowanie osi czasu w UTC
+    return moment(date).utc();
   },
   align: "center",
   template: (item: EventItem) => {
-    const rawClass = item.group?.toString() || "default";
-    const iconName = rawClass.replaceAll("-", "_");
-
-    const iconUrl = getEventIconUrl(iconName);
-
     return `
       <div class="item-wrapper">
-        ${!iconUrl.includes("undefined") ? "<img src=" + iconUrl + ' alt=""/>' : ""}
+        ${item.iconPath ? "<img src=" + item.iconPath + ' alt=""/>' : ""}
         <span class="item-text ">${item.content}</span>
       </div>
     `;
   },
-  groupTemplate: (group: DataGroup) => {
+  groupTemplate: (group: EventGroup) => {
     if (!group || !group.id) {
       return document.createElement("div");
     }
-
-    const rawClass = group.id.toString() || "default";
-    const iconName = rawClass.replaceAll("-", "_");
-
-    const iconUrl = getEventIconUrl(iconName);
 
     const cont = document.createElement("div");
     cont.className = "item-wrapper";
@@ -62,16 +51,16 @@ export const options: TimelineOptions = {
     const cont2 = document.createElement("div");
     cont2.className = "item-title";
 
-    if (!iconUrl.includes("undefined")) {
+    if (group.iconPath) {
       const img = document.createElement("img");
-      img.src = iconUrl;
+      img.src = group.iconPath;
       img.alt = "";
 
       cont2.appendChild(img);
     }
 
     const span = document.createElement("span");
-    span.classList = `item-text ${iconUrl.includes("undefined") ? "" : "hidden"} sm:block!`;
+    span.classList = `item-text ${group.iconPath ? "hidden" : ""} sm:block!`;
     span.innerHTML = group.content.toString();
 
     cont2.appendChild(span);

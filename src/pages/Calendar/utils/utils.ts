@@ -116,7 +116,6 @@ export function startCountdown(
       title.textContent = createTitle(event.content);
     }
     if (countdown) {
-      // countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
       countdown.textContent = createCountdown(days, hours, minutes, seconds);
     }
 

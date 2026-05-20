@@ -3,7 +3,6 @@ import z from "zod";
 // Schematic for SvS Records
 const SvSRecordSchema = z.object({
   battleDate: z.string().transform((str) => {
-    // Dodajemy 'T00:00:00Z', aby wymusić interpretację jako UTC
     const date = new Date(`${str}T00:00:00Z`);
 
     if (isNaN(date.getTime())) {
@@ -78,11 +77,9 @@ const AllianceSchema = z.object({
 
 // Schematic for Settings
 const SettingSchema = z.object({
-  // settingId: z.string(),
   latestDataUpdate: z
     .string()
     .transform((str) => {
-      // Dodajemy 'T00:00:00Z', aby wymusić interpretację jako UTC
       const date = new Date(str);
 
       if (isNaN(date.getTime())) {
