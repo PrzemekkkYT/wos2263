@@ -52,17 +52,6 @@ export function CalendarPage() {
       animation: false,
     });
 
-    // const focusTimer = setTimeout(() => {
-    //   if (timelineInstanceRef.current) {
-    //     const vs = timelineContainerRef.current?.querySelector(
-    //       ".vis-vertical-scroll",
-    //     );
-    //     if (vs) {
-    //       vs.scrollTop = -100;
-    //     }
-    //   }
-    // }, 200);
-
     timeline.on("rangechanged", () => {
       const window = timeline.getWindow();
       const newItems = [
@@ -115,7 +104,6 @@ export function CalendarPage() {
     return () => {
       window.removeEventListener("timeline:jump", handleJumpSignal);
       clearTimeout(focusTimer);
-      // clearTimeout(rangeTimer);
       if (timelineInstanceRef.current) {
         timelineInstanceRef.current.destroy();
         timelineInstanceRef.current = null;

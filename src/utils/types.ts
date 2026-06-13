@@ -70,7 +70,11 @@ const AllianceSchema = z.object({
   name: z.string(),
   power: z.number().transform((num) => num * 10 ** 9),
   playerCount: z.number(),
-  bannerName: z.string(),
+  banner: z
+    .object({
+      url: z.string(),
+    })
+    .transform((val) => val.url),
   glory: z.number().nullish(),
   recruitment: RecruitmentSchema.nullish(),
 });

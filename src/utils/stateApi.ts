@@ -28,7 +28,9 @@ export async function runStateApiFetch() {
         name
         power
         playerCount
-        bannerName
+        banner {
+          url
+        }
         glory
         recruitment {
           language

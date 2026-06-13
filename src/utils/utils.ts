@@ -26,13 +26,6 @@ export function getImageUrl(iconName: string) {
   return new URL(`../assets/images/${iconName}.png`, import.meta.url).href;
 }
 
-export function getBannerUrl(allianceTag: string) {
-  return new URL(
-    `../assets/banners/${allianceTag.toLowerCase()}.png`,
-    import.meta.url,
-  ).href;
-}
-
 export function getAvatarUrl(avatarName: string) {
   return new URL(`../assets/avatars/${avatarName}.png`, import.meta.url).href;
 }

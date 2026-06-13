@@ -1,6 +1,6 @@
 import { formatPower, getGloryIcons } from "@/utils/alliance";
 import type { Alliance } from "@/utils/types";
-import { getAvatarUrl, getBannerUrl } from "@/utils/utils";
+import { getAvatarUrl } from "@/utils/utils";
 
 import blankUser from "@/assets/avatars/blank.svg";
 import discordLogo from "@/assets/logos/discord.svg";
@@ -88,7 +88,7 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
     <div class="flex flex-col bg-slate-800 px-2 py-6 xl:p-10 rounded-lg">
       <div class="mb-10">
         <div class="flex items-center gap-6">
-          <img src={getBannerUrl(alliance.bannerName)} class="size-32" />
+          <img src={alliance.banner} class="size-32" />
           <div>
             <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-1">
               [{alliance.tag}] {alliance.name}

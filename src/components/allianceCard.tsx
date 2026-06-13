@@ -1,5 +1,4 @@
 import { formatPower, getGloryIcons } from "@/utils/alliance";
-import { getBannerUrl } from "@/utils/utils";
 import type { Alliance } from "@/utils/types";
 
 const shimmer = "text-transparent bg-gray-600 animate-pulse rounded";
@@ -31,7 +30,7 @@ export function AllianceBigCard({
       <div class="relative z-10">
         <div class="flex flex-row items-end mb-6">
           <div class="p-2 w-24 h-24 bg-slate-900 rounded-lg flex items-center justify-center">
-            <img src={getBannerUrl(data.bannerName)} alt={data.tag} />
+            <img src={data.banner} alt={data.tag} />
           </div>
         </div>
 
@@ -86,7 +85,6 @@ function AllianceBigCardSkeleton({ rank }: { rank: number }) {
         <div class={`size-8 ${shimmer}`} />
       </div>
     </div>
-    // </div>
   );
 }
 
@@ -107,11 +105,7 @@ export function AllianceSmallCard({
         <span class="text-sky-400 font-bold">
           #{rank.toString().padStart(2, "0")}
         </span>
-        <img
-          src={getBannerUrl(data.bannerName)}
-          alt={data.tag}
-          class="size-12"
-        />
+        <img src={data.banner} alt={data.tag} class="size-12" />
       </div>
 
       <div class="flex flex-row justify-between">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import { findNextOccurrence } from "../utils/utils"; // Twoja stara funkcja logiczna
+import { findNextOccurrence } from "../utils/utils";
 
 interface Props {
   type: string;
@@ -20,7 +20,6 @@ export function CountdownSection({
   const [eventTitle, setEventTitle] = useState<string>("");
 
   useEffect(() => {
-    // 1. Znajdujemy najbliższe wydarzenie używając Twojej logiki
     const nextEvent = findNextOccurrence(items, type, eventItems);
 
     if (!nextEvent) {
@@ -30,7 +29,6 @@ export function CountdownSection({
 
     setEventTitle(nextEvent.content);
 
-    // 2. Uruchamiamy interwał
     const timer = setInterval(() => {
       const now = new Date().getTime();
       const target = new Date(nextEvent.start).getTime();
@@ -42,7 +40,6 @@ export function CountdownSection({
         return;
       }
 
-      // Formatowanie czasu (Twoja stara logika)
       const d = Math.floor(diff / (1000 * 60 * 60 * 24));
       const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -56,9 +53,8 @@ export function CountdownSection({
       setTimeLeft(`${dd}d ${hh}h ${mm}m ${ss}s`);
     }, 1000);
 
-    // 3. CLEANUP: Zabijamy interwał przy zmianie strony
     return () => clearInterval(timer);
-  }, [type, items, eventItems]); // Odśwież, jeśli zmienią się dane wejściowe
+  }, [type, items, eventItems]);
 
   if (!timeLeft) return null;
 
