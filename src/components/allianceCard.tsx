@@ -1,5 +1,6 @@
-import { formatPower, getGloryIcons } from "@/utils/alliance";
+import { getGloryIcons } from "@/utils/alliance";
 import type { Alliance } from "@/utils/types";
+import { useTranslation } from "react-i18next";
 
 const shimmer = "text-transparent bg-gray-600 animate-pulse rounded";
 
@@ -18,6 +19,8 @@ export function AllianceBigCard({
   if (!data) {
     return <AllianceBigCardSkeleton rank={rank} />;
   }
+
+  const { t } = useTranslation();
 
   return (
     <div class="md:col-span-2 bg-slate-800 rounded-xl p-4 border border-slate-200/10 relative overflow-hidden group">
@@ -39,12 +42,13 @@ export function AllianceBigCard({
         </h3>
 
         <p class="text-sky-400 text-xl font-medium mb-6">
-          {formatPower(data.power)} Power
+          {/* {formatPower(data.power)} Power */}
+          {t("power", { power: data.power })}
         </p>
 
         <div
           class="flex items-center gap-4 py-4 border-t border-slate-500"
-          title={`Glory Path of the alliance | ${data.glory} SvS battles won`}
+          title={t("page_home:glory_path", { count: data.glory })}
         >
           {getGloryIcons(data.glory ?? 0).map((iconPath, index) => (
             <img key={index} src={iconPath} alt="Glory Icon" class="size-8" />
@@ -99,6 +103,8 @@ export function AllianceSmallCard({
     return <AllianceSmallCardSkeleton rank={rank} />;
   }
 
+  const { t } = useTranslation();
+
   return (
     <div class="bg-slate-800/50 p-6 md:p-4 rounded-xl border border-slate-500/30 transition-colors">
       <div class="flex justify-between items-start mb-4">
@@ -113,13 +119,15 @@ export function AllianceSmallCard({
           <h4 class="font-bold">
             [{data.tag}] {data.name}
           </h4>
-          <p class="text-gray-400 text-sm">{formatPower(data.power)} Power</p>
+          <p class="text-gray-400 text-sm">
+            {t("power", { power: data.power })}
+          </p>
         </div>
 
         {data.glory && (
           <div
             class="flex flex-row items-end"
-            title={`${data.glory} SvS battles won`}
+            title={t("page_home:glory_path", { count: data.glory })}
           >
             {getGloryIcons(data.glory).map((iconPath, index) => (
               <img key={index} src={iconPath} alt="Glory Icon" class="size-6" />

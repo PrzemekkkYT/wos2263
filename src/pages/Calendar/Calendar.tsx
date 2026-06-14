@@ -13,6 +13,7 @@ import { findNextOccurrence } from "./utils/utils";
 
 import heroGenIcon from "@/assets/icons/hero_gen.png";
 import whiteoutLogo from "@/assets/icons/whiteout_logo.png";
+import { useTranslation } from "react-i18next";
 
 export function CalendarPage() {
   const timelineContainerRef = useRef<HTMLDivElement>(null);
@@ -21,7 +22,9 @@ export function CalendarPage() {
 
   const [apiData, setApiData] = useState<ApiFetch | null>(null);
 
-  const [rtl, setRtl] = useState<boolean>(false);
+  const { t, i18n } = useTranslation();
+
+  const [rtl, setRtl] = useState<boolean>(["ar", "he", "fa", "ur"].includes(i18n.language));
 
   useEffect(() => {
     fetchApiData().then((data) => {
@@ -166,7 +169,7 @@ export function CalendarPage() {
               onClick={() => focusOnDate(new Date())}
               class="control-button"
             >
-              Today
+              {t("page_calendar:today")}
             </button>
             <input
               type="date"

@@ -7,17 +7,21 @@ import "./style.css";
 
 import { apiData } from "@/utils/stateApi";
 import type { StateApiFetch } from "@/utils/types";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 export function HomePage() {
   const data: StateApiFetch | null = apiData.value;
 
+  const { t } = useTranslation(["page_home", "common"]);
+
   return (
     <main>
       <section id="hero" class="h-[60vh]! mt-24 max-w-full!">
-        <h1 class="relative z-10 max-w-7xl mx-auto px-6 w-full tracking-tight text-center text-8xl xl:text-[10rem] font-bold animate-fade-down">
-          State 2263
+        <h1 class="relative z-10 max-w-7xl mx-auto px-6 w-full tracking-tight text-center text-7xl sm:sm:text-8xl xl:text-[10rem] font-bold animate-fade-down">
+          {t("state", { state: "2263" })}
         </h1>
-        <span class="text-xl xl:text-2xl z-10 mt-8 mb-2">Join our Discord</span>
+        <span class="text-xl xl:text-2xl z-10 mt-8 mb-2">{t("discord")}</span>
         <a
           href="https://discord.wos2263.com/"
           target="_blank"
@@ -29,28 +33,28 @@ export function HomePage() {
       <section id="alliance-rank">
         <div class="mb-10 flex flex-col self-start">
           <h2 class="text-3xl md:text-5xl font-bold tracking-tight">
-            Top 5 alliances
+            {t("top5")}
           </h2>
           {data?.setting?.latestDataUpdate ? (
             <span class="text-gray-400 mt-2 text-xs md:text-base">
-              {"Last Updated: " +
-                new Date(data.setting.latestDataUpdate).toLocaleString(
-                  "en-US",
-                  {
-                    month: "short",
-                    day: "2-digit",
-                    year: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: false,
-                    timeZone: "UTC",
-                    timeZoneName: "short",
-                  },
-                )}
+              {t("last_updated", {
+                date_time: new Date(
+                  data.setting.latestDataUpdate,
+                ).toLocaleString(i18next.language, {
+                  month: "short",
+                  day: "2-digit",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                  timeZone: "UTC",
+                  timeZoneName: "short",
+                }),
+              })}
             </span>
           ) : (
             <span class="text-gray-400 mt-2 text-xs md:text-base flex items-center gap-2">
-              <span>Last Updated:</span>
+              <span>{t("last_updated", { date_time: "" })}</span>
               <span
                 aria-hidden="true"
                 class="inline-block h-[1em] w-48 md:w-56 rounded bg-gray-600/60 animate-pulse"
@@ -76,21 +80,21 @@ export function HomePage() {
       <section id="svs-record">
         <div class="mb-10 flex flex-col self-start">
           <h2 class="text-3xl md:text-5xl font-bold tracking-tight">
-            SvS Record
+            {t("svs_record")}
           </h2>
           <span class="text-gray-400 mt-2 text-xs md:text-base">
-            Historical data from previous battle cycles.
+            {t("svs_record_description")}
           </span>
         </div>
         <div class="w-full overflow-auto">
           <table class="w-full" id="svs-table">
             <thead>
               <tr>
-                <th>Opponent</th>
-                <th>Prep Phase</th>
-                <th>Battle Phase</th>
-                <th>Battle Date</th>
-                <th>President</th>
+                <th>{t("opponent")}</th>
+                <th>{t("prep_phase")}</th>
+                <th>{t("battle_phase")}</th>
+                <th>{t("battle_date")}</th>
+                <th>{t("president")}</th>
               </tr>
             </thead>
             <tbody>
@@ -109,7 +113,7 @@ export function HomePage() {
                         ) : record.opponent ? (
                           `#${record.opponent}`
                         ) : (
-                          "Unknown"
+                          t("unknown")
                         )}
                       </td>
 
@@ -122,13 +126,15 @@ export function HomePage() {
                         ) : record.prepWin !== null ? (
                           record.prepWin ? (
                             <span class="text-sky-400 font-extrabold">
-                              Victory
+                              {t("victory")}
                             </span>
                           ) : (
-                            <span class="text-red-500 font-light">Defeat</span>
+                            <span class="text-red-500 font-light">
+                              {t("defeat")}
+                            </span>
                           )
                         ) : (
-                          <span class="text-green-500">Ongoing</span>
+                          <span class="text-green-500">{t("ongoing")}</span>
                         )}
                       </td>
 
@@ -141,13 +147,15 @@ export function HomePage() {
                         ) : record.battleWin !== null ? (
                           record.battleWin ? (
                             <span class="text-sky-400 font-extrabold">
-                              Victory
+                              {t("victory")}
                             </span>
                           ) : (
-                            <span class="text-red-500 font-light">Defeat</span>
+                            <span class="text-red-500 font-light">
+                              {t("defeat")}
+                            </span>
                           )
                         ) : (
-                          <span class="text-green-500">Ongoing</span>
+                          <span class="text-green-500">{t("ongoing")}</span>
                         )}
                       </td>
 
@@ -158,11 +166,14 @@ export function HomePage() {
                             class="inline-block h-[1em] w-32 rounded bg-gray-600/60 animate-pulse"
                           />
                         ) : (
-                          record.battleDate.toLocaleDateString("en-US", {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric",
-                          })
+                          record.battleDate.toLocaleDateString(
+                            i18next.language,
+                            {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric",
+                            },
+                          )
                         )}
                       </td>
 
@@ -178,7 +189,7 @@ export function HomePage() {
                               record.president
                             ) : (
                               <span class="text-green-500">
-                                Not yet appointed
+                                {t("not_appointed")}
                               </span>
                             )}
                             {record.prepWin !== null &&
@@ -188,10 +199,12 @@ export function HomePage() {
                                   <br />
                                   {record.prepWin ? (
                                     <span class="text-sky-400">
-                                      Supreme President
+                                      {t("supreme_president")}
                                     </span>
                                   ) : (
-                                    <span class="text-red-500">Invader</span>
+                                    <span class="text-red-500">
+                                      {t("invader")}
+                                    </span>
                                   )}
                                 </>
                               )}

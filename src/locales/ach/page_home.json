@@ -1,0 +1,22 @@
+{
+    "state": "crwdns109:0{{state}}crwdne109:0",
+    "discord": "crwdns111:0crwdne111:0",
+    "top5": "crwdns113:0crwdne113:0",
+    "last_updated": "crwdns115:0{{date_time}}crwdne115:0",
+    "svs_record": "crwdns119:0crwdne119:0",
+    "svs_record_description": "crwdns121:0crwdne121:0",
+    "opponent": "crwdns123:0crwdne123:0",
+    "unknown": "crwdns237:0crwdne237:0",
+    "prep_phase": "crwdns125:0crwdne125:0",
+    "battle_phase": "crwdns127:0crwdne127:0",
+    "battle_date": "crwdns235:0crwdne235:0",
+    "victory": "crwdns129:0crwdne129:0",
+    "defeat": "crwdns131:0crwdne131:0",
+    "ongoing": "crwdns239:0crwdne239:0",
+    "president": "crwdns133:0crwdne133:0",
+    "supreme_president": "crwdns135:0crwdne135:0",
+    "invader": "crwdns137:0crwdne137:0",
+    "not_appointed": "crwdns241:0crwdne241:0",
+    "glory_path_one": "crwdns117:1{{count}}crwdne117:1",
+    "glory_path_other": "crwdns117:5{{count}}crwdne117:5"
+}

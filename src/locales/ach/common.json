@@ -1,0 +1,19 @@
+{
+    "home": "crwdns95:0crwdne95:0",
+    "recruitment": "crwdns97:0crwdne97:0",
+    "calendar": "crwdns99:0crwdne99:0",
+    "get_whiteout": "crwdns1:0crwdne1:0",
+    "not_affiliated": "crwdns3:0crwdne3:0",
+    "version": "crwdns5:0{{version}}crwdne5:0",
+    "players": "crwdns7:0{{players}}crwdne7:0",
+    "power": "crwdns231:0{{power, compact}}crwdne231:0",
+    "english": "crwdns11:0crwdne11:0",
+    "polish": "crwdns13:0crwdne13:0",
+    "arabic": "crwdns15:0crwdne15:0",
+    "french": "crwdns17:0crwdne17:0",
+    "german": "crwdns19:0crwdne19:0",
+    "italian": "crwdns21:0crwdne21:0",
+    "korean": "crwdns23:0crwdne23:0",
+    "russian": "crwdns25:0crwdne25:0",
+    "spanish": "crwdns27:0crwdne27:0"
+}

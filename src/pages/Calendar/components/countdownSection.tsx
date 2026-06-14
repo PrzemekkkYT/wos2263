@@ -1,23 +1,19 @@
 import { useEffect, useState } from "preact/hooks";
 import { findNextOccurrence } from "../utils/utils";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   type: string;
   items: any[];
   eventItems?: any[];
-  titlePrefix?: string;
   image?: string;
 }
 
-export function CountdownSection({
-  type,
-  items,
-  eventItems,
-  titlePrefix = "Time until",
-  image,
-}: Props) {
+export function CountdownSection({ type, items, eventItems, image }: Props) {
   const [timeLeft, setTimeLeft] = useState<string | null>(null);
   const [eventTitle, setEventTitle] = useState<string>("");
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const nextEvent = findNextOccurrence(items, type, eventItems);
@@ -63,7 +59,7 @@ export function CountdownSection({
       <img src={image} class="md:mr-3 w-12 md:w-16" />
       <div class="flex flex-col">
         <span class="">
-          {titlePrefix} {eventTitle}:
+          {t("page_calendar:time_until", { title: eventTitle })}
         </span>
         <span class="text-sky-400 font-semibold text-base tabular-nums">
           {timeLeft}

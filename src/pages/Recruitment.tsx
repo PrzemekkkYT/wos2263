@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { AllianceView } from "@/components/allianceView";
 
 import { apiData } from "@/utils/stateApi";
@@ -6,15 +8,16 @@ import type { StateApiFetch } from "@/utils/types";
 export function RecruitmentPage() {
   const data: StateApiFetch | null = apiData.value;
 
+  const { t } = useTranslation();
+
   return (
     <main>
       <section class="mt-24 min-h-[40vh]! items-start!">
         <h1 class="relative z-10 max-w-7xl w-full tracking-tight text-left text-6xl md:text-8xl xl:text-[10rem] font-bold animate-fade-down">
-          Recruitment
+          {t("recruitment")}
         </h1>
         <h5 class="relative z-10 max-w-7/8 px-6 mt-4 text-sm md:text-lg">
-          Browse our top alliances, check their requirements and schedules, and
-          see whether a transfer is right for you.
+          {t("page_recruitment:recruitment_description")}
         </h5>
       </section>
       <section>

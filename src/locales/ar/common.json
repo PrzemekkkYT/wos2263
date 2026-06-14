@@ -1,0 +1,19 @@
+{
+    "home": "الرئيسية",
+    "recruitment": "المتطلبات",
+    "calendar": "التقويم",
+    "get_whiteout": "حمّل النجاة في الصقيع \"",
+    "not_affiliated": "هذا الموقع غير تابع لشركة Century Games PTE. LTD.",
+    "version": "الإصدار: {{version}}",
+    "players": "{{players}}/١٠٠ اللاعبين",
+    "power": "{{power, compact}} القوة",
+    "english": "الانجليزية",
+    "polish": "البولندية",
+    "arabic": "العربية",
+    "french": "الفرنسية",
+    "german": "الألمانية",
+    "italian": "الإطالية",
+    "korean": "الكورية",
+    "russian": "الروسية",
+    "spanish": "الإسبانية"
+}
