@@ -19,6 +19,7 @@ import { fetchStateData } from "./utils/stateApi";
 
 // i18n
 import "@/utils/i18n";
+import i18next, { rtlLanguages } from "@/utils/i18n";
 
 function App() {
   fetchStateData();
@@ -45,5 +46,10 @@ function App() {
     </>
   );
 }
+
+document.body.setAttribute(
+  "dir",
+  rtlLanguages.includes(i18next.language) ? "rtl" : "ltr",
+);
 
 render(<App />, document.getElementById("app")!);

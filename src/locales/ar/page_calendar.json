@@ -1,5 +1,5 @@
 {
-    "time_until": "Time until {{title}}",
-    "today": "Today",
-    "started": "Started"
+    "time_until": "الوقت المتبقي {{title}}",
+    "today": "اليوم",
+    "started": "بدأ"
 }

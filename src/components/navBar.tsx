@@ -1,19 +1,7 @@
 import { Link, useRoute } from "wouter";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect, useRef } from "preact/hooks";
-
-const supportedLanguages: Record<string, { name: string; flag: string }> = {
-  ach: { name: "Translate", flag: "🌐" },
-  en: { name: "English", flag: "🇺🇸" },
-  pl: { name: "Polski", flag: "🇵🇱" },
-  ar: { name: "العربية", flag: "🇸🇦" },
-  ko: { name: "한국어", flag: "🇰🇷" },
-  de: { name: "Deutsch", flag: "🇩🇪" },
-  fr: { name: "Français", flag: "🇫🇷" },
-  es: { name: "Español", flag: "🇪🇸" },
-  it: { name: "Italiano", flag: "🇮🇹" },
-  ru: { name: "Русский", flag: "🇷🇺" },
-};
+import { rtlLanguages, supportedLanguages } from "@/utils/i18n";
 
 function ActiveLink(props: {
   href: string;
@@ -57,8 +45,12 @@ export function NavBar() {
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code);
     setIsLangMenuOpen(false);
+    document.body.setAttribute(
+      "dir",
+      rtlLanguages.includes(code) ? "rtl" : "ltr",
+    );
     // Na mobilkach opcjonalnie zamykamy całe menu po wyborze języka
-    // setIsMobileMenuOpen(false);
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -183,7 +175,7 @@ export function NavBar() {
             </button>
 
             {isLangMenuOpen && (
-              <div class="absolute right-0 mt-2 w-80 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-100 overflow-hidden backdrop-blur-md">
+              <div class="absolute inset-e-0 mt-2 w-80 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-100 overflow-hidden backdrop-blur-md">
                 <div class="py-1 grid grid-cols-2">
                   {Object.entries(supportedLanguages).map(
                     ([code, { name, flag }]) => (

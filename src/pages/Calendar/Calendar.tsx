@@ -14,6 +14,7 @@ import { findNextOccurrence } from "./utils/utils";
 import heroGenIcon from "@/assets/icons/hero_gen.png";
 import whiteoutLogo from "@/assets/icons/whiteout_logo.png";
 import { useTranslation } from "react-i18next";
+import { rtlLanguages } from "@/utils/i18n";
 
 export function CalendarPage() {
   const timelineContainerRef = useRef<HTMLDivElement>(null);
@@ -24,7 +25,7 @@ export function CalendarPage() {
 
   const { t, i18n } = useTranslation();
 
-  const [rtl, setRtl] = useState<boolean>(["ar", "he", "fa", "ur"].includes(i18n.language));
+  const [rtl, setRtl] = useState<boolean>(rtlLanguages.includes(i18n.language));
 
   useEffect(() => {
     fetchApiData().then((data) => {

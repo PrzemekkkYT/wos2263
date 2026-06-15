@@ -1,13 +1,13 @@
 {
-    "requirements": "Requirements",
-    "recruitment_description": "Browse our top alliances, check their requirements and schedules, and see whether a transfer is right for you.",
-    "fc_level": "FC Level",
-    "min_power": "Minimum Power",
-    "event_timings": "Event Timings (UTC)",
-    "bear_trap": "Bear Trap",
-    "foundry": "Foundry",
-    "canyon": "Canyon",
-    "crazy_joe": "Crazy Joe",
-    "mercenary_bosses": "Mercenary Bosses",
-    "contact": "Contact"
+    "requirements": "المتطلبات",
+    "recruitment_description": "تصفح أفضل تحالفاتنا، وتحقق من متطلباتها وجداولها الزمنية، وتأكد مما إذا كان الانتقال مناسبًا لك.",
+    "fc_level": "مستوى حجرة الاحتراق",
+    "min_power": "القوة الأدنى",
+    "event_timings": "وقت الأحداث (التوقيت العالمي)",
+    "bear_trap": "فخ الدب",
+    "foundry": "مسبك الأسلحة",
+    "canyon": "الوادي",
+    "crazy_joe": "جو المجنون",
+    "mercenary_bosses": "هيبة المُرتزقة",
+    "contact": "التواصل"
 }

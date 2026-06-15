@@ -2,6 +2,24 @@ import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
+export const rtlLanguages = ["ar", "he", "fa", "ur"];
+
+export const supportedLanguages: Record<
+  string,
+  { name: string; flag: string }
+> = {
+  ach: { name: "Translate", flag: "🌐" },
+  en: { name: "English", flag: "🇺🇸" },
+  pl: { name: "Polski", flag: "🇵🇱" },
+  ar: { name: "العربية", flag: "🇸🇦" },
+  ko: { name: "한국어", flag: "🇰🇷" },
+  de: { name: "Deutsch", flag: "🇩🇪" },
+  fr: { name: "Français", flag: "🇫🇷" },
+  es: { name: "Español", flag: "🇪🇸" },
+  it: { name: "Italiano", flag: "🇮🇹" },
+  ru: { name: "Русский", flag: "🇷🇺" },
+};
+
 const jsonFiles = import.meta.glob("../locales/**/*.json", { eager: true });
 
 const resources: Record<string, any> = {};
