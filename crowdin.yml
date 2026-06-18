@@ -10,6 +10,7 @@
 "project_id": "905811"
 "base_path": "src/locales"
 "base_url": "https://api.crowdin.com"
+"api_token_env": "CROWDIN_API_TOKEN"
 
 #
 # Defines whether to preserve the original directory structure in the Crowdin project
