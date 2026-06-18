@@ -36,7 +36,9 @@ export async function runStateApiFetch() {
           language
           recruiters {
             name
-            imageUrl
+            image {
+              url
+            }
             position {
               x
               y
@@ -64,6 +66,12 @@ export async function runStateApiFetch() {
         latestDataUpdate
         authorName
         version
+        languages {
+          nativeName
+          localeCode
+          flag
+          enabled
+        }
       }
     }
   `;

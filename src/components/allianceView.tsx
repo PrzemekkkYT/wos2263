@@ -186,11 +186,7 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
                 {alliance.recruitment?.recruiters?.map((recruiter) => (
                   <div class="flex flex-row gap-3">
                     <img
-                      src={
-                        recruiter.imageUrl
-                          ? getAvatarUrl(recruiter.imageUrl!)
-                          : blankUser
-                      }
+                      src={recruiter.image ? recruiter.image : blankUser}
                       alt=""
                       class="size-14 rounded-lg object-cover bg-gray-900"
                     />

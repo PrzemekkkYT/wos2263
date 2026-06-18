@@ -1,7 +1,9 @@
 import { Link, useRoute } from "wouter";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect, useRef } from "preact/hooks";
-import { rtlLanguages, supportedLanguages } from "@/utils/i18n";
+import { rtlLanguages } from "@/utils/i18n";
+import { apiData } from "@/utils/stateApi";
+import type { StateApiFetch } from "@/utils/types";
 
 function ActiveLink(props: {
   href: string;
@@ -26,9 +28,16 @@ export function NavBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
+  const data: StateApiFetch | null = apiData.value;
 
-  const currentLang =
-    supportedLanguages[i18n.language] || supportedLanguages.en;
+  // const currentLang =
+  //   supportedLanguages[i18n.language] || supportedLanguages.en;
+
+  const supportedLanguages = data?.setting.languages ?? {};
+
+  const currentLang = supportedLanguages[i18n.language] || {
+    en: { nativeName: "English", flag: "🇺🇸", enabled: true },
+  };
 
   // Zamykanie menu po kliknięciu poza nawigację
   useEffect(() => {
@@ -43,14 +52,26 @@ export function NavBar() {
   }, []);
 
   const changeLanguage = (code: string) => {
-    i18n.changeLanguage(code);
-    setIsLangMenuOpen(false);
-    document.body.setAttribute(
-      "dir",
-      rtlLanguages.includes(code) ? "rtl" : "ltr",
-    );
-    // Na mobilkach opcjonalnie zamykamy całe menu po wyborze języka
-    setIsMobileMenuOpen(false);
+    const currentLangIsRtl = rtlLanguages.includes(i18n.language);
+    const newLangIsRtl = rtlLanguages.includes(code);
+
+    i18n.changeLanguage(code).then(() => {
+      if (
+        currentLangIsRtl !== newLangIsRtl &&
+        window.location.pathname.includes("calendar")
+      ) {
+        window.location.reload();
+      } else {
+        // If direction is the same, no need for a full reload.
+        // Close menus and let react-i18next re-render components.
+        setIsLangMenuOpen(false);
+        setIsMobileMenuOpen(false);
+        document.body.setAttribute(
+          "dir",
+          rtlLanguages.includes(code) ? "rtl" : "ltr",
+        );
+      }
+    });
   };
 
   return (
@@ -77,13 +98,14 @@ export function NavBar() {
                 <div class="w-40 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden backdrop-blur-md">
                   <div class="py-1">
                     {Object.entries(supportedLanguages).map(
-                      ([code, { name, flag }]) => (
+                      ([code, { nativeName, flag, enabled }]) => (
                         <button
                           key={code}
-                          class="lang-option flex items-center gap-3 px-4 py-3 hover:bg-slate-800 text-sm text-white transition-colors; w-full text-left"
+                          class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 text-sm text-white transition-colors; w-full text-left"
                           onClick={() => changeLanguage(code)}
+                          disabled={!enabled}
                         >
-                          <span>{flag}</span> {name}
+                          <span>{flag}</span> {nativeName}
                         </button>
                       ),
                     )}
@@ -133,7 +155,7 @@ export function NavBar() {
                       />
                     </svg>
                     <span>{currentLang.flag}</span>
-                    <span>{currentLang.name}</span>
+                    <span>{currentLang.nativeName}</span>
                   </div>
                 </div>
               </div>
@@ -158,7 +180,7 @@ export function NavBar() {
               onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
             >
               <span>{currentLang.flag}</span>
-              <span class="selectedLabel">{currentLang.name}</span>
+              <span class="selectedLabel">{currentLang.nativeName}</span>
               <svg
                 class={`w-4 h-4 text-gray-400 transition-transform ${isLangMenuOpen ? "rotate-180" : ""}`}
                 fill="none"
@@ -178,13 +200,14 @@ export function NavBar() {
               <div class="absolute inset-e-0 mt-2 w-80 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-100 overflow-hidden backdrop-blur-md">
                 <div class="py-1 grid grid-cols-2">
                   {Object.entries(supportedLanguages).map(
-                    ([code, { name, flag }]) => (
+                    ([code, { nativeName, flag, enabled }]) => (
                       <button
                         key={code}
-                        class="lang-option flex items-center gap-3 px-4 py-3 hover:bg-slate-800 text-sm text-white transition-colors; w-full text-left"
+                        class={`flex items-center gap-3 px-4 py-3 hover:bg-slate-800 text-sm text-white transition-colors; w-full text-left ${!enabled ? "text-gray-400 hover:bg-gray-950/20! bg-gray-950/20 line-through cursor-not-allowed" : ""}`}
                         onClick={() => changeLanguage(code)}
+                        disabled={!enabled}
                       >
-                        <span>{flag}</span> {name}
+                        <span>{flag}</span> {nativeName}
                       </button>
                     ),
                   )}

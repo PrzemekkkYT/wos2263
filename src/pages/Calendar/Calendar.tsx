@@ -23,9 +23,9 @@ export function CalendarPage() {
 
   const [apiData, setApiData] = useState<ApiFetch | null>(null);
 
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation("page_calendar");
 
-  const [rtl, setRtl] = useState<boolean>(rtlLanguages.includes(i18n.language));
+  const [rtl] = useState<boolean>(rtlLanguages.includes(i18n.language));
 
   useEffect(() => {
     fetchApiData().then((data) => {
@@ -47,7 +47,7 @@ export function CalendarPage() {
     const timeline = new Timeline(
       timelineContainerRef.current,
       displayedItems.current,
-      processedGroups,
+      processedGroups, // groups
       { ...options, rtl: rtl },
     );
     timelineInstanceRef.current = timeline;
@@ -196,18 +196,6 @@ export function CalendarPage() {
               1M
             </button>
           </div>
-        </div>
-        <div class="flex gap-2 items-center cursor-pointer p-2">
-          <label htmlFor="arabic-checkbox">Right to Left</label>
-          <input
-            type="checkbox"
-            name="arabic-checkbox"
-            id="arabic-checkbox"
-            checked={rtl}
-            onChange={(e) =>
-              setRtl((e.currentTarget as HTMLInputElement).checked)
-            }
-          />
         </div>
         <div
           ref={timelineContainerRef}

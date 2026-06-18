@@ -19,7 +19,12 @@ const SvSRecordSchema = z.object({
 // Schematic for Recruiter
 const RecruiterSchema = z.object({
   name: z.string(),
-  imageUrl: z.string().nullish(),
+  image: z
+    .object({
+      url: z.string(),
+    })
+    .transform((val) => val.url)
+    .nullish(),
   position: z
     .object({
       x: z.number(),
@@ -94,6 +99,24 @@ const SettingSchema = z.object({
     .nullish(),
   authorName: z.string().nullish(),
   version: z.string().nullish(),
+  languages: z
+    .array(
+      z.object({
+        nativeName: z.string(),
+        localeCode: z.string(),
+        flag: z.string(),
+        enabled: z.boolean(),
+      }),
+    )
+    .transform((languages) => {
+      return languages.reduce<
+        Record<string, { nativeName: string; flag: string; enabled: boolean }>
+      >((acc, lang) => {
+        const { localeCode, ...rest } = lang;
+        acc[localeCode] = rest;
+        return acc;
+      }, {});
+    }),
 });
 
 export const StateApiFetchSchema = z.object({
