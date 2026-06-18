@@ -1,0 +1,1203 @@
+{
+    "data": {
+        "viewer": {
+            "availableIntegrations": [
+                "GATSBY_CLOUD",
+                "NETLIFY"
+            ],
+            "project": {
+                "environments": [
+                    {
+                        "schemaDefinition": [
+                            {
+                                "createEnumeration": {
+                                    "apiId": "SocialMedia",
+                                    "displayName": "SocialMedia",
+                                    "description": null,
+                                    "values": [
+                                        {
+                                            "apiId": "discord",
+                                            "displayName": "Discord"
+                                        },
+                                        {
+                                            "apiId": "telegram",
+                                            "displayName": "Telegram"
+                                        },
+                                        {
+                                            "apiId": "instagram",
+                                            "displayName": "Instagram"
+                                        },
+                                        {
+                                            "apiId": "reddit",
+                                            "displayName": "Reddit"
+                                        },
+                                        {
+                                            "apiId": "facebook",
+                                            "displayName": "Facebook"
+                                        },
+                                        {
+                                            "apiId": "frostlink",
+                                            "displayName": "Frostlink"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "createEnumeration": {
+                                    "apiId": "Requirement",
+                                    "displayName": "Requirement",
+                                    "description": "",
+                                    "values": [
+                                        {
+                                            "apiId": "min_power",
+                                            "displayName": "Minimum Power"
+                                        },
+                                        {
+                                            "apiId": "fc_level",
+                                            "displayName": "FC Level"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "createComponent": {
+                                    "apiId": "Coordinate",
+                                    "apiIdPlural": "Coordinates",
+                                    "description": "",
+                                    "displayName": "Coordinate"
+                                }
+                            },
+                            {
+                                "createComponent": {
+                                    "apiId": "RecruiterContact",
+                                    "apiIdPlural": "RecruiterContacts",
+                                    "description": "",
+                                    "displayName": "RecruiterContact"
+                                }
+                            },
+                            {
+                                "createComponent": {
+                                    "apiId": "RecruitmentRequirement",
+                                    "apiIdPlural": "RecruitmentRequirements",
+                                    "description": "",
+                                    "displayName": "RecruitmentRequirement"
+                                }
+                            },
+                            {
+                                "createComponent": {
+                                    "apiId": "Recruiter",
+                                    "apiIdPlural": "Recruiters",
+                                    "description": "",
+                                    "displayName": "Recruiter"
+                                }
+                            },
+                            {
+                                "createComponent": {
+                                    "apiId": "Recruitment",
+                                    "apiIdPlural": "Recruitments",
+                                    "description": "",
+                                    "displayName": "Recruitment"
+                                }
+                            },
+                            {
+                                "createComponent": {
+                                    "apiId": "RecruitmentEventTime",
+                                    "apiIdPlural": "RecruitmentEventsTimes",
+                                    "description": "",
+                                    "displayName": "RecruitmentEventTime"
+                                }
+                            },
+                            {
+                                "createModel": {
+                                    "apiId": "SvSRecord",
+                                    "apiIdPlural": "SvSRecords",
+                                    "description": "",
+                                    "displayName": "SvS Record"
+                                }
+                            },
+                            {
+                                "createModel": {
+                                    "apiId": "Alliance",
+                                    "apiIdPlural": "Alliances",
+                                    "description": "",
+                                    "displayName": "Alliance"
+                                }
+                            },
+                            {
+                                "createModel": {
+                                    "apiId": "Setting",
+                                    "apiIdPlural": "Settings",
+                                    "description": "",
+                                    "displayName": "Setting"
+                                }
+                            },
+                            {
+                                "createComponentField": {
+                                    "apiId": "recruitment",
+                                    "parentApiId": "Alliance",
+                                    "displayName": "Recruitment",
+                                    "description": null,
+                                    "isList": false,
+                                    "isRequired": false,
+                                    "formRenderer": "GCMS",
+                                    "formExtension": null,
+                                    "tableRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "position": 6,
+                                    "componentApiId": "Recruitment",
+                                    "visibility": "READ_WRITE",
+                                    "visibilityCondition": null
+                                }
+                            },
+                            {
+                                "createComponentField": {
+                                    "apiId": "contact",
+                                    "parentApiId": "Recruiter",
+                                    "displayName": "Contact",
+                                    "description": null,
+                                    "isList": true,
+                                    "isRequired": false,
+                                    "formRenderer": "GCMS",
+                                    "formExtension": null,
+                                    "tableRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "position": 3,
+                                    "componentApiId": "RecruiterContact",
+                                    "visibility": "READ_WRITE",
+                                    "visibilityCondition": null
+                                }
+                            },
+                            {
+                                "createComponentField": {
+                                    "apiId": "requirements",
+                                    "parentApiId": "Recruitment",
+                                    "displayName": "Requirements",
+                                    "description": null,
+                                    "isList": true,
+                                    "isRequired": false,
+                                    "formRenderer": "GCMS",
+                                    "formExtension": null,
+                                    "tableRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "position": 3,
+                                    "componentApiId": "RecruitmentRequirement",
+                                    "visibility": "READ_WRITE",
+                                    "visibilityCondition": null
+                                }
+                            },
+                            {
+                                "createComponentField": {
+                                    "apiId": "eventTimes",
+                                    "parentApiId": "Recruitment",
+                                    "displayName": "EventTimes",
+                                    "description": null,
+                                    "isList": false,
+                                    "isRequired": false,
+                                    "formRenderer": "GCMS",
+                                    "formExtension": null,
+                                    "tableRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "position": 2,
+                                    "componentApiId": "RecruitmentEventTime",
+                                    "visibility": "READ_WRITE",
+                                    "visibilityCondition": null
+                                }
+                            },
+                            {
+                                "createComponentField": {
+                                    "apiId": "position",
+                                    "parentApiId": "Recruiter",
+                                    "displayName": "Position",
+                                    "description": null,
+                                    "isList": false,
+                                    "isRequired": false,
+                                    "formRenderer": "GCMS",
+                                    "formExtension": null,
+                                    "tableRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "position": 2,
+                                    "componentApiId": "Coordinate",
+                                    "visibility": "READ_WRITE",
+                                    "visibilityCondition": null
+                                }
+                            },
+                            {
+                                "createComponentField": {
+                                    "apiId": "recruiters",
+                                    "parentApiId": "Recruitment",
+                                    "displayName": "Recruiters",
+                                    "description": null,
+                                    "isList": true,
+                                    "isRequired": false,
+                                    "formRenderer": "GCMS",
+                                    "formExtension": null,
+                                    "tableRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "position": 0,
+                                    "componentApiId": "Recruiter",
+                                    "visibility": "READ_WRITE",
+                                    "visibilityCondition": null
+                                }
+                            },
+                            {
+                                "createEnumerableField": {
+                                    "apiId": "socialMedia",
+                                    "parentApiId": "RecruiterContact",
+                                    "displayName": "Social Media",
+                                    "description": null,
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isUnique": false,
+                                    "enumerationApiId": "SocialMedia",
+                                    "isTitle": true,
+                                    "position": 0,
+                                    "isRequired": true,
+                                    "formRenderer": "GCMS",
+                                    "formExtension": null,
+                                    "tableRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "initialValue": null,
+                                    "visibility": "READ_WRITE",
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createEnumerableField": {
+                                    "apiId": "requirement",
+                                    "parentApiId": "RecruitmentRequirement",
+                                    "displayName": "Requirement",
+                                    "description": null,
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isUnique": false,
+                                    "enumerationApiId": "Requirement",
+                                    "isTitle": true,
+                                    "position": 0,
+                                    "isRequired": true,
+                                    "formRenderer": "GCMS",
+                                    "formExtension": null,
+                                    "tableRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "initialValue": null,
+                                    "visibility": "READ_WRITE",
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createRelationalField": {
+                                    "apiId": "banner",
+                                    "parentApiId": "Alliance",
+                                    "type": "ASSET",
+                                    "displayName": "Banner",
+                                    "description": null,
+                                    "isList": false,
+                                    "isRequired": true,
+                                    "formRenderer": "GCMS",
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "tableConfig": {},
+                                    "reverseField": {
+                                        "apiId": "bannerAlliance",
+                                        "modelApiId": "Asset",
+                                        "displayName": "bannerAlliance",
+                                        "description": null,
+                                        "isList": true,
+                                        "visibility": "API_ONLY",
+                                        "isUnidirectional": false,
+                                        "position": 2
+                                    },
+                                    "relationalFieldRules": null,
+                                    "visibility": "READ_WRITE",
+                                    "visibilityCondition": null,
+                                    "position": 2,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "glory",
+                                    "parentApiId": "Alliance",
+                                    "type": "INT",
+                                    "displayName": "glory",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS",
+                                    "formRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 5,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "president",
+                                    "parentApiId": "SvSRecord",
+                                    "type": "STRING",
+                                    "displayName": "President",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": true,
+                                    "position": 4,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "mercenaryBosses",
+                                    "parentApiId": "RecruitmentEventTime",
+                                    "type": "STRING",
+                                    "displayName": "Mercenary Bosses",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 4,
+                                    "validations": {
+                                        "Float": null,
+                                        "Int": null,
+                                        "String": {
+                                            "listItemCount": null,
+                                            "characters": null,
+                                            "matches": {
+                                                "errorMessage": "Input value does not match the expected format.",
+                                                "flags": [],
+                                                "regex": "^([01]\\d|2[0-3]):[0-5]\\d(, ([01]\\d|2[0-3]):[0-5]\\d)?$"
+                                            },
+                                            "notMatches": null
+                                        }
+                                    },
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "playerCount",
+                                    "parentApiId": "Alliance",
+                                    "type": "INT",
+                                    "displayName": "Player count",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS",
+                                    "formRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": true,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 4,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "crazyJoe",
+                                    "parentApiId": "RecruitmentEventTime",
+                                    "type": "STRING",
+                                    "displayName": "Crazy Joe",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 3,
+                                    "validations": {
+                                        "Float": null,
+                                        "Int": null,
+                                        "String": {
+                                            "listItemCount": null,
+                                            "characters": null,
+                                            "matches": {
+                                                "errorMessage": "Input value does not match the expected format.",
+                                                "flags": [],
+                                                "regex": "^([01]\\d|2[0-3]):[0-5]\\d(, ([01]\\d|2[0-3]):[0-5]\\d)?$"
+                                            },
+                                            "notMatches": null
+                                        }
+                                    },
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "power",
+                                    "parentApiId": "Alliance",
+                                    "type": "FLOAT",
+                                    "displayName": "Power",
+                                    "description": "This value will be multiplied by 10^9",
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS",
+                                    "formRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": true,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 3,
+                                    "validations": {
+                                        "Float": {
+                                            "listItemCount": null,
+                                            "range": {
+                                                "min": null,
+                                                "max": 100,
+                                                "errorMessage": "No way you have 100B power lol"
+                                            }
+                                        },
+                                        "Int": null,
+                                        "String": null
+                                    },
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "version",
+                                    "parentApiId": "Setting",
+                                    "type": "STRING",
+                                    "displayName": "Version",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 3,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "battleDate",
+                                    "parentApiId": "SvSRecord",
+                                    "type": "DATE",
+                                    "displayName": "Battle Date",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS",
+                                    "formRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": true,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 3,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "canyon",
+                                    "parentApiId": "RecruitmentEventTime",
+                                    "type": "STRING",
+                                    "displayName": "Canyon",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 2,
+                                    "validations": {
+                                        "Float": null,
+                                        "Int": null,
+                                        "String": {
+                                            "listItemCount": null,
+                                            "characters": null,
+                                            "matches": {
+                                                "errorMessage": "Input value does not match the expected format.",
+                                                "flags": [],
+                                                "regex": "^([01]\\d|2[0-3]):[0-5]\\d(, ([01]\\d|2[0-3]):[0-5]\\d)?$"
+                                            },
+                                            "notMatches": null
+                                        }
+                                    },
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "battleWin",
+                                    "parentApiId": "SvSRecord",
+                                    "type": "BOOLEAN",
+                                    "displayName": "Battle Win",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS",
+                                    "formRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 2,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "authorName",
+                                    "parentApiId": "Setting",
+                                    "type": "STRING",
+                                    "displayName": "Author Name",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 2,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "imageUrl",
+                                    "parentApiId": "Recruiter",
+                                    "type": "STRING",
+                                    "displayName": "ImageUrl",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 1,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "url",
+                                    "parentApiId": "RecruiterContact",
+                                    "type": "STRING",
+                                    "displayName": "URL",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SLUG",
+                                    "formRenderer": "GCMS_SLUG",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {
+                                        "isLowercase": true,
+                                        "automaticSlug": "",
+                                        "shouldGenerateAutomatically": false
+                                    },
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": true,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 1,
+                                    "validations": {
+                                        "Float": null,
+                                        "Int": null,
+                                        "String": {
+                                            "listItemCount": null,
+                                            "characters": null,
+                                            "matches": {
+                                                "errorMessage": "Input value does not match the expected format.",
+                                                "flags": [],
+                                                "regex": "^(http://www\\.|https://www\\.|http://|https://)?[a-z0-9]+([-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?$"
+                                            },
+                                            "notMatches": null
+                                        }
+                                    },
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "language",
+                                    "parentApiId": "Recruitment",
+                                    "type": "STRING",
+                                    "displayName": "Language",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 1,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "latestDataUpdate",
+                                    "parentApiId": "Setting",
+                                    "type": "DATETIME",
+                                    "displayName": "Latest Data Update",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS",
+                                    "formRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 1,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "value",
+                                    "parentApiId": "RecruitmentRequirement",
+                                    "type": "STRING",
+                                    "displayName": "Value",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": true,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 1,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "foundry",
+                                    "parentApiId": "RecruitmentEventTime",
+                                    "type": "STRING",
+                                    "displayName": "Foundry",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 1,
+                                    "validations": {
+                                        "Float": null,
+                                        "Int": null,
+                                        "String": {
+                                            "listItemCount": null,
+                                            "characters": null,
+                                            "matches": {
+                                                "errorMessage": "Input value does not match the expected format.",
+                                                "flags": [],
+                                                "regex": "^([01]\\d|2[0-3]):[0-5]\\d(, ([01]\\d|2[0-3]):[0-5]\\d)?$"
+                                            },
+                                            "notMatches": null
+                                        }
+                                    },
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "prepWin",
+                                    "parentApiId": "SvSRecord",
+                                    "type": "BOOLEAN",
+                                    "displayName": "Prep Win",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS",
+                                    "formRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 1,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "name",
+                                    "parentApiId": "Alliance",
+                                    "type": "STRING",
+                                    "displayName": "Name",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": true,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": true,
+                                    "position": 1,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "y",
+                                    "parentApiId": "Coordinate",
+                                    "type": "INT",
+                                    "displayName": "Y",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS",
+                                    "formRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": true,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 1,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "name",
+                                    "parentApiId": "Recruiter",
+                                    "type": "STRING",
+                                    "displayName": "Name",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": true,
+                                    "isUnique": true,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": true,
+                                    "position": 0,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "opponent",
+                                    "parentApiId": "SvSRecord",
+                                    "type": "INT",
+                                    "displayName": "Opponent",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS",
+                                    "formRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 0,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "tag",
+                                    "parentApiId": "Alliance",
+                                    "type": "STRING",
+                                    "displayName": "Tag",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": true,
+                                    "isUnique": true,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": true,
+                                    "position": 0,
+                                    "validations": {
+                                        "Float": null,
+                                        "Int": null,
+                                        "String": {
+                                            "listItemCount": null,
+                                            "characters": {
+                                                "min": 3,
+                                                "max": 3,
+                                                "errorMessage": "Expected value to have between 3 and 3 characters."
+                                            },
+                                            "matches": null,
+                                            "notMatches": null
+                                        }
+                                    },
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "x",
+                                    "parentApiId": "Coordinate",
+                                    "type": "INT",
+                                    "displayName": "X",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS",
+                                    "formRenderer": "GCMS",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": true,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 0,
+                                    "validations": null,
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "settingId",
+                                    "parentApiId": "Setting",
+                                    "type": "STRING",
+                                    "displayName": "Setting ID",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SLUG",
+                                    "formRenderer": "GCMS_SLUG",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {
+                                        "isLowercase": true,
+                                        "automaticSlug": "",
+                                        "shouldGenerateAutomatically": false
+                                    },
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": true,
+                                    "isUnique": true,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": true,
+                                    "position": 0,
+                                    "validations": {
+                                        "Float": null,
+                                        "Int": null,
+                                        "String": {
+                                            "listItemCount": null,
+                                            "characters": null,
+                                            "matches": {
+                                                "errorMessage": "Input value does not match the expected format.",
+                                                "flags": [],
+                                                "regex": "^[a-z0-9]+(?:[-/][a-z0-9]+)*$"
+                                            },
+                                            "notMatches": null
+                                        }
+                                    },
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            },
+                            {
+                                "createSimpleField": {
+                                    "apiId": "bearTrap",
+                                    "parentApiId": "RecruitmentEventTime",
+                                    "type": "STRING",
+                                    "displayName": "Bear Trap",
+                                    "description": null,
+                                    "initialValue": null,
+                                    "tableRenderer": "GCMS_SINGLE_LINE",
+                                    "formRenderer": "GCMS_SINGLE_LINE",
+                                    "tableExtension": null,
+                                    "formExtension": null,
+                                    "formConfig": {},
+                                    "tableConfig": {},
+                                    "isList": false,
+                                    "isLocalized": false,
+                                    "isRequired": false,
+                                    "isUnique": false,
+                                    "isHidden": false,
+                                    "embeddableModels": [],
+                                    "visibility": "READ_WRITE",
+                                    "isTitle": false,
+                                    "position": 0,
+                                    "validations": {
+                                        "Float": null,
+                                        "Int": null,
+                                        "String": {
+                                            "listItemCount": null,
+                                            "characters": null,
+                                            "matches": {
+                                                "errorMessage": "Input value does not match the expected format.",
+                                                "flags": [],
+                                                "regex": "^([01]\\d|2[0-3]):[0-5]\\d(, ([01]\\d|2[0-3]):[0-5]\\d)?$"
+                                            },
+                                            "notMatches": null
+                                        }
+                                    },
+                                    "embedsEnabled": null,
+                                    "visibilityCondition": null,
+                                    "isVariantEnabled": false
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
