@@ -1,0 +1,22 @@
+{
+    "state": "État {{state}}",
+    "discord": "Rejoins-nous sur Discord",
+    "top5": "Top 5 des alliances",
+    "last_updated": "Mise à jour le {{date_time}}",
+    "svs_record": "Statistiques des SvS",
+    "svs_record_description": "Données des précédents SvS.",
+    "opponent": "Adversaire",
+    "unknown": "Inconnu",
+    "prep_phase": "Phase de préparation",
+    "battle_phase": "Phase de combat",
+    "battle_date": "Date",
+    "victory": "Victoire",
+    "defeat": "Défaite",
+    "ongoing": "En cours",
+    "president": "Président",
+    "supreme_president": "Président suprême",
+    "invader": "Envahisseur",
+    "not_appointed": "Pas encore désigné",
+    "glory_path_one": "Tableau d'honneur de l'alliance | {{count}} victoire au SvS",
+    "glory_path_other": "Tableau d'honneur de l'alliance | {{count}} victoires au SvS"
+}

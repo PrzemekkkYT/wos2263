@@ -1,0 +1,19 @@
+{
+    "home": "Strona Główna",
+    "recruitment": "Rekrutacja",
+    "calendar": "Kalendarz",
+    "get_whiteout": "Pobierz Whiteout Survival",
+    "not_affiliated": "Strona niepowiązana z Century Games PTE. LTD.",
+    "version": "Wersja: {{version}}",
+    "players": "{{players}}/100 Graczy",
+    "power": "{{power, compact}} Siły",
+    "english": "Angielski",
+    "polish": "Polski",
+    "arabic": "Arabski",
+    "french": "Francuski",
+    "german": "Niemiecki",
+    "italian": "Włoski",
+    "korean": "Koreański",
+    "russian": "Rosyjski",
+    "spanish": "Hiszpański"
+}

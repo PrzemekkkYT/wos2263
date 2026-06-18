@@ -1,0 +1,19 @@
+{
+    "home": "Accueil",
+    "recruitment": "Recrutement",
+    "calendar": "Calendrier",
+    "get_whiteout": "Télécharge le jeu Whiteout Survival",
+    "not_affiliated": "Ce site internet n'est en aucun cas affilié, approuvé, associé ou parrainé par Century Games PTE LTD.",
+    "version": "Version : {{version}}",
+    "players": "{{players}} /100 joueurs",
+    "power": "Puissance : {{power, compact}}",
+    "english": "Anglais",
+    "polish": "Polonais",
+    "arabic": "Arabe",
+    "french": "Français",
+    "german": "Allemand",
+    "italian": "Italien",
+    "korean": "Coréen",
+    "russian": "Russe",
+    "spanish": "Espagnol"
+}

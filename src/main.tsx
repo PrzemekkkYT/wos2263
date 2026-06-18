@@ -1,6 +1,7 @@
 // default import
 import { render } from "preact";
 import { Route, Switch } from "wouter";
+import { useTranslation } from "react-i18next";
 
 // components
 import { NavBar } from "@/components/navBar";
@@ -16,8 +17,14 @@ import { CalendarPage } from "@/pages/Calendar/Calendar";
 import "@/styles/shared.css";
 import { fetchStateData } from "./utils/stateApi";
 
+// i18n
+import "@/utils/i18n";
+import i18next, { rtlLanguages } from "@/utils/i18n";
+
 function App() {
   fetchStateData();
+
+  const { t } = useTranslation(["errors"]);
 
   return (
     <>
@@ -30,9 +37,7 @@ function App() {
         <Route>
           <main>
             <section>
-              <div class="text-center text-8xl font-bold">
-                404 - Page not found
-              </div>
+              <div class="text-center text-8xl font-bold">404 - {t("404")}</div>
             </section>
           </main>
         </Route>
@@ -41,5 +46,10 @@ function App() {
     </>
   );
 }
+
+document.body.setAttribute(
+  "dir",
+  rtlLanguages.includes(i18next.language) ? "rtl" : "ltr",
+);
 
 render(<App />, document.getElementById("app")!);

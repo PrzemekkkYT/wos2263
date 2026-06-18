@@ -1,0 +1,22 @@
+{
+    "home": "Home",
+    "recruitment": "Recruitment",
+    "calendar": "Calendar",
+    
+    "get_whiteout": "Get Whiteout Survival",
+    "not_affiliated": "Website not affiliated with Century Games PTE. LTD.",
+    "version": "Version: {{version}}",
+
+    "players": "{{players}}/100 Players",
+    "power": "{{power, compact}} Power",
+
+    "english": "English",
+    "polish": "Polish",
+    "arabic": "Arabic",
+    "french": "French",
+    "german": "German",
+    "italian": "Italian",
+    "korean": "Korean",
+    "russian": "Russian",
+    "spanish": "Spanish"
+}

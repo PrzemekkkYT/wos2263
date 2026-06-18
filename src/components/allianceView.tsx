@@ -1,16 +1,12 @@
-import { formatPower, getGloryIcons } from "@/utils/alliance";
+import { getGloryIcons } from "@/utils/alliance";
 import type { Alliance } from "@/utils/types";
 import { getAvatarUrl } from "@/utils/utils";
 
 import blankUser from "@/assets/avatars/blank.svg";
 import discordLogo from "@/assets/logos/discord.svg";
+import { useTranslation } from "react-i18next";
 
 const socialMediaLogos = new Map<string, string>([["discord", discordLogo]]);
-
-const requirementsNames = new Map<string, string>([
-  ["fcLevel", "FC level"],
-  ["minimumPower", "Minimum Power"],
-]);
 
 function AllianceViewShimmer() {
   return (
@@ -84,6 +80,8 @@ function AllianceViewShimmer() {
 export function AllianceView({ alliance }: { alliance: Alliance | null }) {
   if (!alliance) return <AllianceViewShimmer />;
 
+  const { t } = useTranslation();
+
   return (
     <div class="flex flex-col bg-slate-800 px-2 py-6 xl:p-10 rounded-lg">
       <div class="mb-10">
@@ -95,16 +93,16 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
             </h2>
             <div class="flex flex-row items-center justify-between min gap-10">
               <h3 class="md:text-xl font-bold text-sky-400">
-                {formatPower(alliance.power)} Power
+                {t("power", { power: alliance.power })}
               </h3>
               <h4 class="text-gray-400 md:text-xl">
-                {alliance.playerCount}/100 Players
+                {t("players", { players: alliance.playerCount })}
               </h4>
             </div>
             {alliance.glory && (
               <div
                 class="flex items-center gap-2 mt-2"
-                title={`Glory Path of the alliance | ${alliance.glory} SvS battles won`}
+                title={t("page_home:glory_path", { count: alliance.glory })}
               >
                 {getGloryIcons(alliance.glory).map((iconPath, index) => (
                   <img
@@ -120,19 +118,19 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
         </div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 mb-10 xl:gap-40">
-        <div class="p-4">
+        <div class="p-4 max-w-1/2">
           <h3 class="mb-6 text-sky-500 font-bold tracking-widest">
-            Requirements
+            {t("page_recruitment:requirements")}
           </h3>
           <ul class="space-y-4">
             {Array.from(alliance.recruitment?.requirements ?? []).map(
               ({ requirement, value }) => (
                 <li
                   key={requirement}
-                  class="flex items-center justify-between text-sm"
+                  class="flex items-center justify-between text-sm bg-black/20 p-2 rounded"
                 >
                   <span class="text-gray-300">
-                    {requirementsNames.get(requirement) ?? requirement}
+                    {t(`page_recruitment:${requirement}`)}
                   </span>
                   <span>{value}</span>
                 </li>
@@ -142,7 +140,7 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
         </div>
         <div class="p-4">
           <h3 class="mb-6 text-sky-500 font-bold tracking-widest">
-            Event Timings (UTC)
+            {t("page_recruitment:event_timings")}
           </h3>
           <div class="grid grid-cols-2 gap-y-4 gap-x-6">
             {(() => {
@@ -150,17 +148,23 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
               if (!events) return null;
 
               const items: Array<[label: string, time?: string | null]> = [
-                ["Bear Trap", events.bearTrap],
-                ["Foundry", events.foundry],
-                ["Canyon", events.canyon],
-                ["Crazy Joe", events.crazyJoe],
-                ["Mercenary Bosses", events.mercenaryBosses],
+                [t("page_recruitment:bear_trap"), events.bearTrap],
+                [t("page_recruitment:foundry"), events.foundry],
+                [t("page_recruitment:canyon"), events.canyon],
+                [t("page_recruitment:crazy_joe"), events.crazyJoe],
+                [
+                  t("page_recruitment:mercenary_bosses"),
+                  events.mercenaryBosses,
+                ],
               ];
 
               return items
                 .filter(([, time]) => Boolean(time))
                 .map(([label, time]) => (
-                  <div key={label} class="flex flex-col">
+                  <div
+                    key={label}
+                    class="flex flex-col bg-black/20 p-2 rounded"
+                  >
                     <span class="uppercase tracking-tighter text-gray-400">
                       {label}
                     </span>
@@ -175,18 +179,14 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
         {alliance.recruitment?.recruiters && (
           <>
             <span class="py-4 text-sky-500 font-bold tracking-widest">
-              Contact
+              {t("page_recruitment:contact")}
             </span>
             <div class="flex flex-wrap gap-8 items-center">
               <div class="flex flex-wrap gap-12 items-start">
                 {alliance.recruitment?.recruiters?.map((recruiter) => (
                   <div class="flex flex-row gap-3">
                     <img
-                      src={
-                        recruiter.imageUrl
-                          ? getAvatarUrl(recruiter.imageUrl!)
-                          : blankUser
-                      }
+                      src={recruiter.image ? recruiter.image : blankUser}
                       alt=""
                       class="size-14 rounded-lg object-cover bg-gray-900"
                     />

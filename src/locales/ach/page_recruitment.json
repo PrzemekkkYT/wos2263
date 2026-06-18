@@ -1,0 +1,13 @@
+{
+    "requirements": "crwdns233:0crwdne233:0",
+    "recruitment_description": "crwdns73:0crwdne73:0",
+    "fc_level": "crwdns77:0crwdne77:0",
+    "min_power": "crwdns79:0crwdne79:0",
+    "event_timings": "crwdns81:0crwdne81:0",
+    "bear_trap": "crwdns83:0crwdne83:0",
+    "foundry": "crwdns85:0crwdne85:0",
+    "canyon": "crwdns87:0crwdne87:0",
+    "crazy_joe": "crwdns89:0crwdne89:0",
+    "mercenary_bosses": "crwdns91:0crwdne91:0",
+    "contact": "crwdns93:0crwdne93:0"
+}
