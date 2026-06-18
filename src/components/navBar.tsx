@@ -101,7 +101,7 @@ export function NavBar() {
                       ([code, { nativeName, flag, enabled }]) => (
                         <button
                           key={code}
-                          class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 text-sm text-white transition-colors; w-full text-left"
+                          class={`flex items-center gap-3 px-4 py-3 hover:bg-slate-800 text-sm text-white transition-colors; w-full text-left ${!enabled ? "text-gray-400 hover:bg-gray-950/40! bg-gray-950/40 line-through cursor-not-allowed" : ""}`}
                           onClick={() => changeLanguage(code)}
                           disabled={!enabled}
                         >
@@ -203,7 +203,7 @@ export function NavBar() {
                     ([code, { nativeName, flag, enabled }]) => (
                       <button
                         key={code}
-                        class={`flex items-center gap-3 px-4 py-3 hover:bg-slate-800 text-sm text-white transition-colors; w-full text-left ${!enabled ? "text-gray-400 hover:bg-gray-950/20! bg-gray-950/20 line-through cursor-not-allowed" : ""}`}
+                        class={`flex items-center gap-3 px-4 py-3 hover:bg-slate-800 text-sm text-white transition-colors; w-full text-left ${!enabled ? "text-gray-400 hover:bg-gray-950/40! bg-gray-950/40 line-through cursor-not-allowed" : ""}`}
                         onClick={() => changeLanguage(code)}
                         disabled={!enabled}
                       >
