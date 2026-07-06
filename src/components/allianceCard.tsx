@@ -24,8 +24,8 @@ export function AllianceBigCard({
 
   return (
     <div class="md:col-span-2 bg-slate-800 rounded-xl p-4 border border-slate-200/10 relative overflow-hidden group">
-      <div class="absolute top-0 right-0 p-4">
-        <span class="text-6xl font-black text-sky-400/10 select-none">
+      <div class="absolute top-0 w-full flex justify-end">
+        <span class="py-4 px-8 text-6xl font-black text-sky-600/40 select-none">
           #{rank.toString().padStart(2, "0")}
         </span>
       </div>
@@ -108,10 +108,10 @@ export function AllianceSmallCard({
   return (
     <div class="bg-slate-800/50 p-6 md:p-4 rounded-xl border border-slate-500/30 transition-colors">
       <div class="flex justify-between items-start mb-4">
-        <span class="text-sky-400 font-bold">
+        <img src={data.banner} alt={data.tag} class="size-12" />
+        <span class="text-3xl font-black text-sky-400/20 select-none">
           #{rank.toString().padStart(2, "0")}
         </span>
-        <img src={data.banner} alt={data.tag} class="size-12" />
       </div>
 
       <div class="flex flex-row justify-between">

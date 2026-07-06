@@ -92,7 +92,7 @@ export function NavBar() {
           </button>
 
           {isMobileMenuOpen && (
-            <div class="absolute right-0 top-full flex flex-row gap-2 mt-2">
+            <div class="absolute flex flex-row gap-2 mt-2 inset-e-0">
               {/* Mobile Language List */}
               {isLangMenuOpen && (
                 <div class="w-40 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden backdrop-blur-md">
@@ -142,7 +142,7 @@ export function NavBar() {
                     onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
                   >
                     <svg
-                      class={`w-4 h-4 text-gray-400 transition-transform ${isLangMenuOpen ? "rotate-180" : "rotate-90"}`}
+                      class={`w-4 h-4 text-gray-400 transition-transform ${isLangMenuOpen ? "rotate-180 rtl:-rotate-180" : "rotate-90 rtl:-rotate-90"}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

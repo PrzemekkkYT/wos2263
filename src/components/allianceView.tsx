@@ -1,6 +1,5 @@
 import { getGloryIcons } from "@/utils/alliance";
 import type { Alliance } from "@/utils/types";
-import { getAvatarUrl } from "@/utils/utils";
 
 import blankUser from "@/assets/avatars/blank.svg";
 import discordLogo from "@/assets/logos/discord.svg";
