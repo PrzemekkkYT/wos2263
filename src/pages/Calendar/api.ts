@@ -36,7 +36,7 @@ import { ApiFetchSchema } from "./utils/types";
 export async function fetchApiData() {
   const query = `
     query GetAllData {
-  timelineEvents(first: 100) {
+  timelineEvents(first: 1000) {
     title
     eventId
     durationDays
@@ -59,7 +59,7 @@ export async function fetchApiData() {
     }
   }
 
-  eventItems(first: 100) {
+  eventItems(first: 1000) {
     title
     startDate
     durationDays
@@ -74,11 +74,11 @@ export async function fetchApiData() {
     }
   }
 
-  eventGroups(orderBy: publishedAt_DESC, first: 100) {
+  eventGroups(orderBy: publishedAt_DESC, first: 1000) {
     name
     groupId
     color
-    children(first: 100) {
+    children(first: 1000) {
       ... on EventGroup {
         groupId
       }
