@@ -82,9 +82,9 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
   const { t } = useTranslation();
 
   return (
-    <div class="flex flex-col bg-slate-800 px-2 py-6 xl:p-10 rounded-lg">
-      <div class="mb-10">
-        <div class="flex items-center gap-6">
+    <div class="flex flex-col bg-slate-800 px-2 py-6 xl:p-6 rounded-lg">
+      <div class="mb-6">
+        <div class="flex items-center gap-6 bg-slate-900/40 rounded p-2">
           <img src={alliance.banner} class="size-32" />
           <div>
             <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-1">
@@ -97,27 +97,29 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
               <h4 class="text-gray-400 md:text-xl">
                 {t("players", { players: alliance.playerCount })}
               </h4>
-            </div>
-            {alliance.glory && (
-              <div
-                class="flex items-center gap-2 mt-2"
-                title={t("page_home:glory_path", { count: alliance.glory })}
-              >
-                {getGloryIcons(alliance.glory).map((iconPath, index) => (
-                  <img
-                    key={index}
-                    src={iconPath}
-                    alt="Glory Icon"
-                    class="size-6"
-                  />
-                ))}
+              <div>
+                {alliance.glory && (
+                  <div
+                    class="flex items-center gap-2"
+                    title={t("page_home:glory_path", { count: alliance.glory })}
+                  >
+                    {getGloryIcons(alliance.glory).map((iconPath, index) => (
+                      <img
+                        key={index}
+                        src={iconPath}
+                        alt="Glory Icon"
+                        class="size-6"
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 mb-10 xl:gap-40">
-        <div class="p-4 max-w-1/2">
+      <div class="grid grid-cols-1 md:grid-cols-3 xl:gap-6">
+        <div class="p-4 bg-slate-900/40 rounded">
           <h3 class="mb-6 text-sky-500 font-bold tracking-widest">
             {t("page_recruitment:requirements")}
           </h3>
@@ -137,7 +139,7 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
             )}
           </ul>
         </div>
-        <div class="p-4">
+        <div class="p-4 bg-slate-900/40 rounded">
           <h3 class="mb-6 text-sky-500 font-bold tracking-widest">
             {t("page_recruitment:event_timings")}
           </h3>
@@ -173,50 +175,43 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
             })()}
           </div>
         </div>
-      </div>
-      <div class="pt-2 pl-4 border-t border-slate-400/10 flex flex-col">
-        {alliance.recruitment?.recruiters && (
-          <>
-            <span class="py-4 text-sky-500 font-bold tracking-widest">
-              {t("page_recruitment:contact")}
-            </span>
-            <div class="flex flex-wrap gap-8 items-center">
-              <div class="flex flex-wrap gap-12 items-start">
-                {alliance.recruitment?.recruiters?.map((recruiter) => (
-                  <div class="flex flex-row gap-3">
-                    <img
-                      src={recruiter.image ? recruiter.image : blankUser}
-                      alt=""
-                      class="size-14 rounded-lg object-cover bg-gray-900"
-                    />
-                    <div class="flex flex-col">
-                      <h3 class="font-bold">{recruiter.name}</h3>
-                      <div class="flex flex-row gap-2">
-                        {recruiter.position && (
-                          <div class="flex flex-col text-xs text-gray-400">
-                            <span>X: {recruiter.position.x}</span>
-                            <span>Y: {recruiter.position.y}</span>
-                          </div>
-                        )}
-                        {recruiter.contact &&
-                          recruiter.contact.map(({ socialMedia, url }) => (
-                            <a href={url} target="_blank">
-                              <img
-                                src={socialMediaLogos.get(socialMedia) ?? ""}
-                                alt=""
-                                class="size-8"
-                              />
-                            </a>
-                          ))}
+        <div class="p-4 bg-slate-900/40 rounded">
+          <h3 class="mb-6 text-sky-500 font-bold tracking-widest">
+            {t("page_recruitment:contact")}
+          </h3>
+          <div class="flex flex-wrap gap-8 items-center">
+            {alliance.recruitment?.recruiters?.map((recruiter) => (
+              <div class="flex flex-row gap-3 max-w-1/2 min-w-2/5">
+                <img
+                  src={recruiter.image ? recruiter.image : blankUser}
+                  alt=""
+                  class="size-14 rounded-lg object-cover bg-gray-900"
+                />
+                <div class="flex flex-col">
+                  <h3 class="font-bold">{recruiter.name}</h3>
+                  <div class="flex flex-row gap-2">
+                    {recruiter.position && (
+                      <div class="flex flex-col text-xs text-gray-400">
+                        <span>X: {recruiter.position.x}</span>
+                        <span>Y: {recruiter.position.y}</span>
                       </div>
-                    </div>
+                    )}
+                    {recruiter.contact &&
+                      recruiter.contact.map(({ socialMedia, url }) => (
+                        <a href={url} target="_blank">
+                          <img
+                            src={socialMediaLogos.get(socialMedia) ?? ""}
+                            alt=""
+                            class="size-8"
+                          />
+                        </a>
+                      ))}
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-            {/* eventuall more info button */}
-          </>
-        )}
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

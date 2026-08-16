@@ -10,7 +10,7 @@ import { Background } from "@/components/background";
 
 // pages
 import { HomePage } from "@/pages/Home/Home";
-import { RecruitmentPage } from "@/pages/Recruitment";
+import { RecruitmentPage } from "@/pages/Recruitment/Recruitment";
 import { CalendarPage } from "@/pages/Calendar/Calendar";
 
 // styles
