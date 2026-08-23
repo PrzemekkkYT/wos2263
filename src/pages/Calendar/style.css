@@ -103,3 +103,7 @@
 .occurrence-jump:active {
   @apply bg-black/40;
 }
+
+.vis-content {
+  @apply pb-20;
+}

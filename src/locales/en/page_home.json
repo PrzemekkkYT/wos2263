@@ -1,6 +1,11 @@
 {
     "state": "State {{state}}",
     "discord": "Join our Discord",
+
+    "recruit_title": "We're looking for new alliances!",
+    "recruit_content": "After some alliances moved on to face new challenges, State 2263 has transformed into the ideal home for players and groups who prefer a balanced, strategic, and friendly playstyle!",
+    "recruit_contact": "Contact ONE or PRO R5/R4 for more info!",
+
     "top5": "Top 5 alliances",
     "last_updated": "Last Updated: {{date_time}}",
 

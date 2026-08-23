@@ -10,6 +10,8 @@ import type { StateApiFetch } from "@/utils/types";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 
+import transferIcon from "../../assets/icons/state_transfer.png";
+
 export function HomePage() {
   const data: StateApiFetch | null = apiData.value;
 
@@ -29,6 +31,29 @@ export function HomePage() {
         >
           <img src={discordLogo} alt="discord" class="w-full h-6 xl:h-8" />
         </a>
+      </section>
+      <section id="recruitment" class="max-w-full! min-h-fit!">
+        <div class="bg-slate-800/50 p-2 md:p-4 pb-6 2xl:w-2/3 rounded-xl border border-slate-500/30 transition-colors shadow-sky-400/40 shadow-xl grid grid-cols-5 grid-rows-2">
+          <div class="p-2 col-span-2 xl:col-span-1 row-span-1 xl:row-span-2 flex justify-center items-center">
+            <img
+              src={transferIcon}
+              alt="transfer"
+              class="max-size-30 md:max-size-40 2xl:size-40"
+            />
+          </div>
+          <div class="col-span-3 xl:col-span-4 flex justify-center items-center">
+            <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-center">
+              {t("recruit_title")}
+            </h1>
+          </div>
+          <span class="px-4 md:px-4 text-xl text-justify md:tracking-wide col-span-5 xl:col-span-4 xl:col-start-2">
+            {t("recruit_content")}
+            <br />
+            <span class="font-extrabold tracking-wide">
+              {t("recruit_contact")}
+            </span>
+          </span>
+        </div>
       </section>
       <section id="alliance-rank">
         <div class="mb-10 flex flex-col self-start">

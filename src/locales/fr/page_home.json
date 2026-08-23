@@ -1,6 +1,9 @@
 {
     "state": "État {{state}}",
     "discord": "Rejoins-nous sur Discord",
+    "recruit_title": "Nous recherchons de nouvelles alliances",
+    "recruit_content": "Après le départ de certaines alliances vers de nouveaux défis, l'État 2263 est devenu le foyer idéal pour les joueurs et les groupes recherchant un style de jeu équilibré, stratégique et convivial !",
+    "recruit_contact": "Contactez les R5/R4 de ONE ou PRO pour plus d'informations !",
     "top5": "Top 5 des alliances",
     "last_updated": "Mise à jour le {{date_time}}",
     "svs_record": "Statistiques des SvS",

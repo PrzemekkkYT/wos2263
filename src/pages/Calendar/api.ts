@@ -34,9 +34,92 @@ import { ApiFetchSchema } from "./utils/types";
 //     ]}
 
 export async function fetchApiData() {
+  //   const query = `
+  //     query GetAllData {
+  //   timelineEvents(first: 1000) {
+  //     title
+  //     eventId
+  //     durationDays
+  //     itemTitle
+  //     description
+  //     color
+  //     itemType
+  //     recurrenceRules {
+  //       ... on RecurrenceRule {
+  //         startDate
+  //         frequency
+  //         interval
+  //         days
+  //         untilDate
+  //       }
+  //     }
+  //     occurrences
+  //     icon {
+  //       url
+  //     }
+  //   }
+
+  //   eventItems(first: 1000) {
+  //     title
+  //     startDate
+  //     durationDays
+  //     description
+  //     color
+  //     itemType
+  //     parentEvent {
+  //       eventId
+  //     }
+  //     icon {
+  //       url
+  //     }
+  //   }
+
+  //   eventGroups(orderBy: publishedAt_DESC, first: 1000) {
+  //     name
+  //     groupId
+  //     color
+  //     children(first: 1000) {
+  //       ... on EventGroup {
+  //         groupId
+  //       }
+  //       ... on TimelineEvent {
+  //         eventId
+  //       }
+  //     }
+  //     icon {
+  //       url
+  //     }
+  //   }
+
+  //   setting(where: {settingId: "group-order"}) {
+  //     topLevelGroupsOrder {
+  //       groupId
+  //     }
+  //   }
+  // }
+  //   `;
   const query = `
-    query GetAllData {
-  timelineEvents(first: 1000) {
+query GetAllDataFiltered {
+  timelineEvents(
+    where: {
+      AND: [
+        {
+          OR: [
+            { parentGroup: null }
+            { parentGroup: { groupId_not: "special-events" } }
+          ]
+        }
+        {
+          OR: [
+            { parentGroup: null }
+            { parentGroup: { parentGroup: null } }
+            { parentGroup: { parentGroup: { groupId_not: "special-events" } } }
+          ]
+        }
+      ]
+    }
+    first: 1000
+  ) {
     title
     eventId
     durationDays
@@ -59,7 +142,28 @@ export async function fetchApiData() {
     }
   }
 
-  eventItems(first: 1000) {
+  eventItems(
+    where: {
+      AND: [
+        {
+          OR: [
+            { parentEvent: null }
+            { parentEvent: { parentGroup: null } }
+            { parentEvent: { parentGroup: { groupId_not: "special-events" } } }
+          ]
+        }
+        {
+          OR: [
+            { parentEvent: null }
+            { parentEvent: { parentGroup: null } }
+            { parentEvent: { parentGroup: { parentGroup: null } } }
+            { parentEvent: { parentGroup: { parentGroup: { groupId_not: "special-events" } } } }
+          ]
+        }
+      ]
+    }
+    first: 1000
+  ) {
     title
     startDate
     durationDays
@@ -74,7 +178,28 @@ export async function fetchApiData() {
     }
   }
 
-  eventGroups(orderBy: publishedAt_DESC, first: 1000) {
+  eventGroups(
+    where: {
+      groupId_not: "special-events"
+      AND: [
+        {
+          OR: [
+            { parentGroup: null }
+            { parentGroup: { groupId_not: "special-events" } }
+          ]
+        }
+        {
+          OR: [
+            { parentGroup: null }
+            { parentGroup: { parentGroup: null } }
+            { parentGroup: { parentGroup: { groupId_not: "special-events" } } }
+          ]
+        }
+      ]
+    }
+    orderBy: publishedAt_DESC
+    first: 1000
+  ) {
     name
     groupId
     color
@@ -91,8 +216,8 @@ export async function fetchApiData() {
     }
   }
 
-  setting(where: {settingId: "group-order"}) {
-    topLevelGroupsOrder {
+  setting(where: { settingId: "group-order" }) {
+    topLevelGroupsOrder(where: { groupId_not: "special-events" }) {
       groupId
     }
   }
@@ -115,6 +240,12 @@ export async function fetchApiData() {
     console.error("CMS data validation error:", z.treeifyError(result.error));
     throw new Error("Invalid CMS data structure");
   }
+
+  result.data.eventGroups.push({
+    name: "Special Events",
+    groupId: "special-events",
+    children: [],
+  });
 
   return {
     timelineEvents: result.data.timelineEvents,

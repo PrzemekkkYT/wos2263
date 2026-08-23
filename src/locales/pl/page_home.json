@@ -1,6 +1,9 @@
 {
     "state": "Państwo {{state}}",
     "discord": "Dołącz do naszego Discorda",
+    "recruit_title": "Szukamy nowych sojuszy",
+    "recruit_content": "Po tym, jak część sojuszy przeniosła się, by stawić czoła nowym wyzwaniom, Stan 2263 stał się idealnym domem dla graczy i grup preferujących zrównoważony, strategiczny i przyjazny styl gry!",
+    "recruit_contact": "Skontaktuj się z R5/R4 z ONE lub PRO, aby uzyskać więcej informacji!",
     "top5": "Top 5 sojuszy",
     "last_updated": "Ostatnia aktualizacja: {{date_time}}",
     "svs_record": "Historia SvS",

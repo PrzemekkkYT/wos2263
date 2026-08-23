@@ -1,0 +1,1057 @@
+{
+  "data": {
+    "viewer": {
+      "project": {
+        "environment": {
+          "schemaDefinition": [
+            {
+              "createEnumeration": {
+                "apiId": "ItemType",
+                "displayName": "Item Type",
+                "description": null,
+                "values": [
+                  {
+                    "apiId": "range",
+                    "displayName": "range"
+                  },
+                  {
+                    "apiId": "point",
+                    "displayName": "point"
+                  }
+                ]
+              }
+            },
+            {
+              "createEnumeration": {
+                "apiId": "Colors",
+                "displayName": "Colors",
+                "description": "",
+                "values": [
+                  {
+                    "apiId": "C_6d9eeb",
+                    "displayName": "Blue"
+                  },
+                  {
+                    "apiId": "C_93c47d",
+                    "displayName": "Green"
+                  },
+                  {
+                    "apiId": "C_ffd966",
+                    "displayName": "Yellow"
+                  },
+                  {
+                    "apiId": "C_e06666",
+                    "displayName": "Red"
+                  },
+                  {
+                    "apiId": "C_888888",
+                    "displayName": "Gray"
+                  },
+                  {
+                    "apiId": "C_c27ba0",
+                    "displayName": "Magenta"
+                  }
+                ]
+              }
+            },
+            {
+              "createEnumeration": {
+                "apiId": "Frequency",
+                "displayName": "Frequency",
+                "description": "Recurrence unit (Daily, Weekly, etc.)",
+                "values": [
+                  {
+                    "apiId": "yearly",
+                    "displayName": "Yearly"
+                  },
+                  {
+                    "apiId": "monthly",
+                    "displayName": "Monthly"
+                  },
+                  {
+                    "apiId": "weekly",
+                    "displayName": "Weekly"
+                  },
+                  {
+                    "apiId": "daily",
+                    "displayName": "Daily"
+                  }
+                ]
+              }
+            },
+            {
+              "createEnumeration": {
+                "apiId": "Days",
+                "displayName": "Days",
+                "description": null,
+                "values": [
+                  {
+                    "apiId": "MO",
+                    "displayName": "Monday"
+                  },
+                  {
+                    "apiId": "TU",
+                    "displayName": "Tuesday"
+                  },
+                  {
+                    "apiId": "WE",
+                    "displayName": "Wednesday"
+                  },
+                  {
+                    "apiId": "TH",
+                    "displayName": "Thursday"
+                  },
+                  {
+                    "apiId": "FR",
+                    "displayName": "Friday"
+                  },
+                  {
+                    "apiId": "SA",
+                    "displayName": "Saturday"
+                  },
+                  {
+                    "apiId": "SU",
+                    "displayName": "Sunday"
+                  }
+                ]
+              }
+            },
+            {
+              "createComponent": {
+                "apiId": "RecurrenceRule",
+                "apiIdPlural": "RecurrenceRules",
+                "description": "Define how and when event repeats.",
+                "displayName": "Recurrence Rule"
+              }
+            },
+            {
+              "createModel": {
+                "apiId": "EventGroup",
+                "apiIdPlural": "EventGroups",
+                "description": "",
+                "displayName": "Event Group"
+              }
+            },
+            {
+              "createModel": {
+                "apiId": "TimelineEvent",
+                "apiIdPlural": "TimelineEvents",
+                "description": "",
+                "displayName": "Timeline Event"
+              }
+            },
+            {
+              "createModel": {
+                "apiId": "Setting",
+                "apiIdPlural": "Settings",
+                "description": "",
+                "displayName": "Setting"
+              }
+            },
+            {
+              "createModel": {
+                "apiId": "EventItem",
+                "apiIdPlural": "EventItems",
+                "description": "",
+                "displayName": "Event Item"
+              }
+            },
+            {
+              "createComponentField": {
+                "apiId": "recurrenceRules",
+                "parentApiId": "TimelineEvent",
+                "displayName": "Recurrence Rules",
+                "description": "Define how and when this event repeats.",
+                "isList": true,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "position": 7,
+                "componentApiId": "RecurrenceRule",
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null
+              }
+            },
+            {
+              "createUnionField": {
+                "apiId": "children",
+                "parentApiId": "EventGroup",
+                "displayName": "Children",
+                "description": null,
+                "isList": true,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "reverseField": {
+                  "apiId": "parentGroup",
+                  "displayName": "Parent Group",
+                  "description": "",
+                  "isList": false,
+                  "modelApiIds": [
+                    "EventGroup",
+                    "TimelineEvent"
+                  ],
+                  "visibility": "READ_WRITE",
+                  "positions": [
+                    {
+                      "modelApiId": "TimelineEvent",
+                      "position": 9
+                    },
+                    {
+                      "modelApiId": "EventGroup",
+                      "position": 4
+                    }
+                  ]
+                },
+                "relationalFieldRules": null,
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "isVariantEnabled": false,
+                "position": 3
+              }
+            },
+            {
+              "createEnumerableField": {
+                "apiId": "itemType",
+                "parentApiId": "TimelineEvent",
+                "displayName": "Item Type",
+                "description": null,
+                "isList": false,
+                "isLocalized": false,
+                "isUnique": false,
+                "enumerationApiId": "ItemType",
+                "isTitle": false,
+                "position": 6,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "initialValue": "\"range\"",
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createEnumerableField": {
+                "apiId": "itemType",
+                "parentApiId": "EventItem",
+                "displayName": "Item Type",
+                "description": null,
+                "isList": false,
+                "isLocalized": false,
+                "isUnique": false,
+                "enumerationApiId": "ItemType",
+                "isTitle": false,
+                "position": 5,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "initialValue": "\"range\"",
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createEnumerableField": {
+                "apiId": "color",
+                "parentApiId": "TimelineEvent",
+                "displayName": "Color",
+                "description": null,
+                "isList": false,
+                "isLocalized": false,
+                "isUnique": false,
+                "enumerationApiId": "Colors",
+                "isTitle": false,
+                "position": 5,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "initialValue": "\"C_888888\"",
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createEnumerableField": {
+                "apiId": "color",
+                "parentApiId": "EventItem",
+                "displayName": "Color",
+                "description": null,
+                "isList": false,
+                "isLocalized": false,
+                "isUnique": false,
+                "enumerationApiId": "Colors",
+                "isTitle": false,
+                "position": 4,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "initialValue": "\"C_888888\"",
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createEnumerableField": {
+                "apiId": "days",
+                "parentApiId": "RecurrenceRule",
+                "displayName": "Days",
+                "description": null,
+                "isList": true,
+                "isLocalized": false,
+                "isUnique": false,
+                "enumerationApiId": "Days",
+                "isTitle": false,
+                "position": 3,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "initialValue": null,
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createEnumerableField": {
+                "apiId": "color",
+                "parentApiId": "EventGroup",
+                "displayName": "color",
+                "description": null,
+                "isList": false,
+                "isLocalized": false,
+                "isUnique": false,
+                "enumerationApiId": "Colors",
+                "isTitle": false,
+                "position": 2,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "initialValue": null,
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createEnumerableField": {
+                "apiId": "frequency",
+                "parentApiId": "RecurrenceRule",
+                "displayName": "Frequency",
+                "description": "Recurrence unit (Daily, Weekly, etc.)",
+                "isList": false,
+                "isLocalized": false,
+                "isUnique": false,
+                "enumerationApiId": "Frequency",
+                "isTitle": false,
+                "position": 1,
+                "isRequired": true,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "initialValue": null,
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createRelationalField": {
+                "apiId": "parentEvent",
+                "parentApiId": "EventItem",
+                "type": "RELATION",
+                "displayName": "Parent Event",
+                "description": null,
+                "isList": false,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "formConfig": {},
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "tableConfig": {},
+                "reverseField": {
+                  "apiId": "cmm0qasj2033a07l20cyp2qan",
+                  "modelApiId": "TimelineEvent",
+                  "displayName": "cmm0qasj2033a07l20cyp2qan",
+                  "description": "",
+                  "isList": true,
+                  "visibility": "API_ONLY",
+                  "isUnidirectional": true,
+                  "position": -9
+                },
+                "relationalFieldRules": null,
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "position": 6,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createRelationalField": {
+                "apiId": "topLevelGroupsOrder",
+                "parentApiId": "Setting",
+                "type": "RELATION",
+                "displayName": "Top Level Groups Order",
+                "description": null,
+                "isList": true,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "formConfig": {},
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "tableConfig": {},
+                "reverseField": {
+                  "apiId": "setting",
+                  "modelApiId": "EventGroup",
+                  "displayName": "Setting",
+                  "description": "",
+                  "isList": false,
+                  "visibility": "READ_WRITE",
+                  "isUnidirectional": false,
+                  "position": 5
+                },
+                "relationalFieldRules": null,
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "position": 1,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createRelationalField": {
+                "apiId": "icon",
+                "parentApiId": "TimelineEvent",
+                "type": "ASSET",
+                "displayName": "Icon",
+                "description": null,
+                "isList": false,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "formConfig": {},
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "tableConfig": {},
+                "reverseField": {
+                  "apiId": "iconTimelineEvent",
+                  "modelApiId": "Asset",
+                  "displayName": "iconTimelineEvent",
+                  "description": null,
+                  "isList": true,
+                  "visibility": "API_ONLY",
+                  "isUnidirectional": false,
+                  "position": 10
+                },
+                "relationalFieldRules": null,
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "position": 10,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createRelationalField": {
+                "apiId": "icon",
+                "parentApiId": "EventItem",
+                "type": "ASSET",
+                "displayName": "Icon",
+                "description": null,
+                "isList": false,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "formConfig": {},
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "tableConfig": {},
+                "reverseField": {
+                  "apiId": "iconEventItem",
+                  "modelApiId": "Asset",
+                  "displayName": "iconEventItem",
+                  "description": null,
+                  "isList": true,
+                  "visibility": "API_ONLY",
+                  "isUnidirectional": false,
+                  "position": 7
+                },
+                "relationalFieldRules": null,
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "position": 7,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createRelationalField": {
+                "apiId": "icon",
+                "parentApiId": "EventGroup",
+                "type": "ASSET",
+                "displayName": "Icon",
+                "description": null,
+                "isList": false,
+                "isRequired": false,
+                "formRenderer": "GCMS",
+                "formExtension": null,
+                "formConfig": {},
+                "tableRenderer": "GCMS",
+                "tableExtension": null,
+                "tableConfig": {},
+                "reverseField": {
+                  "apiId": "iconEventGroup",
+                  "modelApiId": "Asset",
+                  "displayName": "iconEventGroup",
+                  "description": null,
+                  "isList": true,
+                  "visibility": "API_ONLY",
+                  "isUnidirectional": false,
+                  "position": 6
+                },
+                "relationalFieldRules": null,
+                "visibility": "READ_WRITE",
+                "visibilityCondition": null,
+                "position": 6,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "occurrences",
+                "parentApiId": "TimelineEvent",
+                "type": "DATE",
+                "displayName": "Occurrences",
+                "description": "Define when this events starts with simple dates",
+                "initialValue": null,
+                "tableRenderer": "GCMS",
+                "formRenderer": "GCMS",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": true,
+                "isLocalized": false,
+                "isRequired": false,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 8,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "untilDate",
+                "parentApiId": "RecurrenceRule",
+                "type": "DATE",
+                "displayName": "Until Date",
+                "description": "After this date, the recurrence of an event will stop",
+                "initialValue": null,
+                "tableRenderer": "GCMS",
+                "formRenderer": "GCMS",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": false,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 4,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "description",
+                "parentApiId": "TimelineEvent",
+                "type": "STRING",
+                "displayName": "Description",
+                "description": null,
+                "initialValue": null,
+                "tableRenderer": "GCMS_MULTI_LINE",
+                "formRenderer": "GCMS_MULTI_LINE",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": false,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 4,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "description",
+                "parentApiId": "EventItem",
+                "type": "STRING",
+                "displayName": "Description",
+                "description": null,
+                "initialValue": null,
+                "tableRenderer": "GCMS_MULTI_LINE",
+                "formRenderer": "GCMS_MULTI_LINE",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": false,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 3,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "itemTitle",
+                "parentApiId": "TimelineEvent",
+                "type": "STRING",
+                "displayName": "Item Title",
+                "description": "Title of the single item on timeline.\nCan use {n} for the number of occurrence",
+                "initialValue": null,
+                "tableRenderer": "GCMS_SINGLE_LINE",
+                "formRenderer": "GCMS_SINGLE_LINE",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": false,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 3,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "durationDays",
+                "parentApiId": "EventItem",
+                "type": "INT",
+                "displayName": "Duration (Days)",
+                "description": "The length of the event in days.",
+                "initialValue": "1",
+                "tableRenderer": "GCMS",
+                "formRenderer": "GCMS",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": false,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 2,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "durationDays",
+                "parentApiId": "TimelineEvent",
+                "type": "INT",
+                "displayName": "Duration (Days)",
+                "description": "The length of the event in days.",
+                "initialValue": null,
+                "tableRenderer": "GCMS",
+                "formRenderer": "GCMS",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": true,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 2,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "interval",
+                "parentApiId": "RecurrenceRule",
+                "type": "INT",
+                "displayName": "Interval",
+                "description": "The interval between recurrences.",
+                "initialValue": null,
+                "tableRenderer": "GCMS",
+                "formRenderer": "GCMS",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": true,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 2,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "eventId",
+                "parentApiId": "TimelineEvent",
+                "type": "STRING",
+                "displayName": "Event ID",
+                "description": null,
+                "initialValue": null,
+                "tableRenderer": "GCMS_SLUG",
+                "formRenderer": "GCMS_SLUG",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {
+                  "isLowercase": true,
+                  "automaticSlug": "{title}",
+                  "shouldGenerateAutomatically": true
+                },
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": true,
+                "isUnique": true,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 1,
+                "validations": {
+                  "Float": null,
+                  "Int": null,
+                  "String": {
+                    "listItemCount": null,
+                    "characters": null,
+                    "matches": {
+                      "errorMessage": "Input value does not match the expected format.",
+                      "flags": [],
+                      "regex": "^[a-z0-9]+(?:[-/][a-z0-9]+)*$"
+                    },
+                    "notMatches": null
+                  }
+                },
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "startDate",
+                "parentApiId": "EventItem",
+                "type": "DATE",
+                "displayName": "Start Date (UTC Midnight)",
+                "description": null,
+                "initialValue": null,
+                "tableRenderer": "GCMS",
+                "formRenderer": "GCMS",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": false,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 1,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "groupId",
+                "parentApiId": "EventGroup",
+                "type": "STRING",
+                "displayName": "group ID",
+                "description": null,
+                "initialValue": null,
+                "tableRenderer": "GCMS_SLUG",
+                "formRenderer": "GCMS_SLUG",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {
+                  "isLowercase": true,
+                  "automaticSlug": "{name}",
+                  "shouldGenerateAutomatically": true
+                },
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": true,
+                "isUnique": true,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 1,
+                "validations": {
+                  "Float": null,
+                  "Int": null,
+                  "String": {
+                    "listItemCount": null,
+                    "characters": null,
+                    "matches": {
+                      "errorMessage": "Input value does not match the expected format.",
+                      "flags": [],
+                      "regex": "^[a-z0-9]+(?:[-/][a-z0-9]+)*$"
+                    },
+                    "notMatches": null
+                  }
+                },
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "startDate",
+                "parentApiId": "RecurrenceRule",
+                "type": "DATE",
+                "displayName": "Start Date (UTC Midnight)",
+                "description": "Event starts at 00:00:00 UTC on this day.",
+                "initialValue": null,
+                "tableRenderer": "GCMS",
+                "formRenderer": "GCMS",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": true,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": false,
+                "position": 0,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "title",
+                "parentApiId": "TimelineEvent",
+                "type": "STRING",
+                "displayName": "Event Title",
+                "description": "Title of the event.\nDisplayed both on left bar and items (unless itemTitle is set)",
+                "initialValue": null,
+                "tableRenderer": "GCMS_SINGLE_LINE",
+                "formRenderer": "GCMS_SINGLE_LINE",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": true,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": true,
+                "position": 0,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "settingId",
+                "parentApiId": "Setting",
+                "type": "STRING",
+                "displayName": "Setting ID",
+                "description": null,
+                "initialValue": null,
+                "tableRenderer": "GCMS_SLUG",
+                "formRenderer": "GCMS_SLUG",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {
+                  "isLowercase": true,
+                  "automaticSlug": "",
+                  "shouldGenerateAutomatically": false
+                },
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": true,
+                "isUnique": true,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": true,
+                "position": 0,
+                "validations": {
+                  "Float": null,
+                  "Int": null,
+                  "String": {
+                    "listItemCount": null,
+                    "characters": null,
+                    "matches": {
+                      "errorMessage": "Input value does not match the expected format.",
+                      "flags": [],
+                      "regex": "^[a-z0-9]+(?:[-/][a-z0-9]+)*$"
+                    },
+                    "notMatches": null
+                  }
+                },
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "title",
+                "parentApiId": "EventItem",
+                "type": "STRING",
+                "displayName": "Event Title",
+                "description": "Title of the event.\nDisplayed both on left bar and items (unless itemTitle is set)",
+                "initialValue": null,
+                "tableRenderer": "GCMS_SINGLE_LINE",
+                "formRenderer": "GCMS_SINGLE_LINE",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": true,
+                "isUnique": false,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": true,
+                "position": 0,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            },
+            {
+              "createSimpleField": {
+                "apiId": "name",
+                "parentApiId": "EventGroup",
+                "type": "STRING",
+                "displayName": "Group Name",
+                "description": null,
+                "initialValue": null,
+                "tableRenderer": "GCMS_SINGLE_LINE",
+                "formRenderer": "GCMS_SINGLE_LINE",
+                "tableExtension": null,
+                "formExtension": null,
+                "formConfig": {},
+                "tableConfig": {},
+                "isList": false,
+                "isLocalized": false,
+                "isRequired": true,
+                "isUnique": true,
+                "isHidden": false,
+                "embeddableModels": [],
+                "visibility": "READ_WRITE",
+                "isTitle": true,
+                "position": 0,
+                "validations": null,
+                "embedsEnabled": null,
+                "visibilityCondition": null,
+                "isVariantEnabled": false
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

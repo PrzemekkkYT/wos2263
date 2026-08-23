@@ -1,6 +1,9 @@
 {
     "state": "crwdns109:0{{state}}crwdne109:0",
     "discord": "crwdns111:0crwdne111:0",
+    "recruit_title": "crwdns245:0crwdne245:0",
+    "recruit_content": "crwdns247:0crwdne247:0",
+    "recruit_contact": "crwdns249:0crwdne249:0",
     "top5": "crwdns113:0crwdne113:0",
     "last_updated": "crwdns115:0{{date_time}}crwdne115:0",
     "svs_record": "crwdns119:0crwdne119:0",
