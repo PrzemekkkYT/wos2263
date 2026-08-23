@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "crowdin download && tsc && vite build",
+    "build": "tsc && vite build",
+    "trbuild": "crowdin download && tsc && vite build",
     "preview": "vite preview",
     "locale-interface": "i18next-resources-for-ts interface -i ./src/locales/ -o ./src/@types/resources.d.ts"
   },
