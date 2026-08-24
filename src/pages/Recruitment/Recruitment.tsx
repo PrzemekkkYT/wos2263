@@ -47,9 +47,9 @@ export function RecruitmentPage() {
       </section>
       <section>
         <div class="flex flex-col gap-8 w-full">
-          {(data?.alliances ?? Array.from({ length: 5 })).map((al) => (
-            <AllianceView alliance={al} />
-          ))}
+          {(data?.alliances ?? Array.from({ length: 5 })).map((al) =>
+            al && al.recruitment ? <AllianceView alliance={al} /> : null,
+          )}
         </div>
       </section>
     </main>
