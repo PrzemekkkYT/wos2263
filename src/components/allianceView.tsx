@@ -1,9 +1,10 @@
+import { useTranslation } from "react-i18next";
+
 import { getGloryIcons } from "@/utils/alliance";
 import type { Alliance } from "@/utils/types";
 
 import blankUser from "@/assets/avatars/blank.svg";
 import discordLogo from "@/assets/logos/discord.svg";
-import { useTranslation } from "react-i18next";
 
 const socialMediaLogos = new Map<string, string>([["discord", discordLogo]]);
 
@@ -81,6 +82,19 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
 
   const { t } = useTranslation();
 
+  const unfilteredEvents = alliance.recruitment?.eventTimes;
+  if (!unfilteredEvents) return null;
+
+  const eventItems: Array<[label: string, time?: string | null]> = [
+    [t("page_recruitment:bear_trap"), unfilteredEvents.bearTrap],
+    [t("page_recruitment:foundry"), unfilteredEvents.foundry],
+    [t("page_recruitment:canyon"), unfilteredEvents.canyon],
+    [t("page_recruitment:crazy_joe"), unfilteredEvents.crazyJoe],
+    [t("page_recruitment:mercenary_bosses"), unfilteredEvents.mercenaryBosses],
+  ];
+
+  const events = eventItems.filter(([, time]) => Boolean(time));
+
   return (
     <div class="flex flex-col bg-slate-800 px-2 py-6 xl:p-6 rounded-lg">
       <div class="mb-6">
@@ -140,38 +154,51 @@ export function AllianceView({ alliance }: { alliance: Alliance | null }) {
           </ul>
         </div>
         <div class="p-4 bg-slate-900/40 rounded">
-          <h3 class="mb-6 text-sky-500 font-bold tracking-widest">
-            {t("page_recruitment:event_timings")}
-          </h3>
+          <div class="mb-6 flex flex-row gap-5 items-center">
+            <h3 class="text-sky-500 font-bold tracking-widest">
+              {t("page_recruitment:event_timings")}
+            </h3>
+            <button
+              class="p-1 text-white hover:text-gray-300 active:text-gray-500 "
+              title="Click to copy timings to the clipboard"
+              onClick={() => {
+                const eventText = events
+                  .map(([label, time]) => `${label}: ${time}`)
+                  .join("\n");
+                console.log(eventText);
+                navigator.clipboard.writeText(
+                  `${alliance.tag} - ${t("page_recruitment:event_timings")}:\n\n${eventText}\n\n${t("page_recruitment:get_more_info", { website: "https://wos2263.com/recruitment" })}`,
+                );
+              }}
+            >
+              <svg
+                class="size-6"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M21 8C21 6.34315 19.6569 5 18 5H10C8.34315 5 7 6.34315 7 8V20C7 21.6569 8.34315 23 10 23H18C19.6569 23 21 21.6569 21 20V8ZM19 8C19 7.44772 18.5523 7 18 7H10C9.44772 7 9 7.44772 9 8V20C9 20.5523 9.44772 21 10 21H18C18.5523 21 19 20.5523 19 20V8Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M6 3H16C16.5523 3 17 2.55228 17 2C17 1.44772 16.5523 1 16 1H6C4.34315 1 3 2.34315 3 4V18C3 18.5523 3.44772 19 4 19C4.55228 19 5 18.5523 5 18V4C5 3.44772 5.44772 3 6 3Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </div>
           <div class="grid grid-cols-2 gap-y-4 gap-x-6">
             {(() => {
-              const events = alliance.recruitment?.eventTimes;
-              if (!events) return null;
-
-              const items: Array<[label: string, time?: string | null]> = [
-                [t("page_recruitment:bear_trap"), events.bearTrap],
-                [t("page_recruitment:foundry"), events.foundry],
-                [t("page_recruitment:canyon"), events.canyon],
-                [t("page_recruitment:crazy_joe"), events.crazyJoe],
-                [
-                  t("page_recruitment:mercenary_bosses"),
-                  events.mercenaryBosses,
-                ],
-              ];
-
-              return items
-                .filter(([, time]) => Boolean(time))
-                .map(([label, time]) => (
-                  <div
-                    key={label}
-                    class="flex flex-col bg-black/20 p-2 rounded"
-                  >
-                    <span class="uppercase tracking-tighter text-gray-400">
-                      {label}
-                    </span>
-                    <span>{time}</span>
-                  </div>
-                ));
+              return events.map(([label, time]) => (
+                <div key={label} class="flex flex-col bg-black/20 p-2 rounded">
+                  <span class="uppercase tracking-tighter text-gray-400">
+                    {label}
+                  </span>
+                  <span>{time}</span>
+                </div>
+              ));
             })()}
           </div>
         </div>

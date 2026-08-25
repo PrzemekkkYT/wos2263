@@ -9,5 +9,6 @@
     "canyon": "Canyon",
     "crazy_joe": "Crazy Joe",
     "mercenary_bosses": "Mercenary Bosses",
-    "contact": "Contact"
+    "contact": "Contact",
+    "get_more_info": "Get more info at {{website}}"
 }
